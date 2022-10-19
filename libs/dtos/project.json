@@ -1,14 +1,14 @@
 {
-  "name": "api-interfaces",
+  "name": "dtos",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/api-interfaces/src",
+  "sourceRoot": "libs/dtos/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+        "lintFilePatterns": ["libs/dtos/**/*.ts"]
       }
     }
   },

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@tosp-memo-life-task/api-interfaces';
+import { Message } from '@memo-life-task/dtos';
 
 @Component({
   selector: 'tosp-memo-life-task-root',

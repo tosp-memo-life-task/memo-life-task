@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Message } from '@tosp-memo-life-task/api-interfaces';
+
+import { Message } from '@memo-life-task/dtos';
 
 @Injectable()
 export class AppService {
