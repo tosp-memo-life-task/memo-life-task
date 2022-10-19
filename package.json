@@ -12,10 +12,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~14.2.0",
+    "@angular/cdk": "^14.2.5",
     "@angular/common": "~14.2.0",
     "@angular/compiler": "~14.2.0",
     "@angular/core": "~14.2.0",
     "@angular/forms": "~14.2.0",
+    "@angular/material": "^14.2.5",
     "@angular/platform-browser": "~14.2.0",
     "@angular/platform-browser-dynamic": "~14.2.0",
     "@angular/router": "~14.2.0",
@@ -24,12 +26,15 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nrwl/angular": "14.8.1",
+    "bootstrap": "^5.2.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "compression": "^1.7.4",
+    "ngx-toastr": "^15.2.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "validator": "^13.7.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

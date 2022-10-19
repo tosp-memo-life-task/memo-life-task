@@ -1,0 +1,18 @@
+@import '../../common/styles/variables';
+
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #2c3639 0%, #2b3639 54.69%, #1b2224 100%);
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  width: fit-content;
+  max-width: 90%;
+  padding: 40px;
+  background: #f5eed8;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
