@@ -1,6 +1,6 @@
 import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 
@@ -8,12 +8,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
+  const version = configService.get<string>('API_VERSION') || '1';
   app.enableVersioning({
-    defaultVersion: '1',
+    defaultVersion: version,
     type: VersioningType.URI,
   });
 
-  app.setGlobalPrefix('api');
+  const prefix = configService.get<string>('API_PREFIX') || 'api';
+  app.setGlobalPrefix(prefix);
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -23,9 +25,11 @@ async function bootstrap() {
     })
   );
 
-  const port = process.env.PORT || 3333;
+  const port = configService.get<number>('API_PORT') || 3333;
   await app.listen(port);
-  Logger.log(`🚀 Application is running on: http://localhost:${port}/api`);
+  Logger.log(
+    `🚀 Application is running on: http://localhost:${port}/${prefix}/v${version}/`
+  );
 }
 
 bootstrap();
