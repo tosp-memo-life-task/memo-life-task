@@ -11,10 +11,19 @@ export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
   constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, emailValidator()])],
-      password: ['', Validators.compose([Validators.required])],
-    });
+    this.form = this.formBuilder.group(
+      {
+        email: [
+          '',
+          Validators.compose([Validators.required, emailValidator()]),
+        ],
+        password: ['', Validators.compose([Validators.required])],
+      }
+      /*
+      Barni password matching validator
+       { validator: MatchingValidator('password', 'passwordagain') } 
+       */
+    );
   }
 
   ngOnInit(): void {}
