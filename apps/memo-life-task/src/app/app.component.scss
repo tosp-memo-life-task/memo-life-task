@@ -1,0 +1,70 @@
+@import './common/styles/variables';
+
+::ng-deep {
+  * {
+    font-family: 'Noto Sans', sans-serif !important;
+  }
+
+  .header-1 {
+    font-weight: 700 !important;
+    font-style: normal !important;
+    font-size: 36px !important;
+    line-height: 49px !important;
+    letter-spacing: 0.02em !important;
+    color: $black !important;
+  }
+  .header-2 {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 32px !important;
+    line-height: 44px !important;
+    letter-spacing: 0.02em !important;
+    color: $black !important;
+  }
+  .header-3 {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 24px !important;
+    line-height: 33px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
+  }
+  .header-4 {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    line-height: 27px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
+  }
+  .header-5 {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    line-height: 25px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
+  }
+  .header-6 {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
+  }
+  .paragraph {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
+  }
+}

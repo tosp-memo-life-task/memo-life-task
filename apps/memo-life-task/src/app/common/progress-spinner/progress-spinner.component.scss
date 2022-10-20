@@ -1,0 +1,5 @@
+@import '../styles/variables';
+
+::ng-deep.mat-progress-spinner circle {
+  stroke: $dark_green !important;
+}
