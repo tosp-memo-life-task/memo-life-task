@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { emailValidator } from '../../../common/validators/email.validator';
 
 @Component({
   selector: 'tosp-memo-life-task-login',
@@ -11,13 +12,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      email: [
-        '',
-        Validators.compose([
-          Validators.pattern('^[a-zA-Z0-9-.]+@{1}([a-z-]+[.]{1})+[a-z-]{2,}'),
-          Validators.required,
-        ]),
-      ],
+      email: ['', Validators.compose([Validators.required, emailValidator()])],
       password: ['', Validators.compose([Validators.required])],
     });
   }
@@ -30,7 +25,7 @@ export class LoginComponent implements OnInit {
     if (field === 'email' && this.form.get('email')?.touched) {
       if (this.form.get('email')?.hasError('required')) {
         return 'Email is required';
-      } else if (this.form.get('email')?.hasError('pattern')) {
+      } else if (this.form.get('email')?.hasError('invalidFormat')) {
         return 'Enter valid email format';
       }
     } else if (field === 'password' && this.form.get('password')?.touched) {

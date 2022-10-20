@@ -1,34 +1,44 @@
-<form
-  class="align-items-center d-flex flex-column justify-content-center mb-4"
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
->
-  <mat-form-field appearance="outline">
-    <mat-label>Email címed</mat-label>
-    <input formControlName="email" matInput />
-    <!-- <img matSuffix src="assets/images/icon-letter.svg" /> -->
-  </mat-form-field>
-  <mat-error class="align-self-baseline" *ngIf="form.invalid">{{
-    getErrorMessage('email')
-  }}</mat-error>
+<div class="form-container d-flex flex-column">
+  <div class="form-header d-flex flex-column align-items-center">
+    <div class="logo-container">
+      <div
+        class="logo-icon-container d-flex align-items-center justify-content-center"
+      >
+        <img src="assets/person.icon.svg" class="logo-icon" />
+      </div>
+      <h3 class="header-2 text-center">Login</h3>
+    </div>
+  </div>
+  <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-label class="header-4">Email</mat-label>
+    <mat-form-field appearance="standard">
+      <input formControlName="email" matInput placeholder="Type your email" />
+      <img matPrefix src="assets/mail.icon.svg" class="input-prefix-icon" />
+      <mat-error class="" *ngIf="form.invalid">{{
+        getErrorMessage('email')
+      }}</mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Jelszavad</mat-label>
-    <input formControlName="password" matInput type="password" />
-    <!-- <img matSuffix src="assets/images/icon-lock.svg" /> -->
-  </mat-form-field>
-  <mat-error class="align-self-baseline" *ngIf="form.invalid">{{
-    getErrorMessage('password')
-  }}</mat-error>
+    <mat-label class="header-4">Password</mat-label>
+    <mat-form-field appearance="standard">
+      <input
+        formControlName="password"
+        matInput
+        placeholder="Type your password"
+      />
+      <img matPrefix src="assets/lock.icon.svg" class="input-prefix-icon" />
+      <mat-error class="" *ngIf="form.invalid">{{
+        getErrorMessage('password')
+      }}</mat-error>
+    </mat-form-field>
+  </form>
 
   <button
-    class="button-custom mt-3"
-    color="primary"
+    class="button-custom"
     mat-flat-button
-    color="primary"
     type="submit"
-    [disabled]="!form.valid"
+    (click)="onSubmit()"
   >
-    Bejelentkezés
+    Login
   </button>
-</form>
+</div>

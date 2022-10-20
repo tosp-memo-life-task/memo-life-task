@@ -2,69 +2,69 @@
 
 ::ng-deep {
   * {
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif !important;
   }
 
   .header-1 {
-    font-weight: 700;
-    font-style: normal;
-    font-size: 36px;
-    line-height: 49px;
-    letter-spacing: 0.02em;
-    color: $black;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    font-size: 36px !important;
+    line-height: 49px !important;
+    letter-spacing: 0.02em !important;
+    color: $black !important;
   }
   .header-2 {
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 44px;
-    letter-spacing: 0.02em;
-    color: $black;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 32px !important;
+    line-height: 44px !important;
+    letter-spacing: 0.02em !important;
+    color: $black !important;
   }
   .header-3 {
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 33px;
-    letter-spacing: 0.04em;
-    color: $black;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 24px !important;
+    line-height: 33px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
   }
   .header-4 {
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 27px;
-    letter-spacing: 0.04em;
-    color: $black;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    line-height: 27px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
   }
   .header-5 {
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 25px;
-    letter-spacing: 0.04em;
-    color: $black;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    line-height: 25px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
   }
   .header-6 {
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-    letter-spacing: 0.04em;
-    color: $black;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 19px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
   }
   .paragraph {
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.04em;
-    color: $black;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    letter-spacing: 0.04em !important;
+    color: $black !important;
   }
 }

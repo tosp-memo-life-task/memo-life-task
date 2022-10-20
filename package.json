@@ -59,6 +59,7 @@
     "@types/compression": "^1.7.2",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",
+    "@types/validator": "^13.7.8",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "cypress": "^10.7.0",
