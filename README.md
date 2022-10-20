@@ -32,11 +32,11 @@ This project was generated using [Nx](https://nx.dev).
 
 #### API related
 
-|                   |               **API_PORT**               |
-| ----------------- | :--------------------------------------: |
-| _Default value_   |                   3000                   |
-| _Description_     | Port on which the backend API is served. |
-| _Possible values_ |          E.g.: 3000, 3333, ...           |
+|                   |       **API_PREFIX**        |               **API_PORT**               |    **API_VERSION**     |
+| ----------------- | :-------------------------: | :--------------------------------------: | :--------------------: |
+| _Default value_   |            'api'            |                   3000                   |          '1'           |
+| _Description_     |     Prefix of the API.      | Port on which the backend API is served. | Versioning of the API. |
+| _Possible values_ | E.g.: 'api', 'backend', ... |          E.g.: 3000, 3333, ...           | E.g.: '2', 'Beta', ... |
 
 ## Development server
 
