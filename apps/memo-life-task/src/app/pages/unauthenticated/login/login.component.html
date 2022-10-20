@@ -6,28 +6,29 @@
       >
         <img src="assets/person.icon.svg" class="logo-icon" />
       </div>
-      <h3 class="header-2 text-center">Login</h3>
+      <h3 class="header-3 text-center">Login</h3>
     </div>
   </div>
   <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-label class="header-4">Email</mat-label>
-    <mat-form-field appearance="standard">
+    <mat-label class="header-5">Email</mat-label>
+    <mat-form-field appearance="standard" class="mb-2">
       <input formControlName="email" matInput placeholder="Type your email" />
       <img matPrefix src="assets/mail.icon.svg" class="input-prefix-icon" />
-      <mat-error class="" *ngIf="form.invalid">{{
+      <mat-error class="header-6" *ngIf="form.invalid">{{
         getErrorMessage('email')
       }}</mat-error>
     </mat-form-field>
 
-    <mat-label class="header-4">Password</mat-label>
+    <mat-label class="header-5">Password</mat-label>
     <mat-form-field appearance="standard">
       <input
         formControlName="password"
         matInput
         placeholder="Type your password"
+        type="password"
       />
       <img matPrefix src="assets/lock.icon.svg" class="input-prefix-icon" />
-      <mat-error class="" *ngIf="form.invalid">{{
+      <mat-error class="header-6" *ngIf="form.invalid">{{
         getErrorMessage('password')
       }}</mat-error>
     </mat-form-field>

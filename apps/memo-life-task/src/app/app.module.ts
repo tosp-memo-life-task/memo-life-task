@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './material/material.module';
 import { CommonModule } from '@angular/common';
+import { ProgressSpinnerComponent } from './common/progress-spinner/progress-spinner.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent,
+    ProgressSpinnerComponent,
   ],
   imports: [
     AppRoutingModule,
