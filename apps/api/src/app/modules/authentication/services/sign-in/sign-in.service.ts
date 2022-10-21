@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class SignUpService {
+export class SignInService {
   constructor() {}
 
-  async signUp(): Promise<any> {
+  async signIn(): Promise<any> {
     return;
   }
 }
