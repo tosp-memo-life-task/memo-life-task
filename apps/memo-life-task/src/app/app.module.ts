@@ -22,7 +22,7 @@ import { ProgressSpinnerComponent } from './common/progress-spinner/progress-spi
     LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    ProgressSpinnerComponent,
+    ProgressSpinnerComponent
   ],
   imports: [
     AppRoutingModule,
@@ -33,9 +33,9 @@ import { ProgressSpinnerComponent } from './common/progress-spinner/progress-spi
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    CommonModule,
+    CommonModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,3 +1,3 @@
-export class GetAccessTokenResponse{
-    accessToken:string;
+export class GetAccessTokenResponse {
+  accessToken: string;
 }

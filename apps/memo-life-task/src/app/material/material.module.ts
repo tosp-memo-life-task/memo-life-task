@@ -52,13 +52,13 @@ const material = [
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatSlideToggleModule,
+  MatSlideToggleModule
 ];
 
 const cdk = [OverlayModule];
 
 @NgModule({
   exports: [cdk, material],
-  imports: [cdk, material],
+  imports: [cdk, material]
 })
 export class MaterialModule {}

@@ -5,7 +5,7 @@ import { Message } from '@memo-life-task/dtos';
 @Component({
   selector: 'tosp-memo-life-task-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   constructor() {}

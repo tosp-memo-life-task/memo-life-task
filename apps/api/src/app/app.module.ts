@@ -8,10 +8,10 @@ import { AppService } from './app.service';
   imports: [
     ConfigModule.forRoot({
       cache: true,
-      isGlobal: true,
-    }),
+      isGlobal: true
+    })
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
 export class AppModule {}

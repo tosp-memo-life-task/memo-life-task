@@ -8,7 +8,7 @@ import { LocalStorageService } from './local-storage.service';
 import { OverlayService } from '../progress-spinner/progress-spinner-overlay.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DataService {
   constructor(

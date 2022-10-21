@@ -14,22 +14,22 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'login' },
       {
         path: 'login',
-        component: LoginComponent,
+        component: LoginComponent
       },
       {
         path: 'sign-up',
-        component: SignUpComponent,
+        component: SignUpComponent
       },
       {
         path: 'forgot-password',
-        component: ForgotPasswordComponent,
-      },
-    ],
-  },
+        component: ForgotPasswordComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -8,7 +8,7 @@ import { LocalStorageService } from './local-storage.service';
 import { UrlService } from './url.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class GetAccessTokenService {
   constructor(

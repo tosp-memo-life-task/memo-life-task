@@ -4,7 +4,7 @@ import { PermissionEnum } from 'src/app/common/enums/permission.enum';
 import { AppException } from 'src/app/common/exceptions/app-error.exception';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class LocalStorageService {
   private D = false;

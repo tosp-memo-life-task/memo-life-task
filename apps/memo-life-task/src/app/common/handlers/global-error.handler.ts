@@ -3,7 +3,7 @@ import {
   Inject,
   Injectable,
   Injector,
-  NgZone,
+  NgZone
 } from '@angular/core';
 import { ErrorResponse } from '../models/error.response';
 import { ToastService } from '../services/toast.service';

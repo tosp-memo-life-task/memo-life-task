@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  env: 'local',
+  env: 'local'
 };
 /*
  * For easier debugging in development mode, you can import the following file

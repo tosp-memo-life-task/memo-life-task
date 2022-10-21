@@ -2,14 +2,14 @@ import {
   Overlay,
   OverlayConfig,
   OverlayRef,
-  PositionStrategy,
+  PositionStrategy
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Injectable, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class OverlayService {
   displayProgressSpinner: boolean = false;

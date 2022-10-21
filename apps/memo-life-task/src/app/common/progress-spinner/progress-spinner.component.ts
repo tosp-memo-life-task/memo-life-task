@@ -5,7 +5,7 @@ import {
   OnInit,
   TemplateRef,
   ViewChild,
-  ViewContainerRef,
+  ViewContainerRef
 } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
@@ -15,7 +15,7 @@ import { OverlayService } from './progress-spinner-overlay.service';
 @Component({
   selector: 'progress-spinner',
   templateUrl: './progress-spinner.component.html',
-  styleUrls: ['./progress-spinner.component.scss'],
+  styleUrls: ['./progress-spinner.component.scss']
 })
 export class ProgressSpinnerComponent implements OnInit {
   @Input() diameter?: number = 100;
@@ -53,7 +53,7 @@ export class ProgressSpinnerComponent implements OnInit {
   ngOnInit() {
     // Config for Overlay Service
     this.progressSpinnerOverlayConfig = {
-      hasBackdrop: this.backdropEnabled,
+      hasBackdrop: this.backdropEnabled
     };
 
     if (this.positionGloballyCenter) {
@@ -77,7 +77,7 @@ export class ProgressSpinnerComponent implements OnInit {
   changeToDefaultOverlay() {
     this.backdropEnabled = true;
     this.progressSpinnerOverlayConfig = {
-      hasBackdrop: this.backdropEnabled,
+      hasBackdrop: this.backdropEnabled
     };
     this.diameter = 100;
     this.progressSpinnerOverlayConfig['positionStrategy'] =
@@ -87,7 +87,7 @@ export class ProgressSpinnerComponent implements OnInit {
   changeToMiniOverlay() {
     this.backdropEnabled = false;
     this.progressSpinnerOverlayConfig = {
-      hasBackdrop: this.backdropEnabled,
+      hasBackdrop: this.backdropEnabled
     };
     this.diameter = 50;
     this.progressSpinnerOverlayConfig['positionStrategy'] =

@@ -13,7 +13,7 @@ async function bootstrap() {
   const version = configService.get<string>('API_VERSION') || '1';
   app.enableVersioning({
     defaultVersion: version,
-    type: VersioningType.URI,
+    type: VersioningType.URI
   });
 
   const prefix = configService.get<string>('API_PREFIX') || 'api';
@@ -23,7 +23,7 @@ async function bootstrap() {
     new ValidationPipe({
       forbidNonWhitelisted: true,
       transform: true,
-      whitelist: true,
+      whitelist: true
     })
   );
 

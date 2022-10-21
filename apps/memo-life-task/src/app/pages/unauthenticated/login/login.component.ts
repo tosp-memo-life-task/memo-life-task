@@ -5,7 +5,7 @@ import { emailValidator } from '../../../common/validators/email.validator';
 @Component({
   selector: 'tosp-memo-life-task-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({});
@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
       {
         email: [
           '',
-          Validators.compose([Validators.required, emailValidator()]),
+          Validators.compose([Validators.required, emailValidator()])
         ],
-        password: ['', Validators.compose([Validators.required])],
+        password: ['', Validators.compose([Validators.required])]
       }
       /*
       Barni password matching validator

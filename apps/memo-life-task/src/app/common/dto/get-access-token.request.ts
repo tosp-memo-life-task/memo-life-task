@@ -1,3 +1,3 @@
-export class GetAccessTokenRequest{
-refreshToken:string;
+export class GetAccessTokenRequest {
+  refreshToken: string;
 }
