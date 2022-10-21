@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tosp-memo-life-task/api-interfaces": [
-        "libs/api-interfaces/src/index.ts"
-      ]
+      "@memo-life-task/dtos": ["libs/dtos/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

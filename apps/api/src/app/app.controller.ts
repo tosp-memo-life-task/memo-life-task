@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
-import { Message } from '@tosp-memo-life-task/api-interfaces';
+import { Message, RegisterUserRequest } from '@memo-life-task/dtos';
 
 import { AppService } from './app.service';
 
@@ -11,5 +11,10 @@ export class AppController {
   @Get('hello')
   getData(): Message {
     return this.appService.getData();
+  }
+
+  @Get('register')
+  registerTest(@Body() req: RegisterUserRequest): any {
+    return req;
   }
 }
