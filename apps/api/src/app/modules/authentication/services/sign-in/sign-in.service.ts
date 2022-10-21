@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { SignInRequest, SignInResponse } from '@memo-life-task/dtos';
+
 @Injectable()
 export class SignInService {
   constructor() {}
