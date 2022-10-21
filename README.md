@@ -21,13 +21,21 @@ A basic task manager with features like:
 
 ### Environtment variables
 
-#### API related
+#### API
 
 |                   |       **API_PREFIX**        |               **API_PORT**               |    **API_VERSION**     |
 | ----------------- | :-------------------------: | :--------------------------------------: | :--------------------: |
 | _Default value_   |            'api'            |                   3000                   |          '1'           |
 | _Description_     |     Prefix of the API.      | Port on which the backend API is served. | Versioning of the API. |
 | _Possible values_ | E.g.: 'api', 'backend', ... |          E.g.: 3000, 3333, ...           | E.g.: '2', 'Beta', ... |
+
+### JWT
+
+|                   |                                     **JWT_IGNORE_EXPIRATION**                                      |                                                                      **JWT_ACCESS_SECRET**                                                                       |                          **JWT_ACCESS_EXPIRATION_TIME**                           |
+| ----------------- | :------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
+| _Default value_   |                                               false                                                |                                                                                -                                                                                 |                                       '1y'                                        |
+| _Description_     | Whether the backend should ignore the expiration of the tokens. Do **NOT** use in production mode. | Secret code/key for encoding/decoding access tokens.<br>Handle it with caution, do **NOT** share it with anyone, and never upload it to version control servers. |                   Time before the access token becomes invalid.                   |
+| _Possible values_ |                                           [false, true]                                            |                                        E.g.: 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'                                        | E.g.: '42s', '6.9m', '1h'... <br>[More information](https://github.com/vercel/ms) |
 
 (Critical variables, such as api keys and other sensitive info should be set here...)
 
