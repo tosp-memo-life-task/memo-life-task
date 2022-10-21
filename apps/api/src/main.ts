@@ -31,7 +31,7 @@ async function bootstrap() {
   app.use(json({ limit: '1mb' }));
   app.use(urlencoded({ extended: true, limit: '1mb' }));
 
-  const port = configService.get<number>('API_PORT') || 3333;
+  const port = configService.get<number>('API_PORT') || 3000;
   await app.listen(port);
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/${prefix}/v${version}/`
