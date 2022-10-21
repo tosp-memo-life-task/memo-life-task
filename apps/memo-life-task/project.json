@@ -9,6 +9,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "allowedCommonJsDependencies": ["validator"],
         "outputPath": "dist/apps/memo-life-task",
         "index": "apps/memo-life-task/src/index.html",
         "main": "apps/memo-life-task/src/main.ts",
