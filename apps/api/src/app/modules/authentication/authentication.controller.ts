@@ -1,7 +1,14 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 
 import { SignInService } from './services/sign-in/sign-in.service';
 import { SignUpService } from './services/sign-up/sign-up.service';
+
+import {
+  SignInRequest,
+  SignInResponse,
+  SignUpRequest,
+  SignUpResponse
+} from '@memo-life-task/dtos';
 
 @Controller('auth')
 export class AuthenticationController {
@@ -10,13 +17,13 @@ export class AuthenticationController {
     private readonly signUpService: SignUpService
   ) {}
 
-  @Post('sign-up')
-  async signUp(): Promise<any> {
-    return await this.signUpService.signUp();
+  @Post('sign-in')
+  async signIn(@Body() req: SignInRequest): Promise<SignInResponse> {
+    return await this.signInService.signIn(req);
   }
 
-  @Post('sign-in')
-  async signIn(): Promise<any> {
-    return await this.signInService.signIn();
+  @Post('sign-up')
+  async signUp(@Body() req: SignUpRequest): Promise<SignUpResponse> {
+    return await this.signUpService.signUp(req);
   }
 }
