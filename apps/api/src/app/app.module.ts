@@ -3,12 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 
-import { AppController } from './app.controller';
-
-import { AppService } from './app.service';
-
 @Module({
-  controllers: [AppController],
+  controllers: [],
   imports: [
     AuthenticationModule,
     ConfigModule.forRoot({
@@ -16,6 +12,6 @@ import { AppService } from './app.service';
       isGlobal: true
     })
   ],
-  providers: [AppService]
+  providers: []
 })
 export class AppModule {}
