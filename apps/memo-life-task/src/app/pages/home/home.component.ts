@@ -10,18 +10,21 @@ export class HomeComponent implements OnInit {
   items: NbMenuItem[] = [
     {
       title: 'Dashboard',
-      link: 'dashboard',
-      pathMatch: 'prefix'
+      link: '/home/dashboard',
+      pathMatch: 'full',
+      icon: { icon: 'dashboard', pack: 'custom-icons' }
     },
     {
       title: 'Invitations',
-      link: 'invitations',
-      pathMatch: 'prefix'
+      link: '/home/invitations',
+      pathMatch: 'full',
+      icon: { icon: 'invitations', pack: 'custom-icons' }
     },
     {
       title: 'Profile',
-      link: 'profile',
-      pathMatch: 'prefix'
+      link: '/home/profile',
+      pathMatch: 'full',
+      icon: { icon: 'profile', pack: 'custom-icons' }
     }
   ];
 

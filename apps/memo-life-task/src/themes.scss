@@ -75,7 +75,15 @@ $nb-themes: nb-register-theme(
     linear-gradient:
       linear-gradient(180deg, #2c3639 0%, #292f30 54.69%, #1b2224 100%),
     text-basic-color: #000,
-    menu-item-active-background-color: rgba(245, 238, 216, 0.15)
+    menu-text-font-family: 'Noto Sans',
+    menu-text-font-weight: 600,
+    menu-text-font-size: 18px,
+    menu-text-color: #fff,
+    menu-item-hover-text-color: #fff,
+    menu-item-hover-background-color: rgba(245, 238, 216, 0.15),
+    menu-item-active-background-color: rgba(245, 238, 216, 0.15),
+    menu-item-padding: 20px 32px,
+    menu-item-divider-width: 0px
   ),
   custom-theme,
   dark
