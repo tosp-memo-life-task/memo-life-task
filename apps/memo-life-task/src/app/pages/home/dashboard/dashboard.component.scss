@@ -1,0 +1,81 @@
+@import '../../../common/styles/variables';
+
+.dashboard-container {
+  padding: 8px;
+  .workspace-container-header {
+    margin-bottom: 24px;
+  }
+
+  .workspace-list-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 992px) {
+      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (min-width: 1200px) {
+      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .workspace-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      background-color: $medium_green;
+      border-radius: 12px;
+      padding: 16px;
+
+      .workspace-body {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .workspace-header {
+          font-weight: 700;
+        }
+        .workspace-content {
+          display: -webkit-box;
+          -webkit-line-clamp: 6;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+      .workspace-footer {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .workspace-modified {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  button {
+    nb-icon {
+      width: fit-content;
+      height: fit-content;
+    }
+  }
+  .workspace-footer {
+    nb-icon {
+      height: 22px;
+      width: 22px;
+      margin-right: 4px;
+    }
+  }
+}

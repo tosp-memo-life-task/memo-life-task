@@ -2,7 +2,7 @@
   <nb-sidebar
     responsive
     [collapsedBreakpoints]="['xs', 'is']"
-    [compactedBreakpoints]="['sm', 'md']"
+    [compactedBreakpoints]="['sm', 'md', 'lg']"
     linear-gradient
     class="sidebar"
   >
@@ -14,25 +14,15 @@
       >
         <!-- If user has profile pic then change this. -->
         <div
-          class="temp-profile-pic p-4 w-100 h-100 d-flex align-items-center justify-content-center"
+          class="temp-profile-pic p-1 p-xl-3 w-100 h-100 d-flex align-items-center justify-content-center"
         >
-          <svg
-            width="54"
-            height="52"
-            viewBox="0 0 54 52"
-            fill="#F5EED8"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M27 25C23.3334 25 20.3334 23.8333 18 21.5C15.6667 19.1667 14.5 16.1667 14.5 12.5C14.5 8.83334 15.6667 5.83333 18 3.5C20.3334 1.16667 23.3334 0 27 0C30.6667 0 33.6667 1.16667 36 3.5C38.3334 5.83333 39.5 8.83334 39.5 12.5C39.5 16.1667 38.3334 19.1667 36 21.5C33.6667 23.8333 30.6667 25 27 25ZM0.333374 51.75V43.9167C0.333374 41.8056 0.861151 40 1.91671 38.5C2.97226 37 4.33337 35.8611 6.00004 35.0833C9.72226 33.4167 13.2917 32.1667 16.7084 31.3333C20.125 30.5 23.5556 30.0833 27 30.0833C30.4445 30.0833 33.8612 30.5139 37.25 31.375C40.6389 32.2361 44.1945 33.4722 47.9167 35.0833C49.6389 35.8611 51.0278 37 52.0834 38.5C53.1389 40 53.6667 41.8056 53.6667 43.9167V51.75H0.333374Z"
-            />
-          </svg>
+          <nb-icon icon="profile" pack="custom-icons"></nb-icon>
         </div>
       </div>
-      <h3 class="text-h3 color-white">
+      <h4 class="profile-name text-h4 color-white">
         John Wick
         <!-- {{user.name}} -->
-      </h3>
+      </h4>
     </div>
     <div
       class="sidebar-section sidebar-user-stats d-flex flex-row justify-content-center align-items-start"
@@ -40,13 +30,13 @@
       <div
         class="sidebar-user-stat-section d-flex flex-column justify-content-center align-items-center"
       >
-        <h3 class="text-h3 color-white">12</h3>
+        <h4 class="text-h4 color-white">12</h4>
         <p class="text-p1 color-pale-white">Workspaces</p>
       </div>
       <div
         class="sidebar-user-stat-section d-flex flex-column justify-content-center align-items-center"
       >
-        <h3 class="text-h3 color-white">420</h3>
+        <h4 class="text-h4 color-white">420</h4>
         <p class="text-p1 color-pale-white">Tasks</p>
       </div>
     </div>
@@ -56,7 +46,7 @@
     </div>
   </nb-sidebar>
 
-  <nb-layout-column>
+  <nb-layout-column class="p-4">
     <router-outlet></router-outlet>
   </nb-layout-column>
 </nb-layout>
