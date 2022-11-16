@@ -1,8 +1,1 @@
-<svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_147_138" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="37">
-<rect y="0.75" width="36" height="36" fill="white" fill-opacity="0.8"/>
-</mask>
-<g mask="url(#mask0_147_138)">
-<path d="M6.75 32.25C6.15 32.25 5.625 32.025 5.175 31.575C4.725 31.125 4.5 30.6 4.5 30V7.5C4.5 6.9 4.725 6.375 5.175 5.925C5.625 5.475 6.15 5.25 6.75 5.25H17.6625V7.5H6.75V30H17.6625V32.25H6.75ZM24.975 25.3125L23.3625 23.7L27.1875 19.875H14.0625V17.625H27.1125L23.2875 13.8L24.9 12.1875L31.5 18.7875L24.975 25.3125Z" fill="white" fill-opacity="0.8"/>
-</g>
-</svg>
+<svg width="36" height="37" viewBox="0 0 36 37" fill="#fff" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_147_138" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="37"><rect y="0.75" width="36" height="36"/></mask><g mask="url(#mask0_147_138)"><path d="M6.75 32.25C6.15 32.25 5.625 32.025 5.175 31.575C4.725 31.125 4.5 30.6 4.5 30V7.5C4.5 6.9 4.725 6.375 5.175 5.925C5.625 5.475 6.15 5.25 6.75 5.25H17.6625V7.5H6.75V30H17.6625V32.25H6.75ZM24.975 25.3125L23.3625 23.7L27.1875 19.875H14.0625V17.625H27.1125L23.2875 13.8L24.9 12.1875L31.5 18.7875L24.975 25.3125Z"/></g></svg>
