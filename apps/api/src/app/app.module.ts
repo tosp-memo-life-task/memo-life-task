@@ -2,8 +2,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthenticationModule } from './modules/authentication/authentication.module';
+
+import ormConfig from './ormconfig';
 
 import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
 
@@ -23,6 +26,14 @@ import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
           expiresIn: configService.get<string>('JWT_ACCESS_EXPIRATION_TIME')
         }
       })
+    }),
+    TypeOrmModule.forRootAsync({
+      useFactory: async () => {
+        return {
+          ...ormConfig,
+          autoLoadEntities: true
+        };
+      }
     })
   ],
   providers: [

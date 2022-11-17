@@ -54,6 +54,30 @@
         "jestConfig": "apps/api/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "typeorm": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "ts-node --project tsconfig.json ../../node_modules/typeorm/cli",
+        "cwd": "apps/api"
+      }
+    },
+    "migration-generate": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "nx run api:typeorm migration:generate ./src/app/database/migrations/{args.name} -d ./src/app/data-source.ts",
+        "cwd": "apps/api"
+      }
+    },
+    "migration-run": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "nx run api:typeorm migration:run -d ./src/app/data-source.ts",
+        "cwd": "apps/api"
+      }
     }
   },
   "tags": []

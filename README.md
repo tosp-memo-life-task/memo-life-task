@@ -17,11 +17,19 @@ A basic task manager with features like:
 
 2. Create a `.env` file based on the `.env.example` file.
 
-3. Setup your database based on the `.env` file you just filled out. Run a migration with `npm run migration:run`. (Optionally run `npm run seed` to add mock data to the database.)
+3. Setup your database based on the `.env` file you just filled out. Run the initial migration with `npx nx run api:migration-run`. (Optionally run `npm run seed` to add mock data to the database.)
 
 4. Run `npx nx run-many --target=serve` to serve every app needed to run the **Memo Life Task** project.
 
 ### Environtment variables
+
+#### Basic
+
+|                   |     **NODE_ENV**      |             **TZ**              |
+| ----------------- | :-------------------: | :-----------------------------: |
+| _Default value_   |        'prod'         |             'CEST'              |
+| _Description_     | Environment variable. | Timezone of the backend server. |
+| _Possible values_ |    ['dev', 'prod']    |    E.g.: 'UTC', 'CEST', ...     |
 
 #### **API**
 
