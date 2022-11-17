@@ -44,7 +44,9 @@ import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-wor
     HomeComponent,
     InvitationsComponent,
     ProfileComponent,
-    CreateWorkspaceModalComponent
+    CreateWorkspaceModalComponent,
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     AppRoutingModule,
