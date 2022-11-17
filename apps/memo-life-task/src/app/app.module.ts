@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NbButtonModule,
+  NbDialogModule,
   NbIconModule,
   NbLayoutModule,
   NbMenuModule,
@@ -29,6 +30,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 import { InvitationsComponent } from './pages/home/invitations/invitations.component';
 import { ProfileComponent } from './pages/home/profile/profile.component';
+import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-workspace-modal/create-workspace-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ProfileComponent } from './pages/home/profile/profile.component';
     DashboardComponent,
     HomeComponent,
     InvitationsComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreateWorkspaceModalComponent
   ],
   imports: [
     AppRoutingModule,
@@ -67,7 +70,8 @@ import { ProfileComponent } from './pages/home/profile/profile.component';
     }),
     NbEvaIconsModule,
     NbIconModule,
-    NbMenuModule.forRoot()
+    NbMenuModule.forRoot(),
+    NbDialogModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
