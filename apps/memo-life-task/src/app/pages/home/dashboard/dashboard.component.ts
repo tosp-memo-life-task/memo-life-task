@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 import { SharedWorkspaceModel } from '../models/shared-workspace.model';
 import { WorkspaceModel } from '../models/workspace.model';
+import { CreateWorkspaceModalComponent } from './create-workspace-modal/create-workspace-modal.component';
 
 @Component({
   selector: 'tosp-memo-life-task-dashboard',
@@ -65,7 +67,14 @@ export class DashboardComponent implements OnInit {
     )
   ];
 
-  constructor() {}
+  constructor(private dialogService: NbDialogService) {}
 
   ngOnInit(): void {}
+
+  createWorkspace() {
+    this.dialogService.open(CreateWorkspaceModalComponent, {
+      backdropClass: 'custom-modal-backdrop',
+      dialogClass: 'custom-modal-dialog'
+    });
+  }
 }
