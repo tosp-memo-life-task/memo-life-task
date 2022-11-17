@@ -35,6 +35,10 @@
     >
       <div class="workspace-body">
         <h4 class="workspace-header text-h4 color-white">{{ item.title }}</h4>
+        <div class="text-h6 color-pale-white d-flex align-items-center">
+          <nb-icon icon="profile" pack="custom-icons" class="me-1"></nb-icon>
+          {{ item.owner }}
+        </div>
         <p class="workspace-content text-p1 color-white">{{ item.descp }}</p>
       </div>
       <div class="workspace-footer">
