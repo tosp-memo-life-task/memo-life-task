@@ -73,6 +73,7 @@
     "@nrwl/node": "14.8.1",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "14.8.1",
+    "@types/bcrypt": "^5.0.0",
     "@types/compression": "^1.7.2",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",

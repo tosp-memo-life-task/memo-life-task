@@ -4,6 +4,7 @@ import { TypeOrmExModule } from '../../database/typeorm-ex.module';
 
 import { AuthenticationController } from './authentication.controller';
 
+import { JwtService } from '@nestjs/jwt';
 import { PasswordService } from './services/password/password.service';
 import { SignUpService } from './services/sign-up/sign-up.service';
 import { SignInService } from './services/sign-in/sign-in.service';
@@ -17,6 +18,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
   controllers: [AuthenticationController],
   imports: [TypeOrmExModule.forCustomRepository([UserRepository])],
   providers: [
+    JwtService,
     JwtStrategy,
     PasswordService,
     SignUpService,

@@ -25,11 +25,11 @@ A basic task manager with features like:
 
 #### Basic
 
-|                   |     **NODE_ENV**      |             **TZ**              |
-| ----------------- | :-------------------: | :-----------------------------: |
-| _Default value_   |        'prod'         |             'CEST'              |
-| _Description_     | Environment variable. | Timezone of the backend server. |
-| _Possible values_ |    ['dev', 'prod']    |    E.g.: 'UTC', 'CEST', ...     |
+|                   |     **NODE_ENV**      |             **TZ**              |             **SALT**              |
+| ----------------- | :-------------------: | :-----------------------------: | :-------------------------------: |
+| _Default value_   |        'prod'         |             'CEST'              |            'saltymlt'             |
+| _Description_     | Environment variable. | Timezone of the backend server. | Salt for authentication purposes. |
+| _Possible values_ |    ['dev', 'prod']    |    E.g.: 'UTC', 'CEST', ...     |      E.g.: 'asdasd123', ...       |
 
 #### **API**
 
