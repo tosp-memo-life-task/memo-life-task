@@ -13,7 +13,6 @@
   </div>
 
   <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">
-  
     <mat-label class="header-5">Email</mat-label>
     <mat-form-field appearance="standard" class="mb-2">
       <input formControlName="email" matInput placeholder="Type your email" />
@@ -25,7 +24,11 @@
 
     <mat-label class="header-5">First Name</mat-label>
     <mat-form-field appearance="standard" class="mb-2">
-      <input formControlName="firstName" matInput placeholder="Type your first name" />
+      <input
+        formControlName="firstName"
+        matInput
+        placeholder="Type your first name"
+      />
       <img matPrefix src="assets/person.icon.svg" class="input-prefix-icon" />
       <mat-error class="header-6" *ngIf="form.invalid">{{
         getErrorMessage('email')
@@ -34,7 +37,11 @@
 
     <mat-label class="header-5">Last Name</mat-label>
     <mat-form-field appearance="standard" class="mb-2">
-      <input formControlName="lastName" matInput placeholder="Type your last name" />
+      <input
+        formControlName="lastName"
+        matInput
+        placeholder="Type your last name"
+      />
       <img matPrefix src="assets/mail.icon.svg" class="input-prefix-icon" />
       <mat-error class="header-6" *ngIf="form.invalid">{{
         getErrorMessage('email')
@@ -82,6 +89,8 @@
     class="logo-icon-container d-flex align-items-center justify-content-center"
   >
     <h5 class="header-5 mb-0 mx-1 text-center">Already have an account?</h5>
-    <a routerLink="/unauthenticated/login" class="header-5 text-center">Login</a>
+    <a routerLink="/unauthenticated/login" class="header-5 text-center"
+      >Login</a
+    >
   </div>
 </div>

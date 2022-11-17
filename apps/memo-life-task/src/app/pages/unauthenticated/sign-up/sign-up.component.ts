@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
       firstName: ['', Validators.compose([Validators.required])],
       lastName: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
-      passwordAgain: ['', Validators.compose([Validators.required])],
+      passwordAgain: ['', Validators.compose([Validators.required])]
     });
     /*
       Barni password matching validator

@@ -4,6 +4,10 @@
   padding: 8px;
   .workspace-container-header {
     margin-bottom: 24px;
+
+    &.shared-workspaces {
+      margin-top: 32px;
+    }
   }
 
   .workspace-list-container {
