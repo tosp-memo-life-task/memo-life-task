@@ -3,6 +3,10 @@ import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
+import { ValidatedUserModel } from '../../../common/models/validated-user.model';
+
+import { IAccessToken } from '../services/token/interfaces/access-token.interface';
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(readonly configService: ConfigService) {
@@ -15,7 +19,11 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     });
   }
 
-  async validate(payload: any) {
-    return payload;
+  async validate(payload: IAccessToken): Promise<ValidatedUserModel> {
+    const validatedUser = new ValidatedUserModel();
+    validatedUser.email = payload.email;
+    validatedUser.id = payload.id;
+
+    return validatedUser;
   }
 }
