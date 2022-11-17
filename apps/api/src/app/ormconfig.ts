@@ -19,7 +19,7 @@ const ormConfig: DataSourceOptions = {
   entities: [__dirname + '/database/entities/*.entity.{js,ts}'],
   host: DB_HOST,
   logging: NODE_ENV === 'dev' ? 'all' : ['error', 'warn'],
-  migrations: [__dirname + '/database/migrations/*.{js,ts}'],
+  migrations: [__dirname + 'database/migrations/*.{js,ts}'],
   migrationsRun: false,
   migrationsTableName: 'migrations',
   password: DB_PASSWORD,

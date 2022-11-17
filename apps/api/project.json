@@ -78,6 +78,14 @@
         "command": "nx run api:typeorm migration:run -d ./src/app/data-source.ts",
         "cwd": "apps/api"
       }
+    },
+    "migration-create": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "nx run api:typeorm migration:create ./src/app/database/migrations/{args.name}",
+        "cwd": "apps/api"
+      }
     }
   },
   "tags": []

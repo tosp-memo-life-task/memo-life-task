@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 
+import entities from './database/context';
 import ormConfig from './ormconfig';
 
 import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
@@ -31,7 +32,8 @@ import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
       useFactory: async () => {
         return {
           ...ormConfig,
-          autoLoadEntities: true
+          autoLoadEntities: true,
+          entities
         };
       }
     })
