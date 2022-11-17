@@ -20,10 +20,6 @@ export class LoginComponent implements OnInit {
         ],
         password: ['', Validators.compose([Validators.required])]
       }
-      /*
-      Barni password matching validator
-       { validator: MatchingValidator('password', 'passwordagain') } 
-       */
     );
   }
 
