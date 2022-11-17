@@ -6,14 +6,7 @@ import { SignUpComponent } from './pages/unauthenticated/sign-up/sign-up.compone
 import { ForgotPasswordComponent } from './pages/unauthenticated/forgot-password/forgot-password.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
-import {
-  NbAuthComponent,
-  NbLoginComponent,
-  NbLogoutComponent,
-  NbRegisterComponent,
-  NbRequestPasswordComponent,
-  NbResetPasswordComponent
-} from '@nebular/auth';
+
 import { InvitationsComponent } from './pages/home/invitations/invitations.component';
 import { ProfileComponent } from './pages/home/profile/profile.component';
 
@@ -46,37 +39,6 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'invitations', component: InvitationsComponent },
       { path: 'profile', component: ProfileComponent }
-    ]
-  },
-  {
-    path: 'auth',
-    component: NbAuthComponent,
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'login'
-      },
-      {
-        path: 'login',
-        component: NbLoginComponent
-      },
-      {
-        path: 'register',
-        component: NbRegisterComponent
-      },
-      {
-        path: 'logout',
-        component: NbLogoutComponent
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent
-      }
     ]
   }
 ];

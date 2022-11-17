@@ -81,11 +81,15 @@ $black: #000000;
 }
 
 .color-white {
-  color: $white;
+  color: $white !important;
 }
 
 .color-pale-white {
-  color: $white;
+  color: $white !important;
   opacity: 0.8;
   font-weight: 300;
+}
+
+.color-error {
+  color: red !important;
 }

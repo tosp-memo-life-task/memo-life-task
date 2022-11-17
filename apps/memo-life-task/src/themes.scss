@@ -94,7 +94,17 @@ $nb-themes: nb-register-theme(
     button-filled-primary-background-color: #2c3639,
     button-filled-primary-hover-background-color: #232a2c,
     button-filled-primary-active-background-color: #232a2c,
-    button-filled-primary-focus-background-color: #232a2c
+    button-filled-primary-focus-background-color: #232a2c,
+    button-filled-success-text-color: #000000,
+    button-filled-success-background-color: #f5eed8,
+    button-filled-success-hover-background-color: #f3e3af,
+    button-filled-success-active-background-color: #f3e3af,
+    button-filled-success-focus-background-color: #f3e3af,
+    button-filled-info-text-color: #fff,
+    button-filled-info-background-color: rgba(63, 63, 63, 0.9),
+    button-filled-info-hover-background-color: rgba(50, 50, 50, 1),
+    button-filled-info-active-background-color: rgba(50, 50, 50, 1),
+    button-filled-info-focus-background-color: rgba(50, 50, 50, 1)
   ),
   custom-theme,
   dark

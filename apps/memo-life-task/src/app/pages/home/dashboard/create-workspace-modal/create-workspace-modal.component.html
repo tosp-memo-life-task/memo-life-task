@@ -1,0 +1,57 @@
+<div class="custom-modal-container">
+  <h4 class="text-h4 color-white">Create new workspace</h4>
+
+  <form
+    class="d-flex flex-column"
+    [formGroup]="form"
+    (ngSubmit)="createWorkspace()"
+  >
+    <mat-label class="header-5 color-white">Name</mat-label>
+    <mat-form-field appearance="standard" class="mb-2">
+      <input
+        formControlName="name"
+        matInput
+        placeholder="Add your workspace name here"
+      />
+      <mat-error class="header-6 color-error" *ngIf="form.invalid">{{
+        getErrorMessage('name')
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-label class="header-5 color-white">Description</mat-label>
+    <mat-form-field appearance="standard">
+      <textarea
+        formControlName="description"
+        matInput
+        placeholder="Add your workspace description here (max 150 characters)"
+        type="description"
+        maxlength="150"
+      ></textarea>
+      <mat-error class="header-6 color-error" *ngIf="form.invalid">{{
+        getErrorMessage('description')
+      }}</mat-error>
+    </mat-form-field>
+  </form>
+
+  <div class="custom-modal-action-container">
+    <button
+      nbButton
+      status="info"
+      (click)="closeModal()"
+      [fullWidth]="true"
+      size="large"
+    >
+      Cancel
+    </button>
+    <button
+      nbButton
+      status="success"
+      (click)="createWorkspace()"
+      [fullWidth]="true"
+      size="large"
+      [disabled]="form.invalid"
+    >
+      Create
+    </button>
+  </div>
+</div>
