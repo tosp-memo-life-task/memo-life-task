@@ -31,6 +31,8 @@ async function bootstrap() {
   app.use(json({ limit: '1mb' }));
   app.use(urlencoded({ extended: true, limit: '1mb' }));
 
+  console.log(process.env);
+
   const port = configService.get<number>('API_PORT') || 3000;
   await app.listen(port);
   Logger.log(
