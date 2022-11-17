@@ -1,0 +1,139 @@
+@import '../../common/styles/variables';
+
+nb-sidebar {
+  background: linear-gradient(180deg, #2c3639 0%, #2b3639 54.69%, #1b2224 100%);
+}
+
+.sidebar {
+  .sidebar-section {
+    padding: 20px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $beige;
+    }
+
+    @media screen and (max-width: 1199px) {
+      padding: 0px;
+    }
+  }
+
+  .sidebar-user {
+    padding: 40px 16px;
+    gap: 12px;
+
+    .profile-pic-container {
+      width: 100px;
+      aspect-ratio: 1;
+
+      .temp-profile-pic {
+        border-radius: 50%;
+        background-color: $brown;
+
+        nb-icon {
+          height: 100%;
+          width: 100%;
+
+          svg {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+
+      @media screen and (max-width: 1199px) {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 1199px) {
+      padding: 16px 8px;
+
+      .profile-name {
+        @media screen and (max-width: 1199px) {
+          display: none;
+        }
+      }
+    }
+  }
+  .sidebar-user-stats {
+    padding: 24px 16px;
+    gap: 12px;
+
+    .sidebar-user-stat-section {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 1199px) {
+      display: none !important;
+    }
+  }
+
+  .navigation-contanier {
+    padding: 0px;
+  }
+}
+
+::ng-deep {
+  .sidebar {
+    .temp-profile-pic {
+      border-radius: 50%;
+      background-color: $brown;
+
+      nb-icon {
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .navigation-contanier {
+      .menu-item {
+        a {
+          &.active,
+          &:hover {
+            border-left: 4px solid $beige;
+            padding-left: 20px;
+
+            @media screen and (max-width: 1199px) {
+              padding-left: 12px;
+            }
+
+            .menu-title {
+              color: $white;
+            }
+          }
+          &:not(.active) {
+            opacity: 0.8;
+          }
+
+          &:hover {
+            opacity: 1;
+          }
+
+          @media screen and (max-width: 1199px) {
+            padding: 16px;
+            aspect-ratio: 1;
+            width: 100%;
+          }
+        }
+
+        nb-icon {
+          width: 30px;
+          height: 30px;
+
+          svg {
+            max-width: 100%;
+            max-height: 100%;
+          }
+
+          @media screen and (max-width: 1199px) {
+            height: 100%;
+            width: 100%;
+            margin-right: 0px;
+          }
+        }
+      }
+    }
+  }
+}

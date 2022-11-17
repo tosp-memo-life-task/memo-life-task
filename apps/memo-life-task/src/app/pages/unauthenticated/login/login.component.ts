@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { emailValidator } from '../../../common/validators/email.validator';
 
 @Component({
@@ -10,7 +11,7 @@ import { emailValidator } from '../../../common/validators/email.validator';
 export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group(
       {
         email: [
@@ -19,16 +20,14 @@ export class LoginComponent implements OnInit {
         ],
         password: ['', Validators.compose([Validators.required])]
       }
-      /*
-      Barni password matching validator
-       { validator: MatchingValidator('password', 'passwordagain') } 
-       */
     );
   }
 
   ngOnInit(): void {}
 
-  async onSubmit() {}
+  async onSubmit() {
+    this.router.navigate(['home']);
+  }
 
   getErrorMessage(field: string) {
     if (field === 'email' && this.form.get('email')?.touched) {

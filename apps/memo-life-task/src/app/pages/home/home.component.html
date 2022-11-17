@@ -1,0 +1,52 @@
+<nb-layout>
+  <nb-sidebar
+    responsive
+    [collapsedBreakpoints]="['xs', 'is']"
+    [compactedBreakpoints]="['sm', 'md', 'lg']"
+    linear-gradient
+    class="sidebar"
+  >
+    <div
+      class="sidebar-section sidebar-user d-flex flex-column align-items-center"
+    >
+      <div
+        class="profile-pic-container d-flex flex-column justify-content-center align-items-center"
+      >
+        <!-- If user has profile pic then change this. -->
+        <div
+          class="temp-profile-pic p-1 p-xl-3 w-100 h-100 d-flex align-items-center justify-content-center"
+        >
+          <nb-icon icon="profile" pack="custom-icons"></nb-icon>
+        </div>
+      </div>
+      <h4 class="profile-name text-h4 color-white">
+        John Wick
+        <!-- {{user.name}} -->
+      </h4>
+    </div>
+    <div
+      class="sidebar-section sidebar-user-stats d-flex flex-row justify-content-center align-items-start"
+    >
+      <div
+        class="sidebar-user-stat-section d-flex flex-column justify-content-center align-items-center"
+      >
+        <h4 class="text-h4 color-white">12</h4>
+        <p class="text-p1 color-pale-white">Workspaces</p>
+      </div>
+      <div
+        class="sidebar-user-stat-section d-flex flex-column justify-content-center align-items-center"
+      >
+        <h4 class="text-h4 color-white">420</h4>
+        <p class="text-p1 color-pale-white">Tasks</p>
+      </div>
+    </div>
+
+    <div class="sidebar-section navigation-contanier pt-4">
+      <nb-menu [items]="items"> </nb-menu>
+    </div>
+  </nb-sidebar>
+
+  <nb-layout-column class="p-3 p-sm-4">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>

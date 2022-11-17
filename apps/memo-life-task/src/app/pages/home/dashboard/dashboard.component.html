@@ -1,0 +1,51 @@
+<div class="dashboard-container">
+  <div
+    class="workspace-container-header d-flex gap-2 flex-column flex-md-row justify-content-md-between align-items-start"
+  >
+    <h2 class="text-h2">My Workspaces</h2>
+    <button nbButton status="primary">
+      <nb-icon icon="add_circle" pack="custom-icons"></nb-icon>Create workspace
+    </button>
+  </div>
+
+  <div class="workspace-list-container">
+    <div class="workspace-item" *ngFor="let item of dummyData; index as i">
+      <div class="workspace-body">
+        <h4 class="workspace-header text-h4 color-white">{{ item.title }}</h4>
+        <p class="workspace-content text-p1 color-white">{{ item.descp }}</p>
+      </div>
+      <div class="workspace-footer">
+        <div class="workspace-modified text-h5 color-pale-white">
+          <nb-icon icon="clock"></nb-icon>{{ item.modifiedAt }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="workspace-container-header shared-workspaces d-flex gap-2 flex-column flex-md-row justify-content-md-between align-items-start"
+  >
+    <h2 class="text-h2">Shared with me</h2>
+  </div>
+
+  <div class="workspace-list-container">
+    <div
+      class="workspace-item"
+      *ngFor="let item of dummySharedData; index as i"
+    >
+      <div class="workspace-body">
+        <h4 class="workspace-header text-h4 color-white">{{ item.title }}</h4>
+        <div class="text-h6 color-pale-white d-flex align-items-center">
+          <nb-icon icon="profile" pack="custom-icons" class="me-1"></nb-icon>
+          {{ item.owner }}
+        </div>
+        <p class="workspace-content text-p1 color-white">{{ item.descp }}</p>
+      </div>
+      <div class="workspace-footer">
+        <div class="workspace-modified text-h5 color-pale-white">
+          <nb-icon icon="clock"></nb-icon>{{ item.modifiedAt }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
