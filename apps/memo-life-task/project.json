@@ -49,6 +49,8 @@
               "with": "apps/memo-life-task/src/environments/environment.prod.ts"
             }
           ],
+          "baseHref": "/memo-life-task/",
+          "deployUrl": "https://tosp-memo-life-task.github.io/memo-life-task/",
           "outputHashing": "all"
         },
         "development": {
