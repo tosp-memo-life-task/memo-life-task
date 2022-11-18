@@ -43,6 +43,7 @@ jobs:
           mysql database: ${{ secrets.DB_NAME }}
           mysql user: ${{ secrets.DB_USERNAME }}
           mysql password: ${{ secrets.DB_PASSWORD }}
+          mysql root password: ${{ secrets.DB_PASSWORD }}
 
       - name: Wait for MySQL
         run: |
