@@ -8,7 +8,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { LegacyProgressSpinnerMode as ProgressSpinnerMode } from '@angular/material/legacy-progress-spinner';
 import { Subject } from 'rxjs';
 import { OverlayService } from './progress-spinner-overlay.service';
 
