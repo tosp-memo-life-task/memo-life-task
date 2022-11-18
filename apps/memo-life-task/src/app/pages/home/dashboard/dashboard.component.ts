@@ -9,7 +9,7 @@ import { CreateWorkspaceModalComponent } from './create-workspace-modal/create-w
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   dummyData: WorkspaceModel[] = [
     new WorkspaceModel(
       '1',
@@ -68,8 +68,6 @@ export class DashboardComponent implements OnInit {
   ];
 
   constructor(private dialogService: NbDialogService) {}
-
-  ngOnInit(): void {}
 
   createWorkspace() {
     this.dialogService.open(CreateWorkspaceModalComponent, {

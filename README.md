@@ -25,19 +25,19 @@ A basic task manager with features like:
 
 #### Basic
 
-|                   |     **NODE_ENV**      |             **TZ**              |
-| ----------------- | :-------------------: | :-----------------------------: |
-| _Default value_   |        'prod'         |             'CEST'              |
-| _Description_     | Environment variable. | Timezone of the backend server. |
-| _Possible values_ |    ['dev', 'prod']    |    E.g.: 'UTC', 'CEST', ...     |
+|                   |     **NODE_ENV**      |             **TZ**              |             **SALT**              |
+| ----------------- | :-------------------: | :-----------------------------: | :-------------------------------: |
+| _Default value_   |        'prod'         |             'CEST'              |            'saltymlt'             |
+| _Description_     | Environment variable. | Timezone of the backend server. | Salt for authentication purposes. |
+| _Possible values_ |    ['dev', 'prod']    |    E.g.: 'UTC', 'CEST', ...     |      E.g.: 'asdasd123', ...       |
 
 #### **API**
 
-|                   |       **API_PREFIX**        |               **API_PORT**               |    **API_VERSION**     |
-| ----------------- | :-------------------------: | :--------------------------------------: | :--------------------: |
-| _Default value_   |            'api'            |                   3000                   |          '1'           |
-| _Description_     |     Prefix of the API.      | Port on which the backend API is served. | Versioning of the API. |
-| _Possible values_ | E.g.: 'api', 'backend', ... |          E.g.: 3000, 3333, ...           | E.g.: '2', 'Beta', ... |
+|                   |         **API_HOST**         |       **API_PREFIX**        |               **API_PORT**               |    **API_VERSION**     |
+| ----------------- | :--------------------------: | :-------------------------: | :--------------------------------------: | :--------------------: |
+| _Default value_   |      'http://localhost'      |            'api'            |                   3000                   |          '1'           |
+| _Description_     | Host of the backend server.  |     Prefix of the API.      | Port on which the backend API is served. | Versioning of the API. |
+| _Possible values_ | E.g.: 'be.prodhost.com', ... | E.g.: 'api', 'backend', ... |          E.g.: 3000, 3333, ...           | E.g.: '2', 'Beta', ... |
 
 #### **Database**
 

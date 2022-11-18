@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 
-import { User } from 'apps/api/src/app/database/entities/user.entity';
+import { User } from '../../../../database/entities/user.entity';
 
 import { IAccessToken } from './interfaces/access-token.interface';
 

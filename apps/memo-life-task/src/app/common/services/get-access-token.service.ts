@@ -18,12 +18,12 @@ export class GetAccessTokenService {
   ) {}
 
   async refreshAccessToken(): Promise<void> {
-    let request = new GetAccessTokenRequest();
+    const request = new GetAccessTokenRequest();
     request.refreshToken = this.localStorageService.getString(
       LocalStorageEnum.REFRESH_TOKEN
     );
 
-    let url = this.urlService.getBaseUrl() + '/v1/auth/get-access-token';
+    const url = this.urlService.getBaseUrl() + '/v1/auth/get-access-token';
 
     const postResult = await lastValueFrom<GetAccessTokenResponse>(
       await this.httpClient.post<GetAccessTokenResponse>(url, request, {})

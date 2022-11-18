@@ -13,7 +13,7 @@ import { Subject } from 'rxjs';
 import { OverlayService } from './progress-spinner-overlay.service';
 
 @Component({
-  selector: 'progress-spinner',
+  selector: 'tosp-memo-life-task-progress-spinner',
   templateUrl: './progress-spinner.component.html',
   styleUrls: ['./progress-spinner.component.scss']
 })
@@ -26,7 +26,7 @@ export class ProgressSpinnerComponent implements OnInit {
   @Input() positionGloballyCenter = true;
   displayProgressSpinner: boolean;
 
-  displayMini: boolean = false;
+  displayMini = false;
 
   @ViewChild('progressSpinnerRef')
   private progressSpinnerRef: TemplateRef<any>;

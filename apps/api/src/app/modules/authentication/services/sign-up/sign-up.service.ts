@@ -1,16 +1,18 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 
+import { PasswordService } from '../password/password.service';
 import { TokenService } from '../token/token.service';
 
-import { UserRepository } from 'apps/api/src/app/database/repositories/user.repository';
+import { UserRepository } from '../../../../database/repositories/user.repository';
 
-import { User } from 'apps/api/src/app/database/entities/user.entity';
+import { User } from '../../../../database/entities/user.entity';
 
 import { SignUpRequest, SignUpResponse } from '@memo-life-task/dtos';
 
 @Injectable()
 export class SignUpService {
   constructor(
+    private readonly passwordService: PasswordService,
     private readonly tokenService: TokenService,
     private readonly userRepository: UserRepository
   ) {}
@@ -22,12 +24,15 @@ export class SignUpService {
 
     if (profileWithEmail) throw new ConflictException();
 
+    const salt = await this.passwordService.genSalt();
+    const password = await this.passwordService.genPass(req.password, salt);
+
     let user = new User();
     user.email = req.email;
     user.nameFirst = req.firstName;
     user.nameLast = req.lastName;
-    user.password = '';
-    user.salt = '';
+    user.password = password;
+    user.salt = salt;
 
     user = await this.userRepository.save(user);
 

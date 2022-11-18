@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { emailValidator } from '../../../common/validators/email.validator';
 
@@ -7,7 +7,7 @@ import { emailValidator } from '../../../common/validators/email.validator';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
   form: FormGroup = new FormGroup({});
 
   constructor(private formBuilder: FormBuilder) {
@@ -20,15 +20,14 @@ export class SignUpComponent implements OnInit {
     });
     /*
       Barni password matching validator
-       { validator: MatchingValidator('password', 'passwordagain') } 
+       { validator: MatchingValidator('password', 'passwordagain') }
        */
   }
-
-  ngOnInit(): void {}
-
-  async onSubmit() {}
-
   //you will get logic right here:
+
+  async onSubmit(): Promise<void> {
+    console.log('todo');
+  }
   getErrorMessage(field: string) {
     if (field === 'email' && this.form.get('email')?.touched) {
       if (this.form.get('email')?.hasError('required')) {

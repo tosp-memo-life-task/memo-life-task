@@ -7,7 +7,7 @@ import { NbDialogRef } from '@nebular/theme';
   templateUrl: './create-workspace-modal.component.html',
   styleUrls: ['./create-workspace-modal.component.scss']
 })
-export class CreateWorkspaceModalComponent implements OnInit {
+export class CreateWorkspaceModalComponent {
   form: FormGroup = new FormGroup({});
 
   constructor(
@@ -19,8 +19,6 @@ export class CreateWorkspaceModalComponent implements OnInit {
       description: ['', Validators.compose([Validators.required])]
     });
   }
-
-  ngOnInit(): void {}
 
   closeModal() {
     this.dialogRef.close();

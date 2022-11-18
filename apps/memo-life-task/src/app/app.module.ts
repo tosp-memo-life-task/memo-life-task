@@ -22,7 +22,7 @@ import { ForgotPasswordComponent } from './pages/unauthenticated/forgot-password
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './material/material.module';
-import { CommonModule } from '@angular/common';
+import { APP_BASE_HREF, CommonModule } from '@angular/common';
 import { ProgressSpinnerComponent } from './common/progress-spinner/progress-spinner.component';
 import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { NebularModule } from './nebular/nebular.module';
@@ -75,7 +75,7 @@ import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-wor
     NbMenuModule.forRoot(),
     NbDialogModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/memo-life-task/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

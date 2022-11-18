@@ -8,22 +8,15 @@ import { emailValidator } from '../../../common/validators/email.validator';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   form: FormGroup = new FormGroup({});
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
-    this.form = this.formBuilder.group(
-      {
-        email: [
-          '',
-          Validators.compose([Validators.required, emailValidator()])
-        ],
-        password: ['', Validators.compose([Validators.required])]
-      }
-    );
+    this.form = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, emailValidator()])],
+      password: ['', Validators.compose([Validators.required])]
+    });
   }
-
-  ngOnInit(): void {}
 
   async onSubmit() {
     this.router.navigate(['home']);
