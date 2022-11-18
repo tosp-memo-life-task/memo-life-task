@@ -8,31 +8,22 @@ on:
 
 jobs:
   main:
-    steps:
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_SOME_API_KEY: '123456abcdef'
-          directory: ./
-          file_name: .env
-          fail_on_empty: false
-
-      - name: Nx Cloud - Main Job
-        uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.10
-        secrets:
-          NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-          NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-        with:
-          number-of-agents: 3
-          init-commands: |
-            npx nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
-          parallel-commands: |
-            npx nx-cloud record -- npx nx workspace-lint
-            npx nx-cloud record -- npx nx format:check
-          parallel-commands-on-agents: |
-            npx nx affected --target=lint --parallel=3
-            npx nx affected --target=test --parallel=3 --ci --code-coverage
-            npx nx affected --target=build --parallel=3
+    name: Nx Cloud - Main Job
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.10
+    secrets:
+      NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
+    with:
+      number-of-agents: 3
+      init-commands: |
+        npx nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
+      parallel-commands: |
+        npx nx-cloud record -- npx nx workspace-lint
+        npx nx-cloud record -- npx nx format:check
+      parallel-commands-on-agents: |
+        npx nx affected --target=lint --parallel=3
+        npx nx affected --target=test --parallel=3 --ci --code-coverage
+        npx nx affected --target=build --parallel=3
 
   agents:
     name: Nx Cloud - Agents
