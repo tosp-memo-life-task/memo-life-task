@@ -12,15 +12,10 @@ export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
-    this.form = this.formBuilder.group(
-      {
-        email: [
-          '',
-          Validators.compose([Validators.required, emailValidator()])
-        ],
-        password: ['', Validators.compose([Validators.required])]
-      }
-    );
+    this.form = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, emailValidator()])],
+      password: ['', Validators.compose([Validators.required])]
+    });
   }
 
   ngOnInit(): void {}
