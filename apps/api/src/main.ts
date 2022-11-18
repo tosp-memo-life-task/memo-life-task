@@ -13,7 +13,7 @@ async function bootstrap() {
   const version = configService.get<string>('API_VERSION') || '1';
   app.enableVersioning({
     defaultVersion: version,
-    type: VersioningType.URI,
+    type: VersioningType.URI
   });
 
   const prefix = configService.get<string>('API_PREFIX') || 'api';
@@ -23,7 +23,7 @@ async function bootstrap() {
     new ValidationPipe({
       forbidNonWhitelisted: true,
       transform: true,
-      whitelist: true,
+      whitelist: true
     })
   );
 
@@ -33,8 +33,10 @@ async function bootstrap() {
 
   const port = configService.get<number>('API_PORT') || 3000;
   await app.listen(port);
+
+  const host = configService.get<string>('API_HOST');
   Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${prefix}/v${version}/`
+    `🚀 Application is running on: ${host}:${port}/${prefix}/v${version}/`
   );
 }
 

@@ -1,0 +1,100 @@
+@import './variables';
+
+::ng-deep {
+  .custom-modal-backdrop {
+    background: #000000;
+    opacity: 0.7 !important;
+  }
+  .custom-modal-dialog {
+    background-color: $dark_green;
+    padding: 32px;
+    border-radius: 16px;
+
+    .custom-modal-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 32px;
+
+      .custom-modal-action-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 16px;
+
+        button {
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+  }
+
+  .mat-form-field {
+    width: 380px;
+    max-width: 100%;
+
+    .mat-form-field-flex {
+      padding-top: 0px !important;
+      padding-bottom: 4px;
+
+      .mat-input-element {
+        font-family: 'Noto Sans', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 0.04em;
+        color: $white;
+      }
+
+      .mat-form-field-infix {
+        padding-bottom: 6px;
+        width: 100%;
+        border-top: none;
+
+        input {
+          height: 20px;
+
+          &:-internal-autofill-selected {
+            background-color: $beige !important;
+            color: $white !important;
+          }
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px $beige inset !important;
+        }
+
+        ::placeholder {
+          /* Most modern browsers support this now. */
+          color: $white;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .mat-form-field-subscript-wrapper {
+      margin-top: 0.25em;
+    }
+  }
+
+  .mat-form-field-underline {
+    /*change color of underline*/
+    background-color: $white !important;
+  }
+
+  .mat-form-field-invalid .mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: red !important;
+  }
+
+  .mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: $white !important;
+  }
+}

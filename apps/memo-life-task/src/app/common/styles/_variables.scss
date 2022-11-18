@@ -1,0 +1,95 @@
+$primary_text: #1b1b1b;
+$secondary_text: rgba(63, 63, 63, 0.6);
+$secondary_icon: rgba(63, 63, 63, 0.9);
+$dark_green: #2c3639;
+$medium_green: #424e52;
+$green: #233928;
+$brown: #a27b5c;
+$beige: #f5eed8;
+$white: #ffffff;
+$black: #000000;
+
+.text-h1 {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 49px;
+  letter-spacing: 0.02em;
+  color: $black;
+  margin: 0px;
+}
+.text-h2 {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 0.02em;
+  color: $black;
+  margin: 0px;
+}
+.text-h3 {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: 0.04em;
+  color: $black;
+  margin: 0px;
+}
+.text-h4 {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: $black;
+  margin: 0px;
+}
+.text-h5 {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.04em;
+  color: $black;
+  margin: 0px;
+}
+.text-h6 {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.04em;
+  color: $black;
+  margin: 0px;
+}
+.text-p1 {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: $black;
+  margin: 0px;
+}
+
+.color-white {
+  color: $white !important;
+}
+
+.color-pale-white {
+  color: $white !important;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.color-error {
+  color: red !important;
+}

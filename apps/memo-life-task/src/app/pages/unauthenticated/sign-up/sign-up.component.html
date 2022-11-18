@@ -1,0 +1,96 @@
+<!-- <p>sign-up works!</p> -->
+
+<div class="form-container d-flex flex-column">
+  <div class="form-header d-flex flex-column align-items-center">
+    <div class="logo-container">
+      <div
+        class="logo-icon-container d-flex align-items-center justify-content-center"
+      >
+        <img src="assets/profile.person.icon.svg" class="logo-icon" />
+      </div>
+      <h3 class="header-3 text-center">Sign Up</h3>
+    </div>
+  </div>
+
+  <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-label class="header-5">Email</mat-label>
+    <mat-form-field appearance="standard" class="mb-2">
+      <input formControlName="email" matInput placeholder="Type your email" />
+      <img matPrefix src="assets/mail.icon.svg" class="input-prefix-icon" />
+      <mat-error class="header-6" *ngIf="form.invalid">{{
+        getErrorMessage('email')
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-label class="header-5">First Name</mat-label>
+    <mat-form-field appearance="standard" class="mb-2">
+      <input
+        formControlName="firstName"
+        matInput
+        placeholder="Type your first name"
+      />
+      <img matPrefix src="assets/person.icon.svg" class="input-prefix-icon" />
+      <mat-error class="header-6" *ngIf="form.invalid">{{
+        getErrorMessage('email')
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-label class="header-5">Last Name</mat-label>
+    <mat-form-field appearance="standard" class="mb-2">
+      <input
+        formControlName="lastName"
+        matInput
+        placeholder="Type your last name"
+      />
+      <img matPrefix src="assets/mail.icon.svg" class="input-prefix-icon" />
+      <mat-error class="header-6" *ngIf="form.invalid">{{
+        getErrorMessage('email')
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-label class="header-5">Password</mat-label>
+    <mat-form-field appearance="standard">
+      <input
+        formControlName="password"
+        matInput
+        placeholder="Type your password"
+        type="password"
+      />
+      <img matPrefix src="assets/lock.icon.svg" class="input-prefix-icon" />
+      <mat-error class="header-6" *ngIf="form.invalid">{{
+        getErrorMessage('password')
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-label class="header-5">Password Again</mat-label>
+    <mat-form-field appearance="standard">
+      <input
+        formControlName="password"
+        matInput
+        placeholder="Repeat your password"
+        type="password"
+      />
+      <img matPrefix src="assets/lock.icon.svg" class="input-prefix-icon" />
+      <mat-error class="header-6" *ngIf="form.invalid">{{
+        getErrorMessage('password')
+      }}</mat-error>
+    </mat-form-field>
+  </form>
+
+  <button
+    class="button-custom"
+    mat-flat-button
+    type="submit"
+    (click)="onSubmit()"
+  >
+    Sign Up
+  </button>
+  <div
+    class="logo-icon-container d-flex align-items-center justify-content-center"
+  >
+    <h5 class="header-5 mb-0 mx-1 text-center">Already have an account?</h5>
+    <a routerLink="/unauthenticated/login" class="header-5 text-center"
+      >Login</a
+    >
+  </div>
+</div>

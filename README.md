@@ -13,31 +13,47 @@ A basic task manager with features like:
 
 ## Basic setup & serving of the applications
 
-1. Run `npm install` to get every package required by the apps included in the monorepo.
+1. Run `npm install --force` to get every package required by the apps included in the monorepo.
 
 2. Create a `.env` file based on the `.env.example` file.
 
-3. Run `npx nx run-many --target=serve` to serve every app needed to run the **Memo Life Task** project.
+3. Setup your database based on the `.env` file you just filled out. Run the initial migration with `npx nx run api:migration-run`. (Optionally run `npm run seed` to add mock data to the database.)
+
+4. Run `npx nx run-many --target=serve` to serve every app needed to run the **Memo Life Task** project.
 
 ### Environtment variables
 
-#### API
+#### Basic
 
-|                   |       **API_PREFIX**        |               **API_PORT**               |    **API_VERSION**     |
-| ----------------- | :-------------------------: | :--------------------------------------: | :--------------------: |
-| _Default value_   |            'api'            |                   3000                   |          '1'           |
-| _Description_     |     Prefix of the API.      | Port on which the backend API is served. | Versioning of the API. |
-| _Possible values_ | E.g.: 'api', 'backend', ... |          E.g.: 3000, 3333, ...           | E.g.: '2', 'Beta', ... |
+|                   |     **NODE_ENV**      |             **TZ**              |             **SALT**              |
+| ----------------- | :-------------------: | :-----------------------------: | :-------------------------------: |
+| _Default value_   |        'prod'         |             'CEST'              |            'saltymlt'             |
+| _Description_     | Environment variable. | Timezone of the backend server. | Salt for authentication purposes. |
+| _Possible values_ |    ['dev', 'prod']    |    E.g.: 'UTC', 'CEST', ...     |      E.g.: 'asdasd123', ...       |
 
-### JWT
+#### **API**
+
+|                   |         **API_HOST**         |       **API_PREFIX**        |               **API_PORT**               |    **API_VERSION**     |
+| ----------------- | :--------------------------: | :-------------------------: | :--------------------------------------: | :--------------------: |
+| _Default value_   |      'http://localhost'      |            'api'            |                   3000                   |          '1'           |
+| _Description_     | Host of the backend server.  |     Prefix of the API.      | Port on which the backend API is served. | Versioning of the API. |
+| _Possible values_ | E.g.: 'be.prodhost.com', ... | E.g.: 'api', 'backend', ... |          E.g.: 3000, 3333, ...           | E.g.: '2', 'Beta', ... |
+
+#### **Database**
+
+|                   |                **DB_HOST**                |         **DB_PORT**          |        **DB_USERNAME**        |        **DB_PASSWORD**        |             **DB_NAME**             |                                                                  **DB_SYNCHRONIZE**                                                                  |
+| ----------------- | :---------------------------------------: | :--------------------------: | :---------------------------: | :---------------------------: | :---------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+| _Default value_   |                'localhost'                |             3306             |            'root'             |          'password'           |                'mlt'                |                                                                        false                                                                         |
+| _Description_     |       Host of the database server.        | Port of the database server. |   Database server username.   |   Database server password    | Name of the database on the server. | Whether the database schema should synchronize automatically with the backend entity relation description. Do **NOT** use in production environment. |
+| _Possible values_ | E.g.: 'localhost', 'db.prodhost.com', ... |    E.g.: 3306, 1234, ...     | E.g.: 'root', 'username', ... | E.g.: 'root', 'password', ... |       E.g.: 'mlt', 'db', ...        |                                                                    [false, true]                                                                     |
+
+#### **JWT**
 
 |                   |                                     **JWT_IGNORE_EXPIRATION**                                      |                                                                      **JWT_ACCESS_SECRET**                                                                       |                          **JWT_ACCESS_EXPIRATION_TIME**                           |
 | ----------------- | :------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
-| _Default value_   |                                               false                                                |                                                                                -                                                                                 |                                       '1y'                                        |
+| _Default value_   |                                               false                                                |                                                                              'mlt'                                                                               |                                       '1y'                                        |
 | _Description_     | Whether the backend should ignore the expiration of the tokens. Do **NOT** use in production mode. | Secret code/key for encoding/decoding access tokens.<br>Handle it with caution, do **NOT** share it with anyone, and never upload it to version control servers. |                   Time before the access token becomes invalid.                   |
 | _Possible values_ |                                           [false, true]                                            |                                        E.g.: 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ'                                        | E.g.: '42s', '6.9m', '1h'... <br>[More information](https://github.com/vercel/ms) |
-
-(Critical variables, such as api keys and other sensitive info should be set here...)
 
 ## Development server
 
