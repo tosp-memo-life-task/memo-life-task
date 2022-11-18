@@ -7,6 +7,13 @@ on:
   pull_request:
 
 jobs:
+  create-env:
+    name: 'Create env file'
+      run: |
+        touch .env
+        echo ${{ secrets.ENV }} >> .env
+        cat .env
+
   main:
     name: Nx Cloud - Main Job
     uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.10
