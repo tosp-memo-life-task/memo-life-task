@@ -1,18 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  NbMenuBag,
-  NbMenuItem,
-  NbMenuService,
-  NbThemeService
-} from '@nebular/theme';
+import { NbMenuBag, NbMenuItem, NbMenuService } from '@nebular/theme';
 
 @Component({
   selector: 'tosp-memo-life-task-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   items: NbMenuItem[] = [
     {
       title: 'Dashboard',
@@ -46,8 +41,6 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit(): void {}
 
   logout() {
     this.router.navigate(['unauthenticated']);

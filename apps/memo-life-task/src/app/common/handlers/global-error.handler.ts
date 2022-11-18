@@ -35,7 +35,7 @@ export class GlobalErrorHandler implements ErrorHandler {
       if (error.rejection) {
         //Unhandled exception
         if (error.rejection.error) {
-          let e = error.rejection.error;
+          const e = error.rejection.error;
 
           if (e instanceof ErrorResponse) {
             if (e.code === 'exception.common.UNAUTHORIZED') {

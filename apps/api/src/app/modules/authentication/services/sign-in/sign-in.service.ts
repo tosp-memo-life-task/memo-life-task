@@ -3,7 +3,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PasswordService } from '../password/password.service';
 import { TokenService } from '../token/token.service';
 
-import { UserRepository } from 'apps/api/src/app/database/repositories/user.repository';
+import { UserRepository } from '../../../../database/repositories/user.repository';
 
 import { SignInRequest, SignInResponse } from '@memo-life-task/dtos';
 

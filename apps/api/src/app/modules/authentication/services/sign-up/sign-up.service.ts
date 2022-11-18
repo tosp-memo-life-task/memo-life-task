@@ -3,9 +3,9 @@ import { ConflictException, Injectable } from '@nestjs/common';
 import { PasswordService } from '../password/password.service';
 import { TokenService } from '../token/token.service';
 
-import { UserRepository } from 'apps/api/src/app/database/repositories/user.repository';
+import { UserRepository } from '../../../../database/repositories/user.repository';
 
-import { User } from 'apps/api/src/app/database/entities/user.entity';
+import { User } from '../../../../database/entities/user.entity';
 
 import { SignUpRequest, SignUpResponse } from '@memo-life-task/dtos';
 

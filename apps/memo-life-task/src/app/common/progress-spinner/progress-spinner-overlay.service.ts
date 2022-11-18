@@ -12,8 +12,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class OverlayService {
-  displayProgressSpinner: boolean = false;
-  displayMini: boolean = false;
+  displayProgressSpinner = false;
+  displayMini = false;
   progressSpinnerVisibilityChange: Subject<boolean> = new Subject<boolean>();
   progressSpinnerMiniChange: Subject<boolean> = new Subject<boolean>();
 
@@ -33,7 +33,7 @@ export class OverlayService {
     templateRef: TemplateRef<any>,
     vcRef: ViewContainerRef
   ) {
-    let templatePortal = new TemplatePortal(templateRef, vcRef);
+    const templatePortal = new TemplatePortal(templateRef, vcRef);
     overlayRef.attach(templatePortal);
   }
   positionGloballyCenter(): PositionStrategy {
