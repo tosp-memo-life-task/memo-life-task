@@ -7,13 +7,19 @@ on:
   pull_request:
 
 jobs:
-  create-env:
-    name: 'Create env file'
-      run: |
-        touch .env
-        echo ${{ secrets.ENV }} >> .env
-        cat .env
-
+  create-envfile:
+    runs-on: ubuntu-latest
+    steps:
+      name: Make envfile
+      uses: SpicyPizza/create-envfile@v1.3
+      with:
+        envkey_DEBUG: false
+        envkey_SOME_API_KEY: '123456abcdef'
+        envkey_SECRET_KEY: ${{ secrets.ENV }}
+        some_other_variable: foobar
+        directory: ./
+        file_name: .env
+        fail_on_empty: false
   main:
     name: Nx Cloud - Main Job
     uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.10
