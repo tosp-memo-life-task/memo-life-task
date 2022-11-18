@@ -35,13 +35,20 @@ jobs:
           envkey_JWT_ACCESS_EXPIRATION_TIME: ${{ secrets.JWT_ACCESS_EXPIRATION_TIME }}
           envkey_JWT_ACCESS_SECRET: ${{ secrets.JWT_ACCESS_SECRET }}
 
-      - uses: mirromutth/mysql-action@v1.1
+      - name: MySql setup
+        uses: mirromutth/mysql-action@v1.1
         with:
           host port: ${{ secrets.DB_PORT }}
           container port: ${{ secrets.DB_PORT }}
           mysql database: ${{ secrets.DB_NAME }}
           mysql user: ${{ secrets.DB_USERNAME }}
           mysql password: ${{ secrets.DB_PASSWORD }}
+
+      - name: Wait for MySQL
+        run: |
+          while ! mysqladmin ping --host=127.0.0.1 --password=${{ secrets.DB_PASSWORD }} --silent; do
+            sleep 1
+          done
 
       - run: npx nx workspace-lint
       - run: npx nx format:check
