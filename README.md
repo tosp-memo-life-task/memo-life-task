@@ -85,6 +85,10 @@ Run `npx nx run-many --target=build` to build every app of the project.
 
 Run `npx nx build <app name>` to build a specific app. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+## Documentation
+
+Run the project and go to `{API_HOST}(:{API_PORT})/docs`.
+
 ## Understand the workspace
 
 This project was generated using [Nx](https://nx.dev).
