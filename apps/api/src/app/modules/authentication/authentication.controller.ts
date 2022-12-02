@@ -1,4 +1,11 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import {
+  ApiBasicAuth,
+  ApiConflictResponse,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiUnauthorizedResponse
+} from '@nestjs/swagger';
 
 import { Public } from '../../common/decorators/public.decorator';
 
@@ -21,12 +28,26 @@ export class AuthenticationController {
 
   @Public()
   @Post('sign-in')
+  @ApiUnauthorizedResponse({
+    description: 'User not found. Wrong email and/or password.'
+  })
+  @ApiOkResponse({
+    description: 'User successfully signed in.',
+    type: SignInResponse
+  })
   async signIn(@Body() req: SignInRequest): Promise<SignInResponse> {
     return await this.signInService.signIn(req);
   }
 
   @Public()
   @Post('sign-up')
+  @ApiConflictResponse({
+    description: 'User already signed up with email.'
+  })
+  @ApiCreatedResponse({
+    description: 'User successfully signed up.',
+    type: SignUpResponse
+  })
   async signUp(@Body() req: SignUpRequest): Promise<SignUpResponse> {
     return await this.signUpService.signUp(req);
   }

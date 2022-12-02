@@ -38,6 +38,7 @@ async function bootstrap() {
       'A basic task manager with features like: workspaces, lists and shared tasks.'
     )
     .setVersion('0.1')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('docs', app, document);
