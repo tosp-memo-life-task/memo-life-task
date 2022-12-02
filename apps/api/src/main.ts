@@ -30,14 +30,19 @@ async function bootstrap() {
 
   app.use(compression());
   app.use(json({ limit: '1mb' }));
-  app.use(urlencoded({ extended: true, limit: '1mb' }));
+  app.use(urlencoded({ extended: true,     limit: '1mb' }));
 
   const options = new DocumentBuilder()
-    .setTitle('Memo Life Task')
+    .setTitle('Memo Life Task'     )
     .setDescription(
       'A basic task manager with features like: workspaces, lists and shared tasks.'
     )
+
+
+
+
     .setVersion('0.1')
+
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
