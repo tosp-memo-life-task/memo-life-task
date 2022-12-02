@@ -36,10 +36,8 @@ async function bootstrap() {
     .setTitle('Memo Life Task'     )
     .setDescription(
       'A basic task manager with features like: workspaces, lists and shared tasks.'
-      )
+    )
 
-
-      
 
 
 
