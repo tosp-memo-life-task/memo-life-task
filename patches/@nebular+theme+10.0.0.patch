@@ -1,5 +1,5 @@
 diff --git a/node_modules/@nebular/theme/components/layout/_layout.component.theme.scss b/node_modules/@nebular/theme/components/layout/_layout.component.theme.scss
-index e4a53df..41d6ce4 100644
+index fe5c072..41d6ce4 100644
 --- a/node_modules/@nebular/theme/components/layout/_layout.component.theme.scss
 +++ b/node_modules/@nebular/theme/components/layout/_layout.component.theme.scss
 @@ -84,7 +84,7 @@
@@ -15,7 +15,7 @@ index e4a53df..41d6ce4 100644
        }
      }
  
--    @media screen and(min-width: $layout-window-mode-max-width + 150px) {
+-    @media screen and (min-width: $layout-window-mode-max-width + 150px) {
 +    @media screen and (min-width: calc($layout-window-mode-max-width + 150px)) {
        $padding-top: calc(#{nb-theme(layout-window-mode-padding-top)} * 0.5);
  

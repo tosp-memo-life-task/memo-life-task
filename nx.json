@@ -8,8 +8,8 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "OTNkZTFiOTItMjJiMS00MGYxLWJmNjItMzIxNWZkMWZjODcyfHJlYWQtd3JpdGU="
+        "accessToken": "OTNkZTFiOTItMjJiMS00MGYxLWJmNjItMzIxNWZkMWZjODcyfHJlYWQtd3JpdGU=",
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -43,17 +43,6 @@
     "packageManager": "npm"
   },
   "generators": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
     "@nrwl/angular:application": {
       "style": "scss",
       "linter": "eslint",
