@@ -31,6 +31,7 @@ import { NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 import { InvitationsComponent } from './pages/home/invitations/invitations.component';
 import { ProfileComponent } from './pages/home/profile/profile.component';
 import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-workspace-modal/create-workspace-modal.component';
+import { WorkspaceDetailsComponent } from './pages/home/dashboard/workspace-details/workspace-details.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-wor
     ProfileComponent,
     CreateWorkspaceModalComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    WorkspaceDetailsComponent
   ],
   imports: [
     AppRoutingModule,
