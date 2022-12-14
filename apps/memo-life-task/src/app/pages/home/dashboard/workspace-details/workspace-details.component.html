@@ -1,0 +1,45 @@
+<div class="workspace-container">
+  <div class="workspace-container-header d-flex gap-3 flex-column">
+    <div class="d-flex gap-2 flex-column">
+      <div
+        class="d-flex gap-2 flex-column flex-lg-row justify-content-md-between align-items-start"
+      >
+        <h2 class="text-h2">Workspaces - {{ workspaceDetails.title }}</h2>
+        <div
+          class="d-flex gap-2 flex-column flex-sm-row justify-content-md-between align-items-start"
+        >
+          <button nbButton status="primary">
+            <nb-icon
+              icon="share"
+              pack="custom-icons"
+              class="workspace-container-header-icon"
+            ></nb-icon
+            >Share
+          </button>
+          <button nbButton status="primary">
+            <nb-icon
+              icon="edit"
+              pack="custom-icons"
+              class="workspace-container-header-icon"
+            ></nb-icon
+            >Edit details
+          </button>
+        </div>
+      </div>
+      <div class="workspace-last-modified-container d-flex flex-row gap-2">
+        <nb-icon
+          icon="edit"
+          pack="custom-icons"
+          class="workspace-last-modified-icon"
+        ></nb-icon>
+        <h4 class="header-4 workspace-last-modified-content">
+          Last modified: {{ workspaceDetails.modifiedAt }}
+        </h4>
+      </div>
+    </div>
+
+    <h4 class="header-4">
+      {{ workspaceDetails.descp }}
+    </h4>
+  </div>
+</div>

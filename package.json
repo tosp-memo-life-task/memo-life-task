@@ -18,7 +18,6 @@
   },
   "lint-staged": {
     "*.ts": [
-      "import-sort-cli --write",
       "prettier --write"
     ]
   },
