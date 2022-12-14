@@ -83,6 +83,7 @@
     "@types/validator": "^13.7.8",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
+    "@schematics/angular": "~13.3.0",
     "cypress": "^11.0.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
