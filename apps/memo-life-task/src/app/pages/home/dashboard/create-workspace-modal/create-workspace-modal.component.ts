@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NbDialogRef } from '@nebular/theme';
 
 @Component({
@@ -12,7 +13,8 @@ export class CreateWorkspaceModalComponent {
 
   constructor(
     private dialogRef: NbDialogRef<CreateWorkspaceModalComponent>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
@@ -25,6 +27,8 @@ export class CreateWorkspaceModalComponent {
   }
 
   createWorkspace() {
+    this.router.navigate(['home/workspace', 'id']);
+    this.dialogRef.close();
     console.log('create');
   }
 

@@ -9,6 +9,7 @@ import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 
 import { InvitationsComponent } from './pages/home/invitations/invitations.component';
 import { ProfileComponent } from './pages/home/profile/profile.component';
+import { WorkspaceDetailsComponent } from './pages/home/dashboard/workspace-details/workspace-details.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'unauthenticated' },
@@ -38,7 +39,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'invitations', component: InvitationsComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
+      { path: 'workspace/:id', component: WorkspaceDetailsComponent }
     ]
   }
 ];
