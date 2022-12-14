@@ -32,6 +32,7 @@ import { InvitationsComponent } from './pages/home/invitations/invitations.compo
 import { ProfileComponent } from './pages/home/profile/profile.component';
 import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-workspace-modal/create-workspace-modal.component';
 import { WorkspaceDetailsComponent } from './pages/home/dashboard/workspace-details/workspace-details.component';
+import { WorkspaceTodoTableComponent } from './pages/home/dashboard/workspace-details/workspace-todo-table/workspace-todo-table.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { WorkspaceDetailsComponent } from './pages/home/dashboard/workspace-deta
     CreateWorkspaceModalComponent,
     HomeComponent,
     DashboardComponent,
-    WorkspaceDetailsComponent
+    WorkspaceDetailsComponent,
+    WorkspaceTodoTableComponent
   ],
   imports: [
     AppRoutingModule,

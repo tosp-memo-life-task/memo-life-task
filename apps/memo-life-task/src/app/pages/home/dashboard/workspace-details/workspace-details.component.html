@@ -38,8 +38,47 @@
       </div>
     </div>
 
-    <h4 class="header-4">
-      {{ workspaceDetails.descp }}
-    </h4>
+    <div class="d-flex flex-column gap-3">
+      <h4 class="header-4 mb-0">
+        {{ workspaceDetails.descp }}
+      </h4>
+
+      <div class="workspace-editors d-flex flex-row gap-3 align-items-center">
+        <h4 class="header-4 mb-0">Editors:</h4>
+        <div class="d-flex flex-row gap-1">
+          <div
+            class="profile-picture"
+            *ngFor="let editor of workspaceDetails.editors"
+          >
+            <nb-icon
+              icon="profile"
+              pack="custom-icons"
+              [matTooltip]="editor.isMe ? 'Me' : editor.name"
+            ></nb-icon>
+          </div>
+        </div>
+        <button nbButton status="primary" class="editors-modify-button">
+          <nb-icon
+            icon="edit"
+            pack="custom-icons"
+            class="workspace-container-header-icon"
+          ></nb-icon
+          >Modify
+        </button>
+      </div>
+    </div>
+    <div class="d-flex flex-row gap-3 align-items-center">
+      <h4 class="header-3 mb-0">Todo</h4>
+      <button nbButton status="primary">
+        <nb-icon icon="add_circle" pack="custom-icons"></nb-icon>Add Todo
+      </button>
+    </div>
   </div>
+</div>
+
+<div
+  class="todo-table-container"
+  *ngIf="workspaceDetails && workspaceDetails.tasks"
+>
+  <workspace-todo-table [tasks]="workspaceDetails.tasks"></workspace-todo-table>
 </div>

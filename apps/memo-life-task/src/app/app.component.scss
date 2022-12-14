@@ -68,4 +68,22 @@
     letter-spacing: 0.04em !important;
     color: $black !important;
   }
+
+  .mat-tooltip {
+    padding: 4px 8px !important;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 600;
+  }
+
+  .hover-cursor-pointer {
+    cursor: pointer;
+  }
+
+  .mat-menu-panel {
+    min-height: fit-content !important;
+    .mat-menu-content {
+      padding: 0px !important;
+    }
+  }
 }
