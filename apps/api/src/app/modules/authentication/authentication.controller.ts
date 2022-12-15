@@ -1,6 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import {
-  ApiBasicAuth,
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiOkResponse,
@@ -13,6 +12,7 @@ import { SignInService } from './services/sign-in/sign-in.service';
 import { SignUpService } from './services/sign-up/sign-up.service';
 
 import {
+  ErrorRes,
   SignInRequest,
   SignInResponse,
   SignUpRequest,
@@ -29,7 +29,8 @@ export class AuthenticationController {
   @Public()
   @Post('sign-in')
   @ApiUnauthorizedResponse({
-    description: 'User not found. Wrong email and/or password.'
+    description: 'User not found. Wrong email and/or password.',
+    type: ErrorRes
   })
   @ApiOkResponse({
     description: 'User successfully signed in.',
@@ -42,7 +43,8 @@ export class AuthenticationController {
   @Public()
   @Post('sign-up')
   @ApiConflictResponse({
-    description: 'User already signed up with email.'
+    description: 'User already signed up with email.',
+    type: ErrorRes
   })
   @ApiCreatedResponse({
     description: 'User successfully signed up.',

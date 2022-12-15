@@ -9,11 +9,11 @@ import {
   UpdateDateColumn
 } from 'typeorm';
 
-import { Task } from './task.entity';
-import { Workspace } from './workspace.entity';
+import { TaskEntity } from './task.entity';
+import { WorkspaceEntity } from './workspace.entity';
 
-@Entity()
-export class User {
+@Entity('user')
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -39,9 +39,9 @@ export class User {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @OneToMany(() => Task, (task) => task.assignee)
-  tasks: Task[];
+  @OneToMany(() => TaskEntity, (task) => task.assignee)
+  tasks: TaskEntity[];
 
-  @ManyToMany(() => Workspace, (workspace) => workspace.users)
-  workspaces: Workspace[];
+  @ManyToMany(() => WorkspaceEntity, (workspace) => workspace.users)
+  workspaces: WorkspaceEntity[];
 }

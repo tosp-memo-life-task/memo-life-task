@@ -13,7 +13,7 @@ A basic task manager with features like:
 
 ## Basic setup & serving of the applications
 
-1. Run `npm install --force` to get every package required by the apps included in the monorepo.
+1. Run `npm install` to get every package required by the apps included in the monorepo.
 
 2. Create a `.env` file based on the `.env.example` file.
 
