@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 import { PasswordService } from '../password/password.service';
 import { TokenService } from '../token/token.service';
@@ -6,6 +6,9 @@ import { TokenService } from '../token/token.service';
 import { UserRepository } from '../../../../database/repositories/user.repository';
 
 import { SignInRequest, SignInResponse } from '@memo-life-task/dtos';
+
+import { CommonUnauthorizedException } from 'apps/api/src/app/common/exceptions/common-unauthorized.exception';
+import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
 
 @Injectable()
 export class SignInService {
@@ -16,9 +19,13 @@ export class SignInService {
   ) {}
 
   async signIn(req: SignInRequest): Promise<SignInResponse> {
-    const user = await this.userRepository.findOne({
-      where: { email: req.email }
-    });
+    const user = await this.userRepository
+      .findOneOrFail({
+        where: { email: req.email }
+      })
+      .catch(() => {
+        throw new UserNotFoundException();
+      });
 
     const isAuthorized = await this.passwordService.compare(
       req.password,
@@ -26,7 +33,7 @@ export class SignInService {
       user.salt
     );
 
-    if (!isAuthorized) throw new UnauthorizedException();
+    if (!isAuthorized) throw new CommonUnauthorizedException();
 
     const token = this.tokenService.generateNewAccessToken(user);
 

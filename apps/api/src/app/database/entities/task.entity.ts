@@ -7,14 +7,14 @@ import {
   UpdateDateColumn
 } from 'typeorm';
 
-import { User } from './user.entity';
-import { Workspace } from './workspace.entity';
+import { UserEntity } from './user.entity';
+import { WorkspaceEntity } from './workspace.entity';
 
 import { TaskPriorityEnum } from '../../common/enums/task-priority.enum';
 import { TaskStatusEnum } from '../../common/enums/task-status.enum';
 
-@Entity()
-export class Task {
+@Entity('task')
+export class TaskEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -47,11 +47,11 @@ export class Task {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.tasks)
-  assignee: User;
+  @ManyToOne(() => UserEntity, (user) => user.tasks)
+  assignee: UserEntity;
 
-  @ManyToOne(() => Workspace, (workspace) => workspace.tasks, {
+  @ManyToOne(() => WorkspaceEntity, (workspace) => workspace.tasks, {
     nullable: false
   })
-  workspace: Workspace;
+  workspace: WorkspaceEntity;
 }

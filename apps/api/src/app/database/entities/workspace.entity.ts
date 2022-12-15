@@ -10,11 +10,11 @@ import {
   UpdateDateColumn
 } from 'typeorm';
 
-import { Task } from './task.entity';
-import { User } from './user.entity';
+import { TaskEntity } from './task.entity';
+import { UserEntity } from './user.entity';
 
-@Entity()
-export class Workspace {
+@Entity('workspace')
+export class WorkspaceEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -30,13 +30,13 @@ export class Workspace {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @ManyToOne(() => User)
-  owner: User;
+  @ManyToOne(() => UserEntity)
+  owner: UserEntity;
 
-  @OneToMany(() => Task, (task) => task.workspace)
-  tasks: Task[];
+  @OneToMany(() => TaskEntity, (task) => task.workspace)
+  tasks: TaskEntity[];
 
-  @ManyToMany(() => User, (user) => user.workspaces)
+  @ManyToMany(() => UserEntity, (user) => user.workspaces)
   @JoinTable({ name: 'workspace_users_table' })
-  users: User[];
+  users: UserEntity[];
 }
