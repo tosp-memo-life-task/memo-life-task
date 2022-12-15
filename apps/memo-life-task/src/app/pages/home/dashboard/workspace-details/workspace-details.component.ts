@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NbDialogService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
+import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
 import {
   EditorModel,
   PriorityEnum,
@@ -18,7 +20,10 @@ export class WorkspaceDetailsComponent implements OnInit {
   workspaceDetails: WorkspaceDetailsModel;
   private routeSubscriber: Subscription;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private dialogService: NbDialogService
+  ) {}
 
   ngOnInit() {
     this.routeSubscriber = this.route.params.subscribe((params) => {
@@ -59,6 +64,19 @@ export class WorkspaceDetailsComponent implements OnInit {
         )
       ]
     );
+  }
+
+  modifyWorkspace() {
+    if (this.workspaceDetails) {
+      this.dialogService.open(ModifyWorkspaceModalComponent, {
+        backdropClass: 'custom-modal-backdrop',
+        dialogClass: 'custom-modal-dialog',
+        context: {
+          title: this.workspaceDetails.title,
+          despc: this.workspaceDetails.descp
+        }
+      });
+    }
   }
 
   ngOnDestroy() {
