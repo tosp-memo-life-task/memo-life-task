@@ -69,7 +69,7 @@ export class DashboardComponent {
     )
   ];
 
-  constructor(private dialogService: NbDialogService, private router:Router) {}
+  constructor(private dialogService: NbDialogService, private router: Router) {}
 
   createWorkspace() {
     this.dialogService.open(CreateWorkspaceModalComponent, {
@@ -78,7 +78,7 @@ export class DashboardComponent {
     });
   }
 
-  viewWorkspace(id:string) {
+  viewWorkspace(id: string) {
     this.router.navigate(['home/workspace', id]);
   }
 }
