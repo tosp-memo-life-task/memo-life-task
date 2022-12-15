@@ -11,6 +11,11 @@
     "prettier": "prettier --config .prettierrc --write .",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo a"
+    }
+  },
   "lint-staged": {
     "**/*": [
       "prettier --write"
