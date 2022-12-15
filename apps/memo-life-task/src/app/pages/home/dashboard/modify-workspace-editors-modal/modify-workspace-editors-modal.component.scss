@@ -1,0 +1,24 @@
+@import '../../../../common/styles/variables';
+
+::ng-deep {
+  .current-editor-container {
+    background-color: $beige;
+    border-radius: 8px;
+
+    * {
+      color: $black !important;
+    }
+
+    .current-editor-actions-container {
+      .current-editor-action {
+        aspect-ratio: 1;
+        padding: 0px !important;
+        border-radius: 50% !important;
+
+        nb-icon {
+          scale: 0.7;
+        }
+      }
+    }
+  }
+}

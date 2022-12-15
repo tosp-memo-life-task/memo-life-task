@@ -20,6 +20,34 @@
         color: $secondary_text !important;
       }
     }
+
+    .workspace-editors {
+      .profile-picture {
+        background-color: $black;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        padding: 2px;
+
+        nb-icon {
+          height: 100%;
+          width: 100%;
+
+          svg {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+
+      .editors-modify-button {
+        padding: 6px 8px !important;
+      }
+    }
+  }
+
+  .todo-table-container {
+    margin: 0px -16px;
   }
 }
 

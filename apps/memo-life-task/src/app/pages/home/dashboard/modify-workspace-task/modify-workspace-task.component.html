@@ -1,0 +1,67 @@
+<div class="custom-modal-container">
+  <h4 class="text-h4 color-white">Modify Task details</h4>
+
+  <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="createTask()">
+    <mat-label class="header-5 color-white">Name</mat-label>
+    <mat-form-field appearance="standard" class="mb-2">
+      <input
+        formControlName="name"
+        matInput
+        placeholder="Add your workspace name here"
+      />
+      <mat-error class="header-6 color-error" *ngIf="form.invalid">{{
+        getErrorMessage('name')
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-label class="header-5 color-white">Details</mat-label>
+    <mat-form-field appearance="standard">
+      <textarea
+        formControlName="details"
+        matInput
+        placeholder="Add your workspace task details here (max 150 characters)"
+        type="details"
+        maxlength="150"
+      ></textarea>
+      <mat-error class="header-6 color-error" *ngIf="form.invalid">{{
+        getErrorMessage('details')
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" class="mt-2">
+      <mat-select [placeholder]="task.assignee.name" formControlName="assignee">
+        <mat-option *ngFor="let editor of editors" [value]="editor">
+          {{ editor.name }} {{ editor?.isMe ? '(Me)' : '' }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-radio-group formControlName="priority" class="d-flex flex-row gap-3">
+      <mat-radio-button [value]="1">Low</mat-radio-button>
+      <mat-radio-button [value]="2">Medium</mat-radio-button>
+      <mat-radio-button [value]="3">High</mat-radio-button>
+    </mat-radio-group>
+  </form>
+
+  <div class="custom-modal-action-container">
+    <button
+      nbButton
+      status="info"
+      (click)="closeModal()"
+      [fullWidth]="true"
+      size="large"
+    >
+      Cancel
+    </button>
+    <button
+      nbButton
+      status="success"
+      (click)="createTask()"
+      [fullWidth]="true"
+      size="large"
+      [disabled]="form.invalid"
+    >
+      Save
+    </button>
+  </div>
+</div>

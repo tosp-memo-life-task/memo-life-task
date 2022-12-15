@@ -32,6 +32,11 @@ import { InvitationsComponent } from './pages/home/invitations/invitations.compo
 import { ProfileComponent } from './pages/home/profile/profile.component';
 import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-workspace-modal/create-workspace-modal.component';
 import { WorkspaceDetailsComponent } from './pages/home/dashboard/workspace-details/workspace-details.component';
+import { WorkspaceTodoTableComponent } from './pages/home/dashboard/workspace-details/workspace-todo-table/workspace-todo-table.component';
+import { ModifyWorkspaceModalComponent } from './pages/home/dashboard/modify-workspace-modal/modify-workspace-modal.component';
+import { CreateWorkspaceTaskComponent } from './pages/home/dashboard/create-workspace-task/create-workspace-task.component';
+import { ModifyWorkspaceTaskComponent } from './pages/home/dashboard/modify-workspace-task/modify-workspace-task.component';
+import { ModifyWorkspaceEditorsModalComponent } from './pages/home/dashboard/modify-workspace-editors-modal/modify-workspace-editors-modal.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,12 @@ import { WorkspaceDetailsComponent } from './pages/home/dashboard/workspace-deta
     CreateWorkspaceModalComponent,
     HomeComponent,
     DashboardComponent,
-    WorkspaceDetailsComponent
+    WorkspaceDetailsComponent,
+    WorkspaceTodoTableComponent,
+    ModifyWorkspaceModalComponent,
+    CreateWorkspaceTaskComponent,
+    ModifyWorkspaceTaskComponent,
+    ModifyWorkspaceEditorsModalComponent
   ],
   imports: [
     AppRoutingModule,
