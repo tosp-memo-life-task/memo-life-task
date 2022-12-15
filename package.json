@@ -11,13 +11,8 @@
     "prettier": "prettier --config .prettierrc --write .",
     "prepare": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.ts": [
+    "**/*": [
       "prettier --write"
     ]
   },
