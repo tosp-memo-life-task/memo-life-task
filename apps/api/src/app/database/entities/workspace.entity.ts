@@ -25,7 +25,7 @@ export class WorkspaceEntity {
   description: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createddAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;

@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { UserModule } from './modules/user/user.module';
+import { WorkspaceModule } from './modules/workspace/workspace.module';
 
 import entities from './database/context';
 import ormConfig from './ormconfig';
@@ -42,7 +43,8 @@ import { UnauthorizedExceptionFilter } from './common/filters/unauthorized-excep
         };
       }
     }),
-    UserModule
+    UserModule,
+    WorkspaceModule
   ],
   providers: [
     {
