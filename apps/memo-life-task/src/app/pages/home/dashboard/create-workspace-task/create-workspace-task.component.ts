@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-workspace-task.component.scss']
 })
 export class CreateWorkspaceTaskComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    
   }
-
 }
