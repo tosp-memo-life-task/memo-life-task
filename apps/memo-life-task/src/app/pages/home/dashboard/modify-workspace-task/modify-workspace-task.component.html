@@ -1,5 +1,5 @@
 <div class="custom-modal-container">
-  <h4 class="text-h4 color-white">Create new Task</h4>
+  <h4 class="text-h4 color-white">Modify Task details</h4>
 
   <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="createTask()">
     <mat-label class="header-5 color-white">Name</mat-label>
@@ -29,7 +29,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="standard" class="mt-2">
-      <mat-select [placeholder]="me?.name ?? ''" formControlName="assignee">
+      <mat-select [placeholder]="task.assignee.name" formControlName="assignee">
         <mat-option *ngFor="let editor of editors" [value]="editor">
           {{ editor.name }} {{ editor?.isMe ? '(Me)' : '' }}
         </mat-option>
@@ -61,7 +61,7 @@
       size="large"
       [disabled]="form.invalid"
     >
-      Create
+      Save
     </button>
   </div>
 </div>

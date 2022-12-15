@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { TaskModel } from '../models/workspace-details.model';
+import { NbDialogService } from '@nebular/theme';
+import { ModifyWorkspaceTaskComponent } from '../../modify-workspace-task/modify-workspace-task.component';
+import { EditorModel, TaskModel } from '../models/workspace-details.model';
 
 @Component({
   selector: 'workspace-todo-table',
@@ -8,6 +10,7 @@ import { TaskModel } from '../models/workspace-details.model';
   styleUrls: ['./workspace-todo-table.component.scss']
 })
 export class WorkspaceTodoTableComponent implements OnInit {
+  @Input() editors: EditorModel[];
   @Input() tasks: TaskModel[];
 
   displayedColumns: string[] = [
@@ -18,9 +21,22 @@ export class WorkspaceTodoTableComponent implements OnInit {
     'action'
   ];
   dataSource: MatTableDataSource<TaskModel>;
-  constructor() {}
+  constructor(private dialogService: NbDialogService) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.tasks);
+  }
+
+  modifyTask(task: TaskModel) {
+    if (task) {
+      this.dialogService.open(ModifyWorkspaceTaskComponent, {
+        backdropClass: 'custom-modal-backdrop',
+        dialogClass: 'custom-modal-dialog',
+        context: {
+          editors: this.editors,
+          task: task
+        }
+      });
+    }
   }
 }

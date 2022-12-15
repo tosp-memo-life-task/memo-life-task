@@ -3,6 +3,7 @@ import { NbDialogService } from '@nebular/theme';
 import { SharedWorkspaceModel } from '../models/shared-workspace.model';
 import { WorkspaceModel } from '../models/workspace.model';
 import { CreateWorkspaceModalComponent } from './create-workspace-modal/create-workspace-modal.component';
+import { CreateWorkspaceTaskComponent } from './create-workspace-task/create-workspace-task.component';
 
 @Component({
   selector: 'tosp-memo-life-task-dashboard',

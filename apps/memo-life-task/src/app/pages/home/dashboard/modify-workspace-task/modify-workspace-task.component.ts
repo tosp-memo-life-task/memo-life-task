@@ -5,21 +5,23 @@ import { NbDialogRef } from '@nebular/theme';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
 import {
   EditorModel,
-  PriorityEnum
+  PriorityEnum,
+  TaskModel
 } from '../workspace-details/models/workspace-details.model';
 
 @Component({
-  selector: 'tosp-memo-life-task-create-workspace-task',
-  templateUrl: './create-workspace-task.component.html',
-  styleUrls: ['./create-workspace-task.component.scss']
+  selector: 'tosp-memo-life-task-modify-workspace-task',
+  templateUrl: './modify-workspace-task.component.html',
+  styleUrls: ['./modify-workspace-task.component.scss']
 })
-export class CreateWorkspaceTaskComponent implements OnInit {
+export class ModifyWorkspaceTaskComponent implements OnInit {
+  @Input() task: TaskModel;
   @Input() editors: EditorModel[];
   form: FormGroup = new FormGroup({});
   me: EditorModel | undefined;
 
   constructor(
-    private dialogRef: NbDialogRef<CreateWorkspaceTaskComponent>,
+    private dialogRef: NbDialogRef<ModifyWorkspaceTaskComponent>,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
@@ -27,11 +29,16 @@ export class CreateWorkspaceTaskComponent implements OnInit {
   ngOnInit(): void {
     this.me = this.editors.find((editor) => editor.isMe);
 
+    console.log(this.task);
+
     this.form = this.formBuilder.group({
-      name: ['', Validators.compose([Validators.required])],
-      details: ['', Validators.compose([Validators.required])],
-      assignee: [this.me, Validators.compose([Validators.required])],
-      priority: [PriorityEnum.LOW, Validators.compose([Validators.required])]
+      name: [this.task.name, Validators.compose([Validators.required])],
+      details: [this.task.details, Validators.compose([Validators.required])],
+      assignee: [
+        this.editors.find((editor) => editor.id == this.task.assignee.id),
+        Validators.compose([Validators.required])
+      ],
+      priority: [this.task.priority, Validators.compose([Validators.required])]
     });
   }
 

@@ -68,7 +68,7 @@
           <nb-icon icon="more-vertical-outline" style="scale: 0.75"></nb-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Modify</button>
+          <button mat-menu-item (click)="modifyTask(task)">Modify</button>
         </mat-menu>
       </td>
     </ng-container>

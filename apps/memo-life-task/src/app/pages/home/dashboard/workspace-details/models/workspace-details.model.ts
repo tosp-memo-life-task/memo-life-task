@@ -61,7 +61,7 @@ export class TaskModel {
 }
 
 export enum PriorityEnum {
-  low = 1,
-  medium = 2,
-  high = 3
+  LOW = 1,
+  MEDIUM = 2,
+  HIGH = 3
 }

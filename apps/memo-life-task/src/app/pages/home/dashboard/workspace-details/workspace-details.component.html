@@ -69,7 +69,7 @@
     </div>
     <div class="d-flex flex-row gap-3 align-items-center">
       <h4 class="header-3 mb-0">Todo</h4>
-      <button nbButton status="primary">
+      <button nbButton status="primary" (click)="createTask()">
         <nb-icon icon="add_circle" pack="custom-icons"></nb-icon>Add Todo
       </button>
     </div>
@@ -80,5 +80,8 @@
   class="todo-table-container"
   *ngIf="workspaceDetails && workspaceDetails.tasks"
 >
-  <workspace-todo-table [tasks]="workspaceDetails.tasks"></workspace-todo-table>
+  <workspace-todo-table
+    [tasks]="workspaceDetails.tasks"
+    [editors]="workspaceDetails.editors"
+  ></workspace-todo-table>
 </div>

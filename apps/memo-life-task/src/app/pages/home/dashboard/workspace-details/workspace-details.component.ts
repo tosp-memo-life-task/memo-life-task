@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
+import { CreateWorkspaceTaskComponent } from '../create-workspace-task/create-workspace-task.component';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
 import {
   EditorModel,
@@ -51,7 +52,7 @@ export class WorkspaceDetailsComponent implements OnInit {
           'Alma szedés',
           'Almát kell szedni, mit nem értesz?',
           new EditorModel('2', 'Puzsér', false),
-          PriorityEnum.low,
+          PriorityEnum.LOW,
           '2020.10.21.'
         ),
         new TaskModel(
@@ -59,7 +60,7 @@ export class WorkspaceDetailsComponent implements OnInit {
           'Körte szedés',
           'Körtét kell szedni, már megint mit nem értesz?',
           new EditorModel('1', 'The King', true),
-          PriorityEnum.high,
+          PriorityEnum.HIGH,
           '2020.10.12.'
         )
       ]
@@ -74,6 +75,18 @@ export class WorkspaceDetailsComponent implements OnInit {
         context: {
           title: this.workspaceDetails.title,
           despc: this.workspaceDetails.descp
+        }
+      });
+    }
+  }
+
+  createTask() {
+    if (this.workspaceDetails) {
+      this.dialogService.open(CreateWorkspaceTaskComponent, {
+        backdropClass: 'custom-modal-backdrop',
+        dialogClass: 'custom-modal-dialog',
+        context: {
+          editors: this.workspaceDetails.editors
         }
       });
     }
