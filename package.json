@@ -8,7 +8,6 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "prettier": "prettier --config .prettierrc --write .",
     "prepare": "husky install"
   },
   "husky": {
@@ -17,9 +16,7 @@
     }
   },
   "lint-staged": {
-    "**/*": [
-      "prettier --write"
-    ]
+    "**/*": "prettier --write"
   },
   "private": true,
   "dependencies": {
