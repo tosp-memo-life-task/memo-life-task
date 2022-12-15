@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
 import { CreateWorkspaceTaskComponent } from '../create-workspace-task/create-workspace-task.component';
+import { ModifyWorkspaceEditorsModalComponent } from '../modify-workspace-editors-modal/modify-workspace-editors-modal.component';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
 import {
   EditorModel,
@@ -83,6 +84,18 @@ export class WorkspaceDetailsComponent implements OnInit {
   createTask() {
     if (this.workspaceDetails) {
       this.dialogService.open(CreateWorkspaceTaskComponent, {
+        backdropClass: 'custom-modal-backdrop',
+        dialogClass: 'custom-modal-dialog',
+        context: {
+          editors: this.workspaceDetails.editors
+        }
+      });
+    }
+  }
+
+  modifyWorkspaceEditors() {
+    if (this.workspaceDetails) {
+      this.dialogService.open(ModifyWorkspaceEditorsModalComponent, {
         backdropClass: 'custom-modal-backdrop',
         dialogClass: 'custom-modal-dialog',
         context: {

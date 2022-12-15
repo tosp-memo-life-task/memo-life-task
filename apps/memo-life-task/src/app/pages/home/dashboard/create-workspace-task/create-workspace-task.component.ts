@@ -51,7 +51,7 @@ export class CreateWorkspaceTaskComponent implements OnInit {
       }
     } else if (field === 'details' && this.form.get('details')?.touched) {
       if (this.form.get('details')?.hasError('required')) {
-        return 'details is required';
+        return 'Details are required';
       }
     }
 

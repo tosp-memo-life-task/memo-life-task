@@ -57,7 +57,12 @@
             ></nb-icon>
           </div>
         </div>
-        <button nbButton status="primary" class="editors-modify-button">
+        <button
+          nbButton
+          status="primary"
+          class="editors-modify-button"
+          (click)="modifyWorkspaceEditors()"
+        >
           <nb-icon
             icon="edit"
             pack="custom-icons"
