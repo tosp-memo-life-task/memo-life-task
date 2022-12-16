@@ -3,12 +3,19 @@ import { Injectable } from '@nestjs/common';
 import { UserRepository } from 'apps/api/src/app/database/repositories/user.repository';
 import { WorkspaceRepository } from 'apps/api/src/app/database/repositories/workspace.repository';
 
+import { UserEntity } from 'apps/api/src/app/database/entities/user.entity';
 import { WorkspaceEntity } from 'apps/api/src/app/database/entities/workspace.entity';
 
 import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
 
+import {
+  CreateWorkspaceRequest,
+  CreateWorkspaceResponse,
+  UserResponse
+} from '@memo-life-task/dtos';
+
+import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions/common-database-error.exception';
 import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
-import { CreateWorkspaceResponse } from '@memo-life-task/dtos';
 
 @Injectable()
 export class CreateWorkspaceService {
@@ -18,7 +25,7 @@ export class CreateWorkspaceService {
   ) {}
 
   async createWorkspace(
-    req: any,
+    req: CreateWorkspaceRequest,
     validatedUser: ValidatedUserModel
   ): Promise<CreateWorkspaceResponse> {
     const user = await this.userRepository
@@ -31,12 +38,27 @@ export class CreateWorkspaceService {
     workspace.description = req.description;
     workspace.owner = user;
     workspace.title = req.title;
+    workspace.users = new Array<UserEntity>(user);
 
-    workspace = await this.workspaceRepository.save(workspace);
+    workspace = await this.workspaceRepository.save(workspace).catch((err) => {
+      throw new CommonDatabaseErrorException(err);
+    });
+
+    const editor = new UserResponse();
+    editor.email = user.email;
+    editor.id = user.id;
+    editor.isUser = true;
+    editor.nameFirst = user.nameFirst;
+    editor.nameLast = user.nameLast;
 
     const res = new CreateWorkspaceResponse();
-    //   res.description = workspace.description;
-    //   res.
+    res.createdAt = workspace.createdAt;
+    res.description = workspace.description;
+    res.editors.push(editor);
+    res.id = workspace.id;
+    res.isOwned = true;
+    res.title = workspace.title;
+    res.updatedAt = workspace.updatedAt;
 
     return res;
   }

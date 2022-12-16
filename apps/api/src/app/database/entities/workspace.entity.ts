@@ -33,7 +33,9 @@ export class WorkspaceEntity {
   @ManyToOne(() => UserEntity)
   owner: UserEntity;
 
-  @OneToMany(() => TaskEntity, (task) => task.workspace)
+  @OneToMany(() => TaskEntity, (task) => task.workspace, {
+    cascade: ['remove']
+  })
   tasks: TaskEntity[];
 
   @ManyToMany(() => UserEntity, (user) => user.workspaces)

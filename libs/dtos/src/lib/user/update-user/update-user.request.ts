@@ -5,10 +5,10 @@ export class UpdateUserRequest {
   @ApiProperty({ type: String })
   @IsNotEmpty()
   @IsString()
-  nameFirst: string;
+  firstName: string;
 
   @ApiProperty({ type: String })
   @IsNotEmpty()
   @IsString()
-  nameLast: string;
+  lastName: string;
 }

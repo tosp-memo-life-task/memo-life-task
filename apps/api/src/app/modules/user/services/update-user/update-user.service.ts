@@ -25,8 +25,11 @@ export class UpdateUserService {
         throw new UserNotFoundException();
       });
 
-    user.nameFirst = req.nameFirst;
-    user.nameLast = req.nameLast;
+    const bgColor = Math.floor(Math.random() * 16777215).toString(16);
+
+    user.nameFirst = req.firstName;
+    user.nameLast = req.lastName;
+    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff?name=${req.firstName}+${req.lastName}`;
 
     user = await this.userRepository.save(user).catch((err) => {
       throw new CommonDatabaseErrorException(err);

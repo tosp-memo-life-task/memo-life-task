@@ -29,11 +29,14 @@ export class SignUpService {
     const salt = await this.passwordService.genSalt();
     const password = await this.passwordService.genPass(req.password, salt);
 
+    const bgColor = Math.floor(Math.random() * 16777215).toString(16);
+
     let user = new UserEntity();
     user.email = req.email;
     user.nameFirst = req.firstName;
     user.nameLast = req.lastName;
     user.password = password;
+    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff?name=${req.firstName}+${req.lastName}`;
     user.salt = salt;
 
     user = await this.userRepository.save(user);
@@ -46,7 +49,7 @@ export class SignUpService {
     res.firstName = user.nameFirst;
     res.id = user.id;
     res.lastName = user.nameLast;
-    res.pfp = 'https://jollycontrarian.com/images/6/6c/Rickroll.jpg';
+    res.pfp = user.pfp;
 
     return res;
   }

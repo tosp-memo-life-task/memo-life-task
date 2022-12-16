@@ -33,6 +33,9 @@ export class UserEntity {
   @Column({ name: 'name_last', nullable: false })
   nameLast: string;
 
+  @Column({ name: 'pfp', nullable: false })
+  pfp: string;
+
   @CreateDateColumn({ name: 'registered_at' })
   registeredAt: Date;
 
