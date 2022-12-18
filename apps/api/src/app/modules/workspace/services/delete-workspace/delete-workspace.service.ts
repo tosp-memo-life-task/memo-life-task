@@ -4,7 +4,7 @@ import { WorkspaceRepository } from 'apps/api/src/app/database/repositories/work
 
 import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
 
-import { DeleteWorkspaceRequest } from '@memo-life-task/dtos';
+import { DeleteWorkspaceRequestParams } from '@memo-life-task/dtos';
 
 import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions/common-database-error.exception';
 import { WorkspaceNotFoundException } from 'apps/api/src/app/common/exceptions/workspace-not-found.exception';
@@ -15,7 +15,7 @@ export class DeleteWorkspaceService {
   constructor(private readonly workspaceRepository: WorkspaceRepository) {}
 
   async deleteWorkspace(
-    params: DeleteWorkspaceRequest,
+    params: DeleteWorkspaceRequestParams,
     validatedUser: ValidatedUserModel
   ): Promise<void> {
     const workspace = await this.workspaceRepository

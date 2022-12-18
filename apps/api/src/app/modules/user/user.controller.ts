@@ -7,8 +7,8 @@ import { ValidatedUserModel } from '../../common/models/validated-user.model';
 import { UpdateUserService } from './services/update-user/update-user.service';
 
 import {
-  ErrorRes,
-  UpdateUserRequest,
+  ErrorResponse,
+  UpdateUserRequestBody,
   UpdateUserResponse
 } from '@memo-life-task/dtos';
 
@@ -19,16 +19,16 @@ export class UserController {
   @Patch()
   @ApiUnauthorizedResponse({
     description: 'User not found.',
-    type: ErrorRes
+    type: ErrorResponse
   })
   @ApiOkResponse({
     description: 'User updated succesfully.',
     type: UpdateUserResponse
   })
   async updateUser(
-    @Body() req: UpdateUserRequest,
+    @Body() body: UpdateUserRequestBody,
     @User() validatedUser: ValidatedUserModel
   ): Promise<UpdateUserResponse> {
-    return await this.updateUserService.updateUser(req, validatedUser);
+    return await this.updateUserService.updateUser(body, validatedUser);
   }
 }

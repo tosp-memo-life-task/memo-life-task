@@ -18,11 +18,14 @@ import { ModifyWorkspaceService } from './services/modify-workspace/modify-works
 import { ValidatedUserModel } from '../../common/models/validated-user.model';
 
 import {
-  CreateWorkspaceRequest,
+  CreateWorkspaceRequestBody,
   CreateWorkspaceResponse,
-  DeleteWorkspaceRequest,
-  GetWorkspaceRequest,
-  GetWorkspaceResponse
+  DeleteWorkspaceRequestParams,
+  GetWorkspaceRequestParams,
+  GetWorkspaceResponse,
+  ModifyWorkspaceRequestBody,
+  ModifyWorkspaceRequestParams,
+  ModifyWorkspaceResponse
 } from '@memo-life-task/dtos';
 
 @Controller('workspace')
@@ -36,37 +39,39 @@ export class WorkspaceController {
 
   @Post()
   async createWorkspace(
-    @Body() req: CreateWorkspaceRequest,
+    @Body() body: CreateWorkspaceRequestBody,
     @User() validatedUser: ValidatedUserModel
   ): Promise<CreateWorkspaceResponse> {
     return await this.createWorkspaceService.createWorkspace(
-      req,
+      body,
       validatedUser
     );
   }
 
   @Get(':id')
   async getWorkspace(
-    @Param() params: GetWorkspaceRequest,
+    @Param() params: GetWorkspaceRequestParams,
     @User() validatedUser: ValidatedUserModel
   ): Promise<GetWorkspaceResponse> {
     return await this.getWorkspaceService.getWorkspace(params, validatedUser);
   }
 
-  @Patch()
+  @Patch(':id')
   async modifyWorkspace(
-    @Body() req: any,
+    @Body() body: ModifyWorkspaceRequestBody,
+    @Param() params: ModifyWorkspaceRequestParams,
     @User() validatedUser: ValidatedUserModel
-  ): Promise<any> {
+  ): Promise<ModifyWorkspaceResponse> {
     return await this.modifyWorkspaceService.modifyWorkspace(
-      req,
+      body,
+      params,
       validatedUser
     );
   }
 
   @Delete(':id')
   async deleteWorkspace(
-    @Param() params: DeleteWorkspaceRequest,
+    @Param() params: DeleteWorkspaceRequestParams,
     @User() validatedUser: ValidatedUserModel
   ): Promise<void> {
     return await this.deleteWorkspaceService.deleteWorkspace(

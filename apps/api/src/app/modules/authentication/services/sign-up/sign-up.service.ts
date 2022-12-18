@@ -7,7 +7,7 @@ import { UserRepository } from '../../../../database/repositories/user.repositor
 
 import { UserEntity } from '../../../../database/entities/user.entity';
 
-import { SignUpRequest, SignUpResponse } from '@memo-life-task/dtos';
+import { SignUpRequestBody, SignUpResponse } from '@memo-life-task/dtos';
 
 import { UserAlreadySignedUpException } from 'apps/api/src/app/common/exceptions/user-already-signed-up.exception';
 
@@ -19,24 +19,24 @@ export class SignUpService {
     private readonly userRepository: UserRepository
   ) {}
 
-  async signUp(req: SignUpRequest): Promise<SignUpResponse> {
+  async signUp(body: SignUpRequestBody): Promise<SignUpResponse> {
     const profileWithEmail = await this.userRepository.findOne({
-      where: { email: req.email }
+      where: { email: body.email }
     });
 
     if (profileWithEmail) throw new UserAlreadySignedUpException();
 
     const salt = await this.passwordService.genSalt();
-    const password = await this.passwordService.genPass(req.password, salt);
+    const password = await this.passwordService.genPass(body.password, salt);
 
     const bgColor = Math.floor(Math.random() * 16777215).toString(16);
 
     let user = new UserEntity();
-    user.email = req.email;
-    user.nameFirst = req.firstName;
-    user.nameLast = req.lastName;
+    user.email = body.email;
+    user.nameFirst = body.firstName;
+    user.nameLast = body.lastName;
     user.password = password;
-    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff?name=${req.firstName}+${req.lastName}`;
+    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff?name=${body.firstName}+${body.lastName}`;
     user.salt = salt;
 
     user = await this.userRepository.save(user);

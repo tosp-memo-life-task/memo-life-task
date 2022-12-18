@@ -7,7 +7,7 @@ import {
   MinLength
 } from 'class-validator';
 
-export class SignInRequest {
+export class SignUpRequestBody {
   @ApiProperty({ example: 'example@example.com', type: String, required: true })
   @IsEmail()
   email: string;
@@ -22,4 +22,16 @@ export class SignInRequest {
   @MaxLength(48)
   @Matches(/^[A-Za-z0-9]+$/)
   password: string;
+
+  @ApiProperty({ example: 'John', type: String, required: true })
+  @IsString()
+  @MinLength(1)
+  @MaxLength(128)
+  firstName: string;
+
+  @ApiProperty({ example: 'Smith', type: String, required: true })
+  @IsString()
+  @MinLength(1)
+  @MaxLength(128)
+  lastName: string;
 }

@@ -5,7 +5,7 @@ import { TokenService } from '../token/token.service';
 
 import { UserRepository } from '../../../../database/repositories/user.repository';
 
-import { SignInRequest, SignInResponse } from '@memo-life-task/dtos';
+import { SignInRequestBody, SignInResponse } from '@memo-life-task/dtos';
 
 import { CommonUnauthorizedException } from 'apps/api/src/app/common/exceptions/common-unauthorized.exception';
 import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
@@ -18,17 +18,17 @@ export class SignInService {
     private readonly userRepository: UserRepository
   ) {}
 
-  async signIn(req: SignInRequest): Promise<SignInResponse> {
+  async signIn(body: SignInRequestBody): Promise<SignInResponse> {
     const user = await this.userRepository
       .findOneOrFail({
-        where: { email: req.email }
+        where: { email: body.email }
       })
       .catch(() => {
         throw new UserNotFoundException();
       });
 
     const isAuthorized = await this.passwordService.compare(
-      req.password,
+      body.password,
       user.password,
       user.salt
     );
@@ -39,7 +39,7 @@ export class SignInService {
 
     const res = new SignInResponse();
     res.accessToken = token;
-    res.email = req.email;
+    res.email = body.email;
     res.firstName = user.nameFirst;
     res.id = user.id;
     res.lastName = user.nameLast;

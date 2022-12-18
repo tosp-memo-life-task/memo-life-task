@@ -9,7 +9,7 @@ import { WorkspaceEntity } from 'apps/api/src/app/database/entities/workspace.en
 import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
 
 import {
-  CreateWorkspaceRequest,
+  CreateWorkspaceRequestBody,
   CreateWorkspaceResponse,
   UserResponse
 } from '@memo-life-task/dtos';
@@ -25,7 +25,7 @@ export class CreateWorkspaceService {
   ) {}
 
   async createWorkspace(
-    req: CreateWorkspaceRequest,
+    body: CreateWorkspaceRequestBody,
     validatedUser: ValidatedUserModel
   ): Promise<CreateWorkspaceResponse> {
     const user = await this.userRepository
@@ -35,9 +35,9 @@ export class CreateWorkspaceService {
       });
 
     let workspace = new WorkspaceEntity();
-    workspace.description = req.description;
+    workspace.description = body.description;
     workspace.owner = user;
-    workspace.title = req.title;
+    workspace.title = body.title;
     workspace.users = new Array<UserEntity>(user);
 
     workspace = await this.workspaceRepository.save(workspace).catch((err) => {

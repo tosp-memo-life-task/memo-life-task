@@ -5,7 +5,7 @@ import { WorkspaceRepository } from 'apps/api/src/app/database/repositories/work
 import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
 
 import {
-  GetWorkspaceRequest,
+  GetWorkspaceRequestParams,
   GetWorkspaceResponse,
   TaskResponse,
   UserResponse
@@ -19,7 +19,7 @@ export class GetWorkspaceService {
   constructor(private readonly workspaceRepository: WorkspaceRepository) {}
 
   async getWorkspace(
-    params: GetWorkspaceRequest,
+    params: GetWorkspaceRequestParams,
     validatedUser: ValidatedUserModel
   ): Promise<GetWorkspaceResponse> {
     const workspace = await this.workspaceRepository

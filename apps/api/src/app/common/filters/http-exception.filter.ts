@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import { ErrorRes } from '@memo-life-task/dtos';
+import { ErrorResponse } from '@memo-life-task/dtos';
 
 @Catch(HttpException)
 export class HttpExceptionFilter<T extends HttpException>
@@ -21,7 +21,7 @@ export class HttpExceptionFilter<T extends HttpException>
       args: object;
     } & Response;
 
-    const res = new ErrorRes();
+    const res = new ErrorResponse();
     res.code = exceptionResponse.code ?? 'exception.COMMON.UNHANDLED';
     res.info = exceptionResponse.code ? undefined : exceptionResponse;
     res.message = exception.message;

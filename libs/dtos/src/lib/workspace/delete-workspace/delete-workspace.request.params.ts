@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumberString } from 'class-validator';
 
-export class DeleteWorkspaceRequest {
+export class DeleteWorkspaceRequestParams {
   @ApiProperty()
   @IsNumberString()
   id: number;

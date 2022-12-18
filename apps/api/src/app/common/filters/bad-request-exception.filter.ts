@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import { ErrorRes } from '@memo-life-task/dtos';
+import { ErrorResponse } from '@memo-life-task/dtos';
 
 @Catch(BadRequestException)
 export class BadRequestExceptionFilter implements ExceptionFilter {
@@ -18,7 +18,7 @@ export class BadRequestExceptionFilter implements ExceptionFilter {
       code: string;
     } & Response;
 
-    const res = new ErrorRes();
+    const res = new ErrorResponse();
     res.code = exceptionResponse.code ?? 'exception.COMMON.BAD_REQUEST';
     res.info = exceptionResponse.code ? undefined : exceptionResponse;
     res.message = exception.message;
