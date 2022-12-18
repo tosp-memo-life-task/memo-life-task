@@ -1,8 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsPositive, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsPositive,
+  IsString
+} from 'class-validator';
 
 export class UserResponse {
   @ApiProperty()
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   email: string;
@@ -13,6 +20,7 @@ export class UserResponse {
   firstName: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsPositive()
   id: number;
 
@@ -22,6 +30,7 @@ export class UserResponse {
   lastName: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsBoolean()
   isUser: boolean;
 }

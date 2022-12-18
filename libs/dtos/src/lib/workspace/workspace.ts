@@ -3,6 +3,7 @@ export * from './create-workspace/create-workspace.response';
 export * from './delete-workspace/delete-workspace.request.params';
 export * from './get-workspace/get-workspace.request.params';
 export * from './get-workspace/get-workspace.response';
+export * from './list-workspaces/list-workspaces.reponse';
 export * from './modify-workspace/modify-workspace.request.body';
 export * from './modify-workspace/modify-workspace.request.params';
 export * from './modify-workspace/modify-workspace.response';

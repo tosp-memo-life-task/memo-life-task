@@ -13,7 +13,9 @@ import { User } from '../../common/decorators/user.decorator';
 import { CreateWorkspaceService } from './services/create-workspace/create-workspace.service';
 import { DeleteWorkspaceService } from './services/delete-workspace/delete-workspace.service';
 import { GetWorkspaceService } from './services/get-workspace/get-workspace.service';
+import { ListWorkspacesService } from './services/list-workspaces/list-workspaces.service';
 import { ModifyWorkspaceService } from './services/modify-workspace/modify-workspace.service';
+import { RemoveEditorService } from './services/remove-editor/remove-editor.service';
 
 import { ValidatedUserModel } from '../../common/models/validated-user.model';
 
@@ -29,7 +31,6 @@ import {
   RemoveEditorRequestBody,
   RemoveEditorRequestParams
 } from '@memo-life-task/dtos';
-import { RemoveEditorService } from './services/remove-editor/remove-editor.service';
 
 @Controller('workspace')
 export class WorkspaceController {
@@ -37,6 +38,7 @@ export class WorkspaceController {
     private readonly createWorkspaceService: CreateWorkspaceService,
     private readonly deleteWorkspaceService: DeleteWorkspaceService,
     private readonly getWorkspaceService: GetWorkspaceService,
+    private readonly listWorkspacesService: ListWorkspacesService,
     private readonly modifyWorkspaceService: ModifyWorkspaceService,
     private readonly removeEditorService: RemoveEditorService
   ) {}
@@ -58,6 +60,13 @@ export class WorkspaceController {
     @User() validatedUser: ValidatedUserModel
   ): Promise<GetWorkspaceResponse> {
     return await this.getWorkspaceService.getWorkspace(params, validatedUser);
+  }
+
+  @Get()
+  async listWorkspaces(
+    @User() validatedUser: ValidatedUserModel
+  ): Promise<GetWorkspaceResponse> {
+    return await this.listWorkspacesService.listWorkspaces(validatedUser);
   }
 
   @Patch(':id')

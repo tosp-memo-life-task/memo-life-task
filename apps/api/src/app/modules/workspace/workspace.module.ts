@@ -8,10 +8,10 @@ import { DeleteWorkspaceService } from './services/delete-workspace/delete-works
 import { GetWorkspaceService } from './services/get-workspace/get-workspace.service';
 import { ListWorkspacesService } from './services/list-workspaces/list-workspaces.service';
 import { ModifyWorkspaceService } from './services/modify-workspace/modify-workspace.service';
+import { RemoveEditorService } from './services/remove-editor/remove-editor.service';
 
 import { UserRepository } from '../../database/repositories/user.repository';
 import { WorkspaceRepository } from '../../database/repositories/workspace.repository';
-import { RemoveEditorService } from './services/remove-editor/remove-editor.service';
 
 @Module({
   controllers: [WorkspaceController],

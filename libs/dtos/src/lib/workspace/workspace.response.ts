@@ -5,6 +5,7 @@ import {
   IsBoolean,
   IsDate,
   IsNotEmpty,
+  IsOptional,
   IsPositive,
   IsString,
   ValidateNested
@@ -25,11 +26,12 @@ export class WorkspaceResponse {
   description: string;
 
   @ApiProperty()
+  @IsOptional()
   @IsArray()
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => UserResponse)
-  editors: Array<UserResponse> = new Array<UserResponse>();
+  editors: Array<UserResponse>;
 
   @ApiProperty()
   @IsPositive()
@@ -40,10 +42,16 @@ export class WorkspaceResponse {
   isOwned: boolean;
 
   @ApiProperty()
+  @IsOptional()
+  @Type(() => UserResponse)
+  owner: UserResponse;
+
+  @ApiProperty()
+  @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => TaskResponse)
-  tasks: Array<TaskResponse> = new Array<TaskResponse>();
+  tasks: Array<TaskResponse>;
 
   @ApiProperty()
   @IsString()
