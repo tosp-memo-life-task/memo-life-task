@@ -5,16 +5,23 @@ import { WorkspaceController } from './workspace.controller';
 
 import { CreateWorkspaceService } from './services/create-workspace/create-workspace.service';
 import { DeleteWorkspaceService } from './services/delete-workspace/delete-workspace.service';
+import { GetWorkspaceService } from './services/get-workspace/get-workspace.service';
+import { ListWorkspacesService } from './services/list-workspaces/list-workspaces.service';
 import { ModifyWorkspaceService } from './services/modify-workspace/modify-workspace.service';
 
+import { UserRepository } from '../../database/repositories/user.repository';
 import { WorkspaceRepository } from '../../database/repositories/workspace.repository';
 
 @Module({
   controllers: [WorkspaceController],
-  imports: [TypeOrmExModule.forCustomRepository([WorkspaceRepository])],
+  imports: [
+    TypeOrmExModule.forCustomRepository([UserRepository, WorkspaceRepository])
+  ],
   providers: [
     CreateWorkspaceService,
     DeleteWorkspaceService,
+    GetWorkspaceService,
+    ListWorkspacesService,
     ModifyWorkspaceService
   ]
 })

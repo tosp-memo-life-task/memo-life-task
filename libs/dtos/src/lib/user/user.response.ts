@@ -8,20 +8,20 @@ export class UserResponse {
   email: string;
 
   @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  firstName: string;
+
+  @ApiProperty()
   @IsPositive()
   id: number;
 
   @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  lastName: string;
+
+  @ApiProperty()
   @IsBoolean()
   isUser: boolean;
-
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  nameFirst: string;
-
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  nameLast: string;
 }

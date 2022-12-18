@@ -48,8 +48,8 @@ export class CreateWorkspaceService {
     editor.email = user.email;
     editor.id = user.id;
     editor.isUser = true;
-    editor.nameFirst = user.nameFirst;
-    editor.nameLast = user.nameLast;
+    editor.firstName = user.nameFirst;
+    editor.lastName = user.nameLast;
 
     const res = new CreateWorkspaceResponse();
     res.createdAt = workspace.createdAt;

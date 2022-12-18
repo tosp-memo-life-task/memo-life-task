@@ -59,7 +59,7 @@
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "command": "ts-node --project tsconfig.json ../../node_modules/typeorm/cli",
+        "command": "ts-node -r tsconfig-paths/register --project tsconfig.json ../../node_modules/typeorm/cli",
         "cwd": "apps/api"
       }
     },

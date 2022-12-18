@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@memo-life-task/dtos": ["libs/dtos/src/index.ts"]
+      "@memo-life-task/dtos": ["libs/dtos/src/index.ts"],
+      "@memo-life-task/enums": ["libs/enums/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
