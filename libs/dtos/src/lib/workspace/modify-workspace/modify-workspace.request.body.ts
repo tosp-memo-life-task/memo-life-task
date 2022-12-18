@@ -6,4 +6,9 @@ export class ModifyWorkspaceRequestBody {
   @IsString()
   @IsNotEmpty()
   description: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  title: string;
 }

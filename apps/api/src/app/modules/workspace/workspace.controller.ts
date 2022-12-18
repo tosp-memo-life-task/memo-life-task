@@ -25,8 +25,11 @@ import {
   GetWorkspaceResponse,
   ModifyWorkspaceRequestBody,
   ModifyWorkspaceRequestParams,
-  ModifyWorkspaceResponse
+  ModifyWorkspaceResponse,
+  RemoveEditorRequestBody,
+  RemoveEditorRequestParams
 } from '@memo-life-task/dtos';
+import { RemoveEditorService } from './services/remove-editor/remove-editor.service';
 
 @Controller('workspace')
 export class WorkspaceController {
@@ -34,7 +37,8 @@ export class WorkspaceController {
     private readonly createWorkspaceService: CreateWorkspaceService,
     private readonly deleteWorkspaceService: DeleteWorkspaceService,
     private readonly getWorkspaceService: GetWorkspaceService,
-    private readonly modifyWorkspaceService: ModifyWorkspaceService
+    private readonly modifyWorkspaceService: ModifyWorkspaceService,
+    private readonly removeEditorService: RemoveEditorService
   ) {}
 
   @Post()
@@ -75,6 +79,19 @@ export class WorkspaceController {
     @User() validatedUser: ValidatedUserModel
   ): Promise<void> {
     return await this.deleteWorkspaceService.deleteWorkspace(
+      params,
+      validatedUser
+    );
+  }
+
+  @Patch(':id/remove-editor')
+  async removeEditorFromWorkspace(
+    @Body() body: RemoveEditorRequestBody,
+    @Param() params: RemoveEditorRequestParams,
+    @User() validatedUser: ValidatedUserModel
+  ): Promise<void> {
+    return await this.removeEditorService.removeEditor(
+      body,
       params,
       validatedUser
     );

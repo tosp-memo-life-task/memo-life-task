@@ -6,4 +6,6 @@ export * from './get-workspace/get-workspace.response';
 export * from './modify-workspace/modify-workspace.request.body';
 export * from './modify-workspace/modify-workspace.request.params';
 export * from './modify-workspace/modify-workspace.response';
+export * from './remove-editor/remove-editor.request.body';
+export * from './remove-editor/remove-editor.request.params';
 export * from './workspace.response';

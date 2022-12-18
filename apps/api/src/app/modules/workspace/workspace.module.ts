@@ -11,6 +11,7 @@ import { ModifyWorkspaceService } from './services/modify-workspace/modify-works
 
 import { UserRepository } from '../../database/repositories/user.repository';
 import { WorkspaceRepository } from '../../database/repositories/workspace.repository';
+import { RemoveEditorService } from './services/remove-editor/remove-editor.service';
 
 @Module({
   controllers: [WorkspaceController],
@@ -22,7 +23,8 @@ import { WorkspaceRepository } from '../../database/repositories/workspace.repos
     DeleteWorkspaceService,
     GetWorkspaceService,
     ListWorkspacesService,
-    ModifyWorkspaceService
+    ModifyWorkspaceService,
+    RemoveEditorService
   ]
 })
 export class WorkspaceModule {}
