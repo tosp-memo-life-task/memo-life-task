@@ -1,1 +1,40 @@
-<p>profile works!</p>
+<h3 class="header-2 mb-0 mx-1">Profile</h3>
+<h2 class="header-3 mb-0 mx-1">Modify details</h2>
+
+<form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div
+    class="profile-pic-container d-flex flex-column justify-content-center align-items-center"
+  >
+    <!-- If user has profile pic then change this. -->
+    <div
+      class="temp-profile-pic p-1 p-xl-3 w-100 h-100 d-flex align-items-center justify-content-center"
+    >
+      <nb-icon icon="profile" pack="custom-icons"></nb-icon>
+    </div>
+  </div>
+
+  <mat-label class="header-5">First Name</mat-label>
+  <mat-form-field appearance="standard" class="mb-2 color-black">
+    <input
+      formControlName="firstName"
+      matInput
+      placeholder="Type your first name"
+    />
+    <img matPrefix src="assets/person.icon.svg" class="input-prefix-icon" />
+  </mat-form-field>
+
+  <mat-label class="header-5">Last Name</mat-label>
+  <mat-form-field appearance="standard" class="mb-2">
+    <input
+      formControlName="lastName"
+      matInput
+      placeholder="Type your last name"
+    />
+    <img matPrefix src="assets/person.icon.svg" class="input-prefix-icon" />
+  </mat-form-field>
+</form>
+
+<button class="button-custom" mat-flat-button type="submit">
+  <!--image with the user picture-->
+  Save changes
+</button>
