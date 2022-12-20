@@ -1,4 +1,4 @@
 export interface ISendInvitationRequestBody {
-  receiverId: number;
+  email: string;
   workspaceId: number;
 }

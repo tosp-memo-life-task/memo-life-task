@@ -49,7 +49,7 @@ export class SendInvitationService {
 
     const receiver = await this.userRepository
       .findOneOrFail({
-        where: { id: body.receiverId }
+        where: { email: body.email }
       })
       .catch(() => {
         throw new UserNotFoundException();
