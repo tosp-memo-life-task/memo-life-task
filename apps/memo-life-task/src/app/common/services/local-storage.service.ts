@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageEnum } from '../enums/local-storage.enum';
-import { PermissionEnum } from '../enums/permission.enum';
+
 import { AppException } from '../../common/exceptions/app-error.exception';
 
 @Injectable({
@@ -61,24 +61,5 @@ export class LocalStorageService {
       throw new AppException('STRING_ARRAY_TYPE_MISMATCH');
 
     return parsedStringArray;
-  }
-
-  getPermissionArray(key: LocalStorageEnum): Array<PermissionEnum> {
-    const value = localStorage.getItem(key);
-    if (!value)
-      throw new AppException('STRING_ARRAY_NOT_FOUND_IN_LOCAL_STORAGE');
-    const parsedStringArray: Array<any> = JSON.parse(value);
-    if (parsedStringArray instanceof Array === false)
-      throw new AppException('STRING_ARRAY_TYPE_MISMATCH');
-
-    const enumArray = new Array<PermissionEnum>();
-    for (const parsedString of parsedStringArray) {
-      if (parsedString in PermissionEnum) {
-        enumArray.push(parsedString);
-      } else {
-        throw new AppException('UNKNOWN_PERMISSION');
-      }
-    }
-    return enumArray;
   }
 }
