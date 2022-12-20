@@ -10,7 +10,10 @@ export class ProfileComponent {
   form: FormGroup = new FormGroup({});
 
   constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({});
+    this.form = this.formBuilder.group({
+      firstName: ['', Validators.compose([Validators.required])],
+      lastName: ['', Validators.compose([Validators.required])]
+    });
   }
   async onSubmit(): Promise<void> {
     console.log('todo');

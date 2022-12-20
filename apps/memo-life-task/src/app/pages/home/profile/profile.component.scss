@@ -1,1 +1,122 @@
 @import '../../../common/styles/variables';
+
+::ng-deep {
+  .form-container {
+    gap: 32px;
+
+    .form-header {
+      .logo-container {
+        .logo-icon-container {
+          width: 100px;
+          height: 100px;
+          background-color: $green;
+          border-radius: 50%;
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+
+  .button-custom {
+    background-color: $green;
+    border-radius: 32px !important;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 33px !important;
+    letter-spacing: 0.04em;
+    color: white;
+    padding: 12px !important;
+  }
+
+  mat-label {
+    margin-bottom: 4px;
+  }
+
+  mat-error.header-6 {
+    color: red !important;
+  }
+
+  .mat-form-field {
+    width: 380px;
+    max-width: 100%;
+
+    .mat-form-field-flex {
+      padding-top: 0px !important;
+      padding-bottom: 4px;
+
+      .mat-input-element {
+        font-family: 'Noto Sans', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 0.04em;
+        color: $black;
+      }
+
+      .mat-form-field-infix {
+        padding-bottom: 6px;
+        width: 100%;
+        border-top: none;
+
+        input {
+          height: 20px;
+
+          &:-internal-autofill-selected {
+            background-color: $beige !important;
+            color: $black !important;
+          }
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px $beige inset !important;
+        }
+      }
+    }
+
+    .mat-form-field-subscript-wrapper {
+      margin-top: 0.25em;
+    }
+  }
+
+  .mat-form-field-underline {
+    /*change color of underline*/
+    background-color: $secondary_text !important;
+  }
+
+  .mat-form-field-invalid .mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: red !important;
+  }
+
+  .mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: $black !important;
+  }
+
+  .mat-input-element::placeholder {
+    color: $black !important;
+  }
+
+  .profile-pic {
+    background-color: $brown;
+    border-radius: 50%;
+    max-height: 70px;
+    max-width: 70px;
+
+    nb-icon {
+      height: 100%;
+      width: 100%;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
