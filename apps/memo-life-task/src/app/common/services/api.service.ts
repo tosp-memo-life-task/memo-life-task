@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import {
-  GetWorkspaceResponse,
+  CreateWorkspaceRequestBody,
+  CreateWorkspaceResponse,
   SignInRequestBody,
   SignInResponse,
   SignUpRequestBody,
-  SignUpResponse
+  SignUpResponse,
+  WorkspaceResponse
 } from '@memo-life-task/dtos';
 import { LocalStorageEnum } from '../enums/local-storage.enum';
 import { AppException } from '../exceptions/app-error.exception';
@@ -55,9 +57,22 @@ export class ApiService {
     return response;
   }
 
-  async getWorkspaces(): Promise<GetWorkspaceResponse> {
-    const response = await this.dataService.get<GetWorkspaceResponse>(
+  async getWorkspaces(): Promise<{ workspaces: WorkspaceResponse[] }> {
+    const response = await this.dataService.get<{
+      workspaces: WorkspaceResponse[];
+    }>(
       this.urlService.getBaseUrl() + '/v1/workspace',
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async createWorkspace(
+    request: CreateWorkspaceRequestBody
+  ): Promise<CreateWorkspaceResponse> {
+    const response = await this.dataService.post<CreateWorkspaceResponse>(
+      this.urlService.getBaseUrl() + '/v1/workspace',
+      request,
       this.getHeadersWithToken()
     );
     return response;

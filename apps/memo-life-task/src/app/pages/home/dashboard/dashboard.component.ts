@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { WorkspaceResponse } from '@memo-life-task/dtos';
 import { NbDialogService } from '@nebular/theme';
 import { SharedWorkspaceModel } from '../models/shared-workspace.model';
 import { WorkspaceModel } from '../models/workspace.model';
@@ -13,6 +14,8 @@ import { GetWorkspacesService } from './services/get-workspaces.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  ownedWorkspaces: WorkspaceResponse[];
+  sharedWithMe: WorkspaceResponse[];
   dummyData: WorkspaceModel[] = [
     new WorkspaceModel(
       '1',
@@ -81,7 +84,10 @@ export class DashboardComponent implements OnInit {
   }
 
   async getWorkspaces() {
-    await this.getWorkspacesService.getWorkspacesApi();
+    const response = await this.getWorkspacesService.getWorkspacesApi();
+
+    this.ownedWorkspaces = response.owned;
+    this.sharedWithMe = response.sharedWithMe;
   }
 
   createWorkspace() {
@@ -91,7 +97,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  viewWorkspace(id: string) {
+  viewWorkspace(id: number) {
     this.router.navigate(['home/workspace', id]);
   }
 }

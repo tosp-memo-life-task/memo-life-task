@@ -11,7 +11,7 @@
   <div class="workspace-list-container">
     <div
       class="workspace-item hover-cursor-pointer"
-      *ngFor="let workspace of dummyData; index as i"
+      *ngFor="let workspace of ownedWorkspaces; index as i"
       (click)="viewWorkspace(workspace.id)"
     >
       <div class="workspace-body">
@@ -19,12 +19,12 @@
           {{ workspace.title }}
         </h4>
         <p class="workspace-content text-p1 color-white">
-          {{ workspace.descp }}
+          {{ workspace.description }}
         </p>
       </div>
       <div class="workspace-footer">
         <div class="workspace-modified text-h5 color-pale-white">
-          <nb-icon icon="clock"></nb-icon>{{ workspace.modifiedAt }}
+          <nb-icon icon="clock"></nb-icon>{{ workspace.updatedAt }}
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
   <div class="workspace-list-container">
     <div
       class="workspace-item hover-cursor-pointer"
-      *ngFor="let workspace of dummySharedData; index as i"
+      *ngFor="let workspace of sharedWithMe; index as i"
       (click)="viewWorkspace(workspace.id)"
     >
       <div class="workspace-body">
@@ -48,15 +48,15 @@
         </h4>
         <div class="text-h6 color-pale-white d-flex align-items-center">
           <nb-icon icon="profile" pack="custom-icons" class="me-1"></nb-icon>
-          {{ workspace.owner }}
+          {{ workspace.owner.firstName }} {{ workspace.owner.lastName }}
         </div>
         <p class="workspace-content text-p1 color-white">
-          {{ workspace.descp }}
+          {{ workspace.description }}
         </p>
       </div>
       <div class="workspace-footer">
         <div class="workspace-modified text-h5 color-pale-white">
-          <nb-icon icon="clock"></nb-icon>{{ workspace.modifiedAt }}
+          <nb-icon icon="clock"></nb-icon>{{ workspace.updatedAt }}
         </div>
       </div>
     </div>
