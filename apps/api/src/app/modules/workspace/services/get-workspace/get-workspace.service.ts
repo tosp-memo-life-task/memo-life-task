@@ -7,6 +7,7 @@ import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-use
 import {
   GetWorkspaceRequestParams,
   GetWorkspaceResponse,
+  InvitationResponse,
   TaskResponse,
   UserResponse
 } from '@memo-life-task/dtos';
@@ -24,7 +25,12 @@ export class GetWorkspaceService {
   ): Promise<GetWorkspaceResponse> {
     const workspace = await this.workspaceRepository
       .findOneOrFail({
-        relations: { owner: true, tasks: { assignee: true }, users: true },
+        relations: {
+          invitations: { receiver: true, sender: true },
+          owner: true,
+          tasks: { assignee: true },
+          users: true
+        },
         where: { id: params.id }
       })
       .catch(() => {
@@ -43,6 +49,20 @@ export class GetWorkspaceService {
       editor.lastName = e.nameLast;
 
       return editor;
+    });
+
+    const invitations = workspace.invitations.map((i) => {
+      const receiver = new UserResponse();
+      receiver.email = i.receiver.email;
+      receiver.firstName = i.receiver.nameFirst;
+      receiver.id = i.receiver.id;
+      receiver.lastName = i.receiver.nameLast;
+
+      const invitation = new InvitationResponse();
+      invitation.id = i.id;
+      invitation.receiver = receiver;
+
+      return invitation;
     });
 
     const tasks = workspace.tasks.map((t) => {
@@ -73,6 +93,7 @@ export class GetWorkspaceService {
     res.description = workspace.description;
     res.editors = editors;
     res.id = workspace.id;
+    res.invitations = invitations;
     res.isOwned = workspace.owner.id === validatedUser.id;
     res.tasks = tasks;
     res.title = workspace.title;
