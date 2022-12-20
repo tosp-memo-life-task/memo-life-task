@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 
-import { UserRepository } from 'apps/api/src/app/database/repositories/user.repository';
-import { WorkspaceRepository } from 'apps/api/src/app/database/repositories/workspace.repository';
+import { UserRepository } from '../../../../database/repositories/user.repository';
+import { WorkspaceRepository } from '../../../../database/repositories/workspace.repository';
 
-import { UserEntity } from 'apps/api/src/app/database/entities/user.entity';
-import { WorkspaceEntity } from 'apps/api/src/app/database/entities/workspace.entity';
+import { UserEntity } from '../../../../database/entities/user.entity';
+import { WorkspaceEntity } from '../../../../database/entities/workspace.entity';
 
-import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
+import { ValidatedUserModel } from '../../../../common/models/validated-user.model';
 
 import {
   CreateWorkspaceRequestBody,
@@ -14,8 +14,8 @@ import {
   UserResponse
 } from '@memo-life-task/dtos';
 
-import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions/common-database-error.exception';
-import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
+import { CommonDatabaseErrorException } from '../../../../common/exceptions/common-database-error.exception';
+import { UserNotFoundException } from '../../../../common/exceptions/user-not-found.exception';
 
 @Injectable()
 export class CreateWorkspaceService {

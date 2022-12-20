@@ -6,9 +6,8 @@ import { TokenService } from '../token/token.service';
 import { UserRepository } from '../../../../database/repositories/user.repository';
 
 import { SignInRequestBody, SignInResponse } from '@memo-life-task/dtos';
-
-import { CommonUnauthorizedException } from 'apps/api/src/app/common/exceptions/common-unauthorized.exception';
-import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
+import { UserNotFoundException } from '../../../../common/exceptions/user-not-found.exception';
+import { CommonUnauthorizedException } from '../../../../common/exceptions/common-unauthorized.exception';
 
 @Injectable()
 export class SignInService {

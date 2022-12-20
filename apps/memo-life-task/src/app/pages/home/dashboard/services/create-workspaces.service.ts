@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CreateWorkspaceRequestBody } from '@memo-life-task/dtos';
-import { ApiService } from 'apps/memo-life-task/src/app/common/services/api.service';
+import { ApiService } from '../../../../common/services/api.service';
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbDialogRef } from '@nebular/theme';
-import { emailValidator } from 'apps/memo-life-task/src/app/common/validators/email.validator';
+import { emailValidator } from '../../../../common/validators/email.validator';
 import { EditorModel } from '../workspace-details/models/workspace-details.model';
 
 @Component({

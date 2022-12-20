@@ -5,7 +5,7 @@ import { ModifyWorkspaceTaskComponent } from '../../modify-workspace-task/modify
 import { EditorModel, TaskModel } from '../models/workspace-details.model';
 
 @Component({
-  selector: 'workspace-todo-table',
+  selector: 'tosp-memo-life-task-workspace-todo-table',
   templateUrl: './workspace-todo-table.component.html',
   styleUrls: ['./workspace-todo-table.component.scss']
 })

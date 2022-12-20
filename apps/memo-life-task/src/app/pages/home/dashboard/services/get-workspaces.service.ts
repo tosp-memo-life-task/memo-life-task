@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from 'apps/memo-life-task/src/app/common/services/api.service';
+import { ApiService } from '../../../../common/services/api.service';
 import { GetWorkspacesResponseModel } from '../../models/get-workspaces.response.model';
 
 @Injectable({

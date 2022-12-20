@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
-import { UserRepository } from 'apps/api/src/app/database/repositories/user.repository';
+import { UserRepository } from '../../../../database/repositories/user.repository';
 
-import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
+import { ValidatedUserModel } from '../../../../common/models/validated-user.model';
 
 import {
   ListWorkspacesResponse,
@@ -10,7 +10,7 @@ import {
   WorkspaceResponse
 } from '@memo-life-task/dtos';
 
-import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
+import { UserNotFoundException } from '../../../../common/exceptions/user-not-found.exception';
 
 @Injectable()
 export class ListWorkspacesService {

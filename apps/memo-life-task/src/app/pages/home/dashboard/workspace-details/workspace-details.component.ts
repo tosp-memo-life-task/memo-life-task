@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
@@ -17,7 +17,7 @@ import {
   templateUrl: './workspace-details.component.html',
   styleUrls: ['./workspace-details.component.scss']
 })
-export class WorkspaceDetailsComponent implements OnInit {
+export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   workspaceId: number;
   workspaceDetails: WorkspaceDetailsModel;
   private routeSubscriber: Subscription;

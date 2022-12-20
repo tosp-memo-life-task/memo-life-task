@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 
-import { UserRepository } from 'apps/api/src/app/database/repositories/user.repository';
+import { UserRepository } from '../../../../database/repositories/user.repository';
 
-import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
+import { ValidatedUserModel } from '../../../../common/models/validated-user.model';
 
 import {
   UpdateUserRequestBody,
   UpdateUserResponse
 } from '@memo-life-task/dtos';
 
-import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions/common-database-error.exception';
-import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
+import { CommonDatabaseErrorException } from '../../../../common/exceptions/common-database-error.exception';
+import { UserNotFoundException } from '../../../../common/exceptions/user-not-found.exception';
 
 @Injectable()
 export class UpdateUserService {
