@@ -44,7 +44,8 @@ export class SendInvitationService {
         throw new WorkspaceNotFoundException();
       });
 
-    if (workspace.owner !== sender) throw new WorkspaceUnauthroziedException();
+    if (workspace.owner.id !== sender.id)
+      throw new WorkspaceUnauthroziedException();
 
     const receiver = await this.userRepository
       .findOneOrFail({
