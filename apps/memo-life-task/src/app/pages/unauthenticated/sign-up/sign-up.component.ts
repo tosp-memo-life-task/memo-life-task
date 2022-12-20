@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpRequestBody } from '@memo-life-task/dtos';
+import { ISignUpRequestBody } from '@memo-life-task/interfaces';
 import { emailValidator } from '../../../common/validators/email.validator';
 import { MatchingValidator } from '../../../common/validators/matching.validator';
 import { SignUpService } from '../services/sign-up.service';
@@ -41,11 +42,12 @@ export class SignUpComponent {
   }
 
   async onSubmit() {
-    const signUpRequest: any = new Object();
-    signUpRequest.email = this.form.controls['email'].value;
-    signUpRequest.password = this.form.controls['password'].value;
-    signUpRequest.firstName = this.form.controls['firstName'].value;
-    signUpRequest.lastName = this.form.controls['lastName'].value;
+    const signUpRequest: ISignUpRequestBody = {
+      email: this.form.controls['email'].value,
+      password: this.form.controls['password'].value,
+      firstName: this.form.controls['firstName'].value,
+      lastName: this.form.controls['lastName'].value
+    };
 
     await this.signUpService.callSignUpApi(signUpRequest);
 

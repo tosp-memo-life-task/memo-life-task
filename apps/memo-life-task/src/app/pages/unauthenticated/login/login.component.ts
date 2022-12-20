@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ISignInRequestBody } from '@memo-life-task/interfaces';
 import { emailValidator } from '../../../common/validators/email.validator';
 import { SignInService } from '../services/sign-in.service';
 
@@ -24,9 +25,10 @@ export class LoginComponent {
   }
 
   async onSubmit() {
-    const signInRequest: any = new Object();
-    signInRequest.email = this.form.controls['email'].value;
-    signInRequest.password = this.form.controls['password'].value;
+    const signInRequest: ISignInRequestBody = {
+      email: this.form.controls['email'].value,
+      password: this.form.controls['password'].value
+    };
 
     await this.signInService.callSignInApi(signInRequest);
 

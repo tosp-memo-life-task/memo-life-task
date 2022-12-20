@@ -24,7 +24,9 @@
       </div>
       <div class="workspace-footer">
         <div class="workspace-modified text-h5 color-pale-white">
-          <nb-icon icon="clock"></nb-icon>{{ workspace.updatedAt }}
+          <nb-icon icon="clock"></nb-icon>
+          {{ workspace.updatedAt.toLocaleDateString() }}
+          {{ workspace.updatedAt.toLocaleTimeString() }}
         </div>
       </div>
     </div>
@@ -56,7 +58,9 @@
       </div>
       <div class="workspace-footer">
         <div class="workspace-modified text-h5 color-pale-white">
-          <nb-icon icon="clock"></nb-icon>{{ workspace.updatedAt }}
+          <nb-icon icon="clock"></nb-icon>
+          {{ workspace.updatedAt.toLocaleDateString() }}
+          {{ workspace.updatedAt.toLocaleTimeString() }}
         </div>
       </div>
     </div>

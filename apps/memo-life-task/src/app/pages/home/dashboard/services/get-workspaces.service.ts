@@ -11,6 +11,11 @@ export class GetWorkspacesService {
   async getWorkspacesApi(): Promise<GetWorkspacesResponseModel> {
     const response = await this.apiService.getWorkspaces();
 
+    response.workspaces = response.workspaces.map((workspace) => {
+      workspace.updatedAt = new Date(workspace.updatedAt);
+      return workspace;
+    });
+
     const responseModel = new GetWorkspacesResponseModel();
     responseModel.owned = response.workspaces.filter(
       (workspace) => workspace.isOwned

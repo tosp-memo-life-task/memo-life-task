@@ -5,9 +5,9 @@ import {
   SignInRequestBody,
   SignInResponse,
   SignUpRequestBody,
-  SignUpResponse,
-  WorkspaceResponse
+  SignUpResponse
 } from '@memo-life-task/dtos';
+import { IListWorkspacesResponse } from '@memo-life-task/interfaces';
 import { LocalStorageEnum } from '../enums/local-storage.enum';
 import { AppException } from '../exceptions/app-error.exception';
 import { BaseResponse } from '../models/base.response';
@@ -57,10 +57,8 @@ export class ApiService {
     return response;
   }
 
-  async getWorkspaces(): Promise<{ workspaces: WorkspaceResponse[] }> {
-    const response = await this.dataService.get<{
-      workspaces: WorkspaceResponse[];
-    }>(
+  async getWorkspaces(): Promise<IListWorkspacesResponse> {
+    const response = await this.dataService.get<IListWorkspacesResponse>(
       this.urlService.getBaseUrl() + '/v1/workspace',
       this.getHeadersWithToken()
     );
