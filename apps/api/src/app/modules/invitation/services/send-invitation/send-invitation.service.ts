@@ -14,6 +14,7 @@ import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions
 import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
 import { WorkspaceNotFoundException } from 'apps/api/src/app/common/exceptions/workspace-not-found.exception';
 import { WorkspaceUnauthroziedException } from 'apps/api/src/app/common/exceptions/workspace-unauthorized.exception';
+import { InvitationForbiddenException } from '../../../../common/exceptions/invitation-forbidden.exception';
 
 @Injectable()
 export class SendInvitationService {
@@ -27,6 +28,16 @@ export class SendInvitationService {
     body: SendInvitationRequestBody,
     validatedUser: ValidatedUserModel
   ): Promise<void> {
+    const isAlreadyInvited = await this.invitationRepository.findOne({
+      where: {
+        receiver: { email: body.email },
+        sender: { id: validatedUser.id },
+        workspace: { id: body.workspaceId }
+      }
+    });
+
+    if (isAlreadyInvited) throw new InvitationForbiddenException();
+
     const sender = await this.userRepository
       .findOneOrFail({
         where: { id: validatedUser.id }
@@ -37,7 +48,7 @@ export class SendInvitationService {
 
     const workspace = await this.workspaceRepository
       .findOneOrFail({
-        relations: { owner: true },
+        relations: { owner: true, users: true },
         where: { id: body.workspaceId }
       })
       .catch(() => {
@@ -54,6 +65,9 @@ export class SendInvitationService {
       .catch(() => {
         throw new UserNotFoundException();
       });
+
+    if (workspace.users.findIndex((u) => u.id === receiver.id) !== -1)
+      throw new InvitationForbiddenException();
 
     const invitation = new InvitationEntity();
     invitation.receiver = receiver;
