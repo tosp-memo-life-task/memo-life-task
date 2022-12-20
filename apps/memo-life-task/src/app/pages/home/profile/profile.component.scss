@@ -108,6 +108,7 @@
     border-radius: 50%;
     max-height: 70px;
     max-width: 70px;
+    position: relative;
 
     nb-icon {
       height: 100%;
@@ -121,14 +122,16 @@
     .profile-pic-pen {
       background-color: $medium_green;
       border-radius: 50%;
-      max-height: 70px;
-      max-width: 70px;
+      height: 24px;
+      width: 24px;
+      padding: 4px;
       position: absolute;
+      right: 0px;
+      bottom: 0px;
 
       nb-icon {
         height: 100%;
         width: 100%;
-        position: absolute;
 
         svg {
           height: 100%;
