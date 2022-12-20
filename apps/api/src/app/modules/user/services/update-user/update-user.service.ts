@@ -39,8 +39,8 @@ export class UpdateUserService {
     });
 
     const res = new UpdateUserResponse();
-    res.nameFirst = user.nameFirst;
-    res.nameLast = user.nameLast;
+    res.firstName = user.nameFirst;
+    res.lastName = user.nameLast;
 
     return res;
   }

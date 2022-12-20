@@ -1,6 +1,7 @@
 import {
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
@@ -16,12 +17,13 @@ export class InvitationEntity {
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @ManyToOne(() => UserEntity)
+  @ManyToOne(() => UserEntity, { nullable: false })
   receiver: UserEntity;
 
-  @ManyToOne(() => UserEntity)
+  @ManyToOne(() => UserEntity, { nullable: false })
+  @JoinColumn({ name: 'sender_id' })
   sender: UserEntity;
 
-  @ManyToOne(() => WorkspaceEntity)
+  @ManyToOne(() => WorkspaceEntity, { nullable: false })
   workspace: WorkspaceEntity;
 }

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@memo-life-task/dtos';
 import { NbIconLibraries } from '@nebular/theme';
 
 @Component({

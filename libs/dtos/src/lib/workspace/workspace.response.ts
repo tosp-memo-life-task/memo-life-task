@@ -12,10 +12,12 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
+import { IWorkspaceResponse } from '@memo-life-task/interfaces';
+
 import { TaskResponse } from '../task/task.response';
 import { UserResponse } from '../user/user.response';
 
-export class WorkspaceResponse {
+export class WorkspaceResponse implements IWorkspaceResponse {
   @ApiProperty()
   @IsDate()
   createdAt: Date;

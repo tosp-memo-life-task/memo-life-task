@@ -1,7 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
-export class ErrorResponse {
+import { IErrorResponse } from '@memo-life-task/interfaces';
+
+export class ErrorResponse implements IErrorResponse {
   @ApiProperty({
     description: 'Code name for exception.',
     example: 'exception.common.UNAUTHORIZED',

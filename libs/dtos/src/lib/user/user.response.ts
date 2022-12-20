@@ -7,7 +7,9 @@ import {
   IsString
 } from 'class-validator';
 
-export class UserResponse {
+import { IUserResponse } from '@memo-life-task/interfaces';
+
+export class UserResponse implements IUserResponse {
   @ApiProperty()
   @IsOptional()
   @IsString()

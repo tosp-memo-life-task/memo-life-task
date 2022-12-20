@@ -1,14 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class UpdateUserResponse {
+import { IUpdateUserResponse } from '@memo-life-task/interfaces';
+
+export class UpdateUserResponse implements IUpdateUserResponse {
   @ApiProperty({ type: String })
   @IsNotEmpty()
   @IsString()
-  nameFirst: string;
+  firstName: string;
 
   @ApiProperty({ type: String })
   @IsNotEmpty()
   @IsString()
-  nameLast: string;
+  lastName: string;
 }

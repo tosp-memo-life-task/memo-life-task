@@ -7,7 +7,9 @@ import {
   MinLength
 } from 'class-validator';
 
-export class SignInRequestBody {
+import { ISignInRequestBody } from '@memo-life-task/interfaces';
+
+export class SignInRequestBody implements ISignInRequestBody {
   @ApiProperty({ example: 'example@example.com', type: String, required: true })
   @IsEmail()
   email: string;
