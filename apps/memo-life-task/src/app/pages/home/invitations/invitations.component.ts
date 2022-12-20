@@ -5,6 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
 
+import { SharedWorkspaceModel } from '../models/shared-workspace.model';
+import { WorkspaceModel } from '../models/workspace.model';
+import { GetWorkspacesResponseModel } from '../models/get-workspaces.response.model';
+
 @Component({
   selector: 'tosp-memo-life-task-invitations',
   templateUrl: './invitations.component.html',
@@ -12,7 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class WorkspaceDetailsComponent implements OnInit {
   workspaceId: number;
-  workspaceDetails: WorkspaceDetailsModel;
+  workspacemODEL: WorkspaceModel;
   private routeSubscriber: Subscription;
 
   constructor(
@@ -63,7 +67,7 @@ export class WorkspaceDetailsComponent implements OnInit {
 
   modifyWorkspace() {
     if (this.workspaceDetails) {
-      this.dialogService.open(ModifyWorkspaceModalComponent, {
+      this.dialogService.open(WorkspaceDetailsComponent, {
         backdropClass: 'custom-modal-backdrop',
         dialogClass: 'custom-modal-dialog',
         context: {
@@ -76,7 +80,7 @@ export class WorkspaceDetailsComponent implements OnInit {
 
   createTask() {
     if (this.workspaceDetails) {
-      this.dialogService.open(CreateWorkspaceTaskComponent, {
+      this.dialogService.open(WorkspaceDetailsComponent, {
         backdropClass: 'custom-modal-backdrop',
         dialogClass: 'custom-modal-dialog',
         context: {
@@ -88,7 +92,7 @@ export class WorkspaceDetailsComponent implements OnInit {
 
   modifyWorkspaceEditors() {
     if (this.workspaceDetails) {
-      this.dialogService.open(ModifyWorkspaceEditorsModalComponent, {
+      this.dialogService.open(WorkspaceDetailsComponent, {
         backdropClass: 'custom-modal-backdrop',
         dialogClass: 'custom-modal-dialog',
         context: {
