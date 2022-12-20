@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { GetWorkspaceRequestParams } from '@memo-life-task/dtos';
 import { ApiService } from 'apps/memo-life-task/src/app/common/services/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SignInService {
+export class GetWorkspacesService {
   constructor(private apiService: ApiService) {}
 
-  async callSignInApi(request: GetWorkspaceRequestParams) {
-    const response = await this.apiService.getWorkspaces(request);
+  async getWorkspacesApi() {
+    const response = await this.apiService.getWorkspaces();
 
     console.log(response);
 

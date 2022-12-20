@@ -5,13 +5,14 @@ import { SharedWorkspaceModel } from '../models/shared-workspace.model';
 import { WorkspaceModel } from '../models/workspace.model';
 import { CreateWorkspaceModalComponent } from './create-workspace-modal/create-workspace-modal.component';
 import { CreateWorkspaceTaskComponent } from './create-workspace-task/create-workspace-task.component';
+import { GetWorkspacesService } from './services/get-workspaces.service';
 
 @Component({
   selector: 'tosp-memo-life-task-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   dummyData: WorkspaceModel[] = [
     new WorkspaceModel(
       '1',
@@ -69,7 +70,19 @@ export class DashboardComponent {
     )
   ];
 
-  constructor(private dialogService: NbDialogService, private router: Router) {}
+  constructor(
+    private dialogService: NbDialogService,
+    private router: Router,
+    private getWorkspacesService: GetWorkspacesService
+  ) {}
+
+  ngOnInit(): void {
+    this.getWorkspaces();
+  }
+
+  async getWorkspaces() {
+    await this.getWorkspacesService.getWorkspacesApi();
+  }
 
   createWorkspace() {
     this.dialogService.open(CreateWorkspaceModalComponent, {
