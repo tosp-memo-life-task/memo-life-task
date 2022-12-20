@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { SignUpRequestBody, SignUpResponse } from '@memo-life-task/dtos';
+import {
+  SignInRequestBody,
+  SignInResponse,
+  SignUpRequestBody,
+  SignUpResponse
+} from '@memo-life-task/dtos';
 import { LocalStorageEnum } from '../enums/local-storage.enum';
 import { AppException } from '../exceptions/app-error.exception';
 import { BaseResponse } from '../models/base.response';
@@ -34,6 +39,15 @@ export class ApiService {
   async signUp(request: SignUpRequestBody): Promise<SignUpResponse> {
     const response = await this.dataService.post<SignUpResponse>(
       this.urlService.getBaseUrl() + '/v1/auth/sign-up',
+      request,
+      this.urlService.getHeaders()
+    );
+    return response;
+  }
+
+  async signIn(request: SignInRequestBody): Promise<SignInResponse> {
+    const response = await this.dataService.post<SignInResponse>(
+      this.urlService.getBaseUrl() + '/v1/auth/sign-in',
       request,
       this.urlService.getHeaders()
     );

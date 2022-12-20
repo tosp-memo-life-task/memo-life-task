@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SignUpRequestBody, SignUpResponse } from '@memo-life-task/dtos';
+import { SignInRequestBody, SignInResponse } from '@memo-life-task/dtos';
 import { LocalStorageEnum } from '../../../common/enums/local-storage.enum';
 import { ApiService } from '../../../common/services/api.service';
 import { LocalStorageService } from '../../../common/services/local-storage.service';
@@ -7,14 +7,14 @@ import { LocalStorageService } from '../../../common/services/local-storage.serv
 @Injectable({
   providedIn: 'root'
 })
-export class SignUpService {
+export class SignInService {
   constructor(
     private apiService: ApiService,
     private localStorageService: LocalStorageService
   ) {}
 
-  async callSignUpApi(request: SignUpRequestBody) {
-    const response = await this.apiService.signUp(request);
+  async callSignInApi(request: SignInRequestBody) {
+    const response = await this.apiService.signIn(request);
 
     console.log(response);
 
@@ -23,7 +23,7 @@ export class SignUpService {
     return response;
   }
 
-  private setLocalStorageValuesFromLoginResponse(response: SignUpResponse) {
+  private setLocalStorageValuesFromLoginResponse(response: SignInResponse) {
     this.localStorageService.setString(
       LocalStorageEnum.ACCESS_TOKEN,
       response.accessToken

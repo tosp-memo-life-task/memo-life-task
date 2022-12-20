@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SignUpRequestBody } from '@memo-life-task/dtos';
 import { emailValidator } from '../../../common/validators/email.validator';
 import { MatchingValidator } from '../../../common/validators/matching.validator';
@@ -15,7 +16,8 @@ export class SignUpComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private signUpService: SignUpService
+    private signUpService: SignUpService,
+    private router: Router
   ) {
     this.form = this.formBuilder.group(
       {
@@ -47,7 +49,7 @@ export class SignUpComponent {
 
     await this.signUpService.callSignUpApi(signUpRequest);
 
-    console.log('todo');
+    this.router.navigate(['home']);
   }
 
   getErrorMessage(field: string) {
