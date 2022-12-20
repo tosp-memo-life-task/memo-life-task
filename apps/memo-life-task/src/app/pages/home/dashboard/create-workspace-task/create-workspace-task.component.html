@@ -29,9 +29,13 @@
     </mat-form-field>
 
     <mat-form-field appearance="standard" class="mt-2">
-      <mat-select [placeholder]="me?.name ?? ''" formControlName="assignee">
+      <mat-select
+        [placeholder]="me?.firstName ?? '' + me?.lastName"
+        formControlName="assignee"
+      >
         <mat-option *ngFor="let editor of editors" [value]="editor">
-          {{ editor.name }} {{ editor?.isMe ? '(Me)' : '' }}
+          {{ editor.firstName }} {{ editor.lastName }}
+          {{ editor?.isUser ? '(Me)' : '' }}
         </mat-option>
       </mat-select>
     </mat-form-field>

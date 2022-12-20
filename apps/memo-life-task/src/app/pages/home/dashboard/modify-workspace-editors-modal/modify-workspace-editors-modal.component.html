@@ -9,7 +9,8 @@
         *ngFor="let editor of editors"
       >
         <h6 class="text-h6 mb-0">
-          {{ editor.name }} {{ editor?.isMe ? '(Me)' : '' }}
+          {{ editor.firstName }} {{ editor.lastName }}
+          {{ editor?.isUser ? '(Me)' : '' }}
         </h6>
 
         <div
@@ -19,7 +20,7 @@
             nbButton
             status="primary"
             (click)="removeEditor(editor)"
-            *ngIf="!editor.isMe"
+            *ngIf="!editor.isUser"
             class="current-editor-action"
             matTooltip="remove"
           >

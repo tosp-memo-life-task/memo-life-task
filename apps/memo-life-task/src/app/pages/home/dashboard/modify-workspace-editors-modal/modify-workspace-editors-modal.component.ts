@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IUserResponse } from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
 import { emailValidator } from '../../../../common/validators/email.validator';
 import { EditorModel } from '../workspace-details/models/workspace-details.model';
@@ -11,10 +12,10 @@ import { EditorModel } from '../workspace-details/models/workspace-details.model
   styleUrls: ['./modify-workspace-editors-modal.component.scss']
 })
 export class ModifyWorkspaceEditorsModalComponent implements OnInit {
-  @Input() editors: EditorModel[];
+  @Input() editors: IUserResponse[];
   invitedEditors: string[];
   form: FormGroup = new FormGroup({});
-  me: EditorModel | undefined;
+  me: IUserResponse | undefined;
 
   constructor(
     private dialogRef: NbDialogRef<ModifyWorkspaceEditorsModalComponent>,
@@ -50,7 +51,7 @@ export class ModifyWorkspaceEditorsModalComponent implements OnInit {
     console.log('undoUserInvite');
   }
 
-  removeEditor(editor: EditorModel) {
+  removeEditor(editor: IUserResponse) {
     this.editors = this.editors.filter(
       (editorItem) => editorItem.id != editor.id
     );

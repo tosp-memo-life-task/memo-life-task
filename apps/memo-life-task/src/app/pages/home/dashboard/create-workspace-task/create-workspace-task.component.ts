@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IUserResponse } from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
 import {
@@ -14,9 +15,9 @@ import {
   styleUrls: ['./create-workspace-task.component.scss']
 })
 export class CreateWorkspaceTaskComponent implements OnInit {
-  @Input() editors: EditorModel[];
+  @Input() editors: IUserResponse[];
   form: FormGroup = new FormGroup({});
-  me: EditorModel | undefined;
+  me: IUserResponse | undefined;
 
   constructor(
     private dialogRef: NbDialogRef<CreateWorkspaceTaskComponent>,
@@ -25,7 +26,7 @@ export class CreateWorkspaceTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.me = this.editors.find((editor) => editor.isMe);
+    this.me = this.editors.find((editor) => editor.isUser);
 
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],

@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IGetWorkspaceResponse } from '@memo-life-task/interfaces';
 import { NbDialogService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
 import { CreateWorkspaceTaskComponent } from '../create-workspace-task/create-workspace-task.component';
 import { ModifyWorkspaceEditorsModalComponent } from '../modify-workspace-editors-modal/modify-workspace-editors-modal.component';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
+import { GetWorkspaceService } from '../services/get-workspace.service';
 import {
   EditorModel,
   PriorityEnum,
@@ -19,12 +21,13 @@ import {
 })
 export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   workspaceId: number;
-  workspaceDetails: WorkspaceDetailsModel;
+  workspaceDetails: IGetWorkspaceResponse;
   private routeSubscriber: Subscription;
 
   constructor(
     private route: ActivatedRoute,
-    private dialogService: NbDialogService
+    private dialogService: NbDialogService,
+    private getWorkspaceService: GetWorkspaceService
   ) {}
 
   ngOnInit() {
@@ -37,35 +40,14 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  getWorkSpaceDetails() {
-    this.workspaceDetails = new WorkspaceDetailsModel(
-      '1',
-      'Gyümölcs szedés',
-      'Alamdagsdh adv aedhs vsd aedhsadv aedhs vsdfhsadv aedhs Alamdagsdh dafheadfb',
-      '2020.10.21.',
-      [
-        new EditorModel('1', 'The King', true),
-        new EditorModel('2', 'Puzsér', false)
-      ],
-      [
-        new TaskModel(
-          '1',
-          'Alma szedés',
-          'Almát kell szedni, mit nem értesz?',
-          new EditorModel('2', 'Puzsér', false),
-          PriorityEnum.LOW,
-          '2020.10.21.'
-        ),
-        new TaskModel(
-          '2',
-          'Körte szedés',
-          'Körtét kell szedni, már megint mit nem értesz?',
-          new EditorModel('1', 'The King', true),
-          PriorityEnum.HIGH,
-          '2020.10.12.'
-        )
-      ]
+  async getWorkSpaceDetails() {
+    const response = await this.getWorkspaceService.getWorkspaceApi(
+      this.workspaceId
     );
+
+    console.log(response);
+
+    this.workspaceDetails = response;
   }
 
   modifyWorkspace() {
@@ -75,7 +57,7 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
         dialogClass: 'custom-modal-dialog',
         context: {
           title: this.workspaceDetails.title,
-          despc: this.workspaceDetails.descp
+          despc: this.workspaceDetails.description
         }
       });
     }
