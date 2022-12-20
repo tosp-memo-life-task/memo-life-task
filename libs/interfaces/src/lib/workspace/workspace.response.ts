@@ -1,4 +1,3 @@
-import { IInvitationResponse } from '../invitation/invitation.response';
 import { ITaskResponse } from '../task/task.response';
 import { IUserResponse } from '../user/user.response';
 
@@ -7,7 +6,7 @@ export interface IWorkspaceResponse {
   description: string;
   editors: Array<IUserResponse>;
   id: number;
-  invitations: Array<IInvitationResponse>;
+  invitations: Array<string>;
   isOwned: boolean;
   owner: IUserResponse;
   tasks: Array<ITaskResponse>;
