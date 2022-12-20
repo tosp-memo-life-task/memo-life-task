@@ -25,5 +25,6 @@ export class InvitationEntity {
   sender: UserEntity;
 
   @ManyToOne(() => WorkspaceEntity, { nullable: false })
+  @JoinColumn({ name: 'workspace_id' })
   workspace: WorkspaceEntity;
 }

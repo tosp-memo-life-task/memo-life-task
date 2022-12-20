@@ -9,7 +9,7 @@ import { UserEntity } from '../../../../database/entities/user.entity';
 
 import { SignUpRequestBody, SignUpResponse } from '@memo-life-task/dtos';
 
-import { UserAlreadySignedUpException } from 'apps/api/src/app/common/exceptions/user-already-signed-up.exception';
+import { UserAlreadySignedUpException } from '../../../../common/exceptions/user-already-signed-up.exception';
 
 @Injectable()
 export class SignUpService {

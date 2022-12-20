@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ISignInRequestBody } from '@memo-life-task/interfaces';
 import { emailValidator } from '../../../common/validators/email.validator';
+import { SignInService } from '../services/sign-in.service';
 
 @Component({
   selector: 'tosp-memo-life-task-login',
@@ -11,7 +13,11 @@ import { emailValidator } from '../../../common/validators/email.validator';
 export class LoginComponent {
   form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private signInService: SignInService
+  ) {
     this.form = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, emailValidator()])],
       password: ['', Validators.compose([Validators.required])]
@@ -19,6 +25,13 @@ export class LoginComponent {
   }
 
   async onSubmit() {
+    const signInRequest: ISignInRequestBody = {
+      email: this.form.controls['email'].value,
+      password: this.form.controls['password'].value
+    };
+
+    await this.signInService.callSignInApi(signInRequest);
+
     this.router.navigate(['home']);
   }
 

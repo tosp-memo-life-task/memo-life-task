@@ -31,7 +31,7 @@
       />
       <img matPrefix src="assets/person.icon.svg" class="input-prefix-icon" />
       <mat-error class="header-6" *ngIf="form.invalid">{{
-        getErrorMessage('email')
+        getErrorMessage('firstName')
       }}</mat-error>
     </mat-form-field>
 
@@ -44,7 +44,7 @@
       />
       <img matPrefix src="assets/mail.icon.svg" class="input-prefix-icon" />
       <mat-error class="header-6" *ngIf="form.invalid">{{
-        getErrorMessage('email')
+        getErrorMessage('lastName')
       }}</mat-error>
     </mat-form-field>
 
@@ -65,14 +65,14 @@
     <mat-label class="header-5">Password Again</mat-label>
     <mat-form-field appearance="standard">
       <input
-        formControlName="password"
+        formControlName="passwordAgain"
         matInput
         placeholder="Repeat your password"
         type="password"
       />
       <img matPrefix src="assets/lock.icon.svg" class="input-prefix-icon" />
       <mat-error class="header-6" *ngIf="form.invalid">{{
-        getErrorMessage('password')
+        getErrorMessage('passwordAgain')
       }}</mat-error>
     </mat-form-field>
   </form>

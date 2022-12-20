@@ -1,19 +1,19 @@
 import { Injectable } from '@nestjs/common';
 
-import { InvitationRepository } from 'apps/api/src/app/database/repositories/invitation.repository';
+import { InvitationRepository } from '../../../../database/repositories/invitation.repository';
 
-import { InvitationEntity } from 'apps/api/src/app/database/entities/invitation.entity';
-import { UserRepository } from 'apps/api/src/app/database/repositories/user.repository';
-import { WorkspaceRepository } from 'apps/api/src/app/database/repositories/workspace.repository';
+import { InvitationEntity } from '../../../../database/entities/invitation.entity';
+import { UserRepository } from '../../../../database/repositories/user.repository';
+import { WorkspaceRepository } from '../../../../database/repositories/workspace.repository';
 
-import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
+import { ValidatedUserModel } from '../../../../common/models/validated-user.model';
 
 import { SendInvitationRequestBody } from '@memo-life-task/dtos';
 
-import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions/common-database-error.exception';
-import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
-import { WorkspaceNotFoundException } from 'apps/api/src/app/common/exceptions/workspace-not-found.exception';
-import { WorkspaceUnauthroziedException } from 'apps/api/src/app/common/exceptions/workspace-unauthorized.exception';
+import { CommonDatabaseErrorException } from '../../../../common/exceptions/common-database-error.exception';
+import { UserNotFoundException } from '../../../../common/exceptions/user-not-found.exception';
+import { WorkspaceNotFoundException } from '../../../../common/exceptions/workspace-not-found.exception';
+import { WorkspaceUnauthroziedException } from '../../../../common/exceptions/workspace-unauthorized.exception';
 
 @Injectable()
 export class SendInvitationService {
@@ -44,11 +44,12 @@ export class SendInvitationService {
         throw new WorkspaceNotFoundException();
       });
 
-    if (workspace.owner !== sender) throw new WorkspaceUnauthroziedException();
+    if (workspace.owner.id !== sender.id)
+      throw new WorkspaceUnauthroziedException();
 
     const receiver = await this.userRepository
       .findOneOrFail({
-        where: { id: body.receiverId }
+        where: { email: body.email }
       })
       .catch(() => {
         throw new UserNotFoundException();

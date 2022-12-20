@@ -1,6 +1,7 @@
 import { OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import {
   Component,
+  DoCheck,
   Input,
   OnInit,
   TemplateRef,
@@ -17,7 +18,7 @@ import { OverlayService } from './progress-spinner-overlay.service';
   templateUrl: './progress-spinner.component.html',
   styleUrls: ['./progress-spinner.component.scss']
 })
-export class ProgressSpinnerComponent implements OnInit {
+export class ProgressSpinnerComponent implements OnInit, DoCheck {
   @Input() diameter?: number = 100;
   mode: ProgressSpinnerMode = 'indeterminate';
   @Input() strokeWidth?: number;

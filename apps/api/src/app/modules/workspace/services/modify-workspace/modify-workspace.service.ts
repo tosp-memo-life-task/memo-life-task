@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
-import { WorkspaceRepository } from 'apps/api/src/app/database/repositories/workspace.repository';
+import { WorkspaceRepository } from '../../../../database/repositories/workspace.repository';
 
-import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
+import { ValidatedUserModel } from '../../../../common/models/validated-user.model';
 
 import {
   ModifyWorkspaceRequestBody,
@@ -12,9 +12,9 @@ import {
   UserResponse
 } from '@memo-life-task/dtos';
 
-import { WorkspaceNotFoundException } from 'apps/api/src/app/common/exceptions/workspace-not-found.exception';
-import { WorkspaceUnauthroziedException } from 'apps/api/src/app/common/exceptions/workspace-unauthorized.exception';
-import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions/common-database-error.exception';
+import { WorkspaceNotFoundException } from '../../../../common/exceptions/workspace-not-found.exception';
+import { WorkspaceUnauthroziedException } from '../../../../common/exceptions/workspace-unauthorized.exception';
+import { CommonDatabaseErrorException } from '../../../../common/exceptions/common-database-error.exception';
 
 @Injectable()
 export class ModifyWorkspaceService {

@@ -11,6 +11,7 @@ import { SendInvitationService } from './services/send-invitation/send-invitatio
 import { InvitationRepository } from '../../database/repositories/invitation.repository';
 import { UserRepository } from '../../database/repositories/user.repository';
 import { WorkspaceRepository } from '../../database/repositories/workspace.repository';
+import { ListInvitationsService } from './services/list-invitations/list-invitations.service';
 
 @Module({
   controllers: [InvitationController],
@@ -25,7 +26,8 @@ import { WorkspaceRepository } from '../../database/repositories/workspace.repos
     AcceptInvitationService,
     CancelInvitationService,
     RevokeInvitationService,
-    SendInvitationService
+    SendInvitationService,
+    ListInvitationsService
   ]
 })
 export class InvitationModule {}

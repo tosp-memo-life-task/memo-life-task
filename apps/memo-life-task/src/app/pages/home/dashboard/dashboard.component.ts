@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { WorkspaceResponse } from '@memo-life-task/dtos';
 import { NbDialogService } from '@nebular/theme';
 import { SharedWorkspaceModel } from '../models/shared-workspace.model';
 import { WorkspaceModel } from '../models/workspace.model';
 import { CreateWorkspaceModalComponent } from './create-workspace-modal/create-workspace-modal.component';
 import { CreateWorkspaceTaskComponent } from './create-workspace-task/create-workspace-task.component';
+import { GetWorkspacesService } from './services/get-workspaces.service';
 
 @Component({
   selector: 'tosp-memo-life-task-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  ownedWorkspaces: WorkspaceResponse[];
+  sharedWithMe: WorkspaceResponse[];
   dummyData: WorkspaceModel[] = [
     new WorkspaceModel(
       '1',
@@ -69,7 +73,22 @@ export class DashboardComponent {
     )
   ];
 
-  constructor(private dialogService: NbDialogService, private router: Router) {}
+  constructor(
+    private dialogService: NbDialogService,
+    private router: Router,
+    private getWorkspacesService: GetWorkspacesService
+  ) {}
+
+  ngOnInit(): void {
+    this.getWorkspaces();
+  }
+
+  async getWorkspaces() {
+    const response = await this.getWorkspacesService.getWorkspacesApi();
+
+    this.ownedWorkspaces = response.owned;
+    this.sharedWithMe = response.sharedWithMe;
+  }
 
   createWorkspace() {
     this.dialogService.open(CreateWorkspaceModalComponent, {
@@ -78,7 +97,7 @@ export class DashboardComponent {
     });
   }
 
-  viewWorkspace(id: string) {
+  viewWorkspace(id: number) {
     this.router.navigate(['home/workspace', id]);
   }
 }

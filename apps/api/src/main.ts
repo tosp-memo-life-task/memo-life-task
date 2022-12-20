@@ -31,6 +31,7 @@ async function bootstrap() {
   app.use(compression());
   app.use(json({ limit: '1mb' }));
   app.use(urlencoded({ extended: true, limit: '1mb' }));
+  app.enableCors();
 
   const options = new DocumentBuilder()
     .setTitle('Memo Life Task')

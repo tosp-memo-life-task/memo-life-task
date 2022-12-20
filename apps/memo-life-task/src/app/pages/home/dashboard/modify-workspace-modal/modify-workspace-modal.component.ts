@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NbDialogRef } from '@nebular/theme';
 
 @Component({
-  selector: 'modify-workspace-modal',
+  selector: 'tosp-memo-life-task-modify-workspace-modal',
   templateUrl: './modify-workspace-modal.component.html',
   styleUrls: ['./modify-workspace-modal.component.scss']
 })

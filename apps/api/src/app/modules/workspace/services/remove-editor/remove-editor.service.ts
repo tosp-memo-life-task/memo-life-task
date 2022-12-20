@@ -1,19 +1,19 @@
 import { Injectable } from '@nestjs/common';
 
-import { WorkspaceRepository } from 'apps/api/src/app/database/repositories/workspace.repository';
+import { WorkspaceRepository } from '../../../../database/repositories/workspace.repository';
 
 import {
   RemoveEditorRequestBody,
   RemoveEditorRequestParams
 } from '@memo-life-task/dtos';
 
-import { ValidatedUserModel } from 'apps/api/src/app/common/models/validated-user.model';
+import { ValidatedUserModel } from '../../../../common/models/validated-user.model';
 
-import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions/common-database-error.exception';
-import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
-import { WorkspaceForbiddenException } from 'apps/api/src/app/common/exceptions/workspace-forbidden.exception';
-import { WorkspaceNotFoundException } from 'apps/api/src/app/common/exceptions/workspace-not-found.exception';
-import { WorkspaceUnauthroziedException } from 'apps/api/src/app/common/exceptions/workspace-unauthorized.exception';
+import { CommonDatabaseErrorException } from '../../../../common/exceptions/common-database-error.exception';
+import { UserNotFoundException } from '../../../../common/exceptions/user-not-found.exception';
+import { WorkspaceForbiddenException } from '../../../../common/exceptions/workspace-forbidden.exception';
+import { WorkspaceNotFoundException } from '../../../../common/exceptions/workspace-not-found.exception';
+import { WorkspaceUnauthroziedException } from '../../../../common/exceptions/workspace-unauthorized.exception';
 
 @Injectable()
 export class RemoveEditorService {
