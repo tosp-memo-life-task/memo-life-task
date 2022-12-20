@@ -9,6 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
+import { InvitationEntity } from './invitation.entity';
 
 import { TaskEntity } from './task.entity';
 import { UserEntity } from './user.entity';
@@ -33,12 +34,17 @@ export class WorkspaceEntity {
   @ManyToOne(() => UserEntity)
   owner: UserEntity;
 
+  @OneToMany(() => InvitationEntity, (invitation) => invitation.workspace, {
+    cascade: ['remove']
+  })
+  invitations: Array<InvitationEntity>;
+
   @OneToMany(() => TaskEntity, (task) => task.workspace, {
     cascade: ['remove']
   })
-  tasks: TaskEntity[];
+  tasks: Array<TaskEntity>;
 
   @ManyToMany(() => UserEntity, (user) => user.workspaces)
   @JoinTable({ name: 'workspace_users_table' })
-  users: UserEntity[];
+  users: Array<UserEntity>;
 }
