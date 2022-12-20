@@ -9,7 +9,8 @@ import {
 } from '@memo-life-task/dtos';
 import {
   IGetWorkspaceResponse,
-  IListWorkspacesResponse
+  IListWorkspacesResponse,
+  ISendInvitationRequestBody
 } from '@memo-life-task/interfaces';
 import { LocalStorageEnum } from '../enums/local-storage.enum';
 import { AppException } from '../exceptions/app-error.exception';
@@ -82,6 +83,15 @@ export class ApiService {
   async getWorkspace(workspaceId: number): Promise<IGetWorkspaceResponse> {
     const response = await this.dataService.get<IGetWorkspaceResponse>(
       this.urlService.getBaseUrl() + '/v1/workspace/' + workspaceId,
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async sendInvite(request: ISendInvitationRequestBody) {
+    const response = await this.dataService.post(
+      this.urlService.getBaseUrl() + '/v1/invitaition',
+      request,
       this.getHeadersWithToken()
     );
     return response;

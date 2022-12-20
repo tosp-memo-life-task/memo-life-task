@@ -1,6 +1,6 @@
-import { WorkspaceResponse } from '@memo-life-task/dtos';
+import { IWorkspaceResponse } from '@memo-life-task/interfaces';
 
 export class GetWorkspacesResponseModel {
-  owned: WorkspaceResponse[];
-  sharedWithMe: WorkspaceResponse[];
+  owned: IWorkspaceResponse[];
+  sharedWithMe: IWorkspaceResponse[];
 }
