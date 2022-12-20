@@ -131,4 +131,8 @@
     width: 28px;
     height: 28px;
   }
+
+  .mat-input-element::placeholder {
+    color: $black !important;
+  }
 }

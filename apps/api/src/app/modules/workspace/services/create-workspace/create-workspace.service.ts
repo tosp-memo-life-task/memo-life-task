@@ -54,7 +54,7 @@ export class CreateWorkspaceService {
     const res = new CreateWorkspaceResponse();
     res.createdAt = workspace.createdAt;
     res.description = workspace.description;
-    res.editors.push(editor);
+    res.editors = new Array<UserResponse>(editor);
     res.id = workspace.id;
     res.isOwned = true;
     res.title = workspace.title;
