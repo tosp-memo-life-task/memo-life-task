@@ -19,6 +19,7 @@ export class ListInvitationsService {
     validatedUser: ValidatedUserModel
   ): Promise<ListInvitationsResponse> {
     const [invitations, count] = await this.invitationRepository.findAndCount({
+      relations: { sender: true, workspace: true },
       where: { receiver: { id: validatedUser.id } }
     });
 

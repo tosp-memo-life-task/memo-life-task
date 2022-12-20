@@ -36,7 +36,10 @@ export class AcceptInvitationService {
       throw new InvitationUnauthorizedException();
 
     const workspace = await this.workspaceRepository
-      .findOneOrFail({ where: { id: invitation.workspace.id } })
+      .findOneOrFail({
+        relations: { users: true },
+        where: { id: invitation.workspace.id }
+      })
       .catch(() => {
         throw new WorkspaceNotFoundException();
       });
