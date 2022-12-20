@@ -118,5 +118,23 @@
         width: 100%;
       }
     }
+    .profile-pic-pen {
+      background-color: $medium_green;
+      border-radius: 50%;
+      max-height: 70px;
+      max-width: 70px;
+      position: absolute;
+
+      nb-icon {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
   }
 }
