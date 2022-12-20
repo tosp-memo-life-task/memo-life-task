@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
+  GetWorkspaceRequestParams,
+  GetWorkspaceResponse,
   SignInRequestBody,
   SignInResponse,
   SignUpRequestBody,
@@ -48,6 +50,17 @@ export class ApiService {
   async signIn(request: SignInRequestBody): Promise<SignInResponse> {
     const response = await this.dataService.post<SignInResponse>(
       this.urlService.getBaseUrl() + '/v1/auth/sign-in',
+      request,
+      this.urlService.getHeaders()
+    );
+    return response;
+  }
+
+  async getWorkspaces(
+    request: GetWorkspaceRequestParams
+  ): Promise<GetWorkspaceResponse> {
+    const response = await this.dataService.post<GetWorkspaceResponse>(
+      this.urlService.getBaseUrl() + '/v1/',
       request,
       this.urlService.getHeaders()
     );
