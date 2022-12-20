@@ -2,7 +2,6 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "paths": { "@memo-life-task/dtos": ["../../../libs/dtos/src/index.ts"] },
     "types": []
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
