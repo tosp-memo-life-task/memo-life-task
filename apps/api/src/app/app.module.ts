@@ -16,6 +16,7 @@ import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
 import { BadRequestExceptionFilter } from './common/filters/bad-request-exception.filter';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { UnauthorizedExceptionFilter } from './common/filters/unauthorized-exception.filter';
+import { InvitationModule } from './modules/invitation/invitation.module';
 
 @Module({
   controllers: [],
@@ -44,7 +45,8 @@ import { UnauthorizedExceptionFilter } from './common/filters/unauthorized-excep
       }
     }),
     UserModule,
-    WorkspaceModule
+    WorkspaceModule,
+    InvitationModule
   ],
   providers: [
     {

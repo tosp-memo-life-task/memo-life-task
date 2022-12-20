@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@memo-life-task/dtos": ["libs/dtos/src/index.ts"],
-      "@memo-life-task/enums": ["libs/enums/src/index.ts"]
+      "@memo-life-task/enums": ["libs/enums/src/index.ts"],
+      "@memo-life-task/interfaces": ["libs/interfaces/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

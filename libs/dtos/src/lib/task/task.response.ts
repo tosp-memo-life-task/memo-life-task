@@ -8,11 +8,13 @@ import {
   IsString
 } from 'class-validator';
 
+import { ITaskResponse } from '@memo-life-task/interfaces';
+
 import { UserResponse } from '../user/user.response';
 
 import { TaskPriorityEnum, TaskStatusEnum } from '@memo-life-task/enums';
 
-export class TaskResponse {
+export class TaskResponse implements ITaskResponse {
   @ApiProperty()
   @Type(() => UserResponse)
   assignee: UserResponse;

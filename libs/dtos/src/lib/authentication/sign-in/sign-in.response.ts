@@ -9,7 +9,9 @@ import {
   MinLength
 } from 'class-validator';
 
-export class SignInResponse {
+import { ISignInResponse } from '@memo-life-task/interfaces';
+
+export class SignInResponse implements ISignInResponse {
   @ApiProperty({
     description: 'Id of the user.',
     examples: [1, 2, 3],
