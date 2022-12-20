@@ -1,9 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IUserResponse } from '@memo-life-task/interfaces';
+import {
+  IInvitationResponse,
+  ISendInvitationRequestBody,
+  IUserResponse
+} from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
 import { emailValidator } from '../../../../common/validators/email.validator';
+import { SendInvitaitionService } from '../services/send-invitation.service';
 import { EditorModel } from '../workspace-details/models/workspace-details.model';
 
 @Component({
@@ -13,41 +18,44 @@ import { EditorModel } from '../workspace-details/models/workspace-details.model
 })
 export class ModifyWorkspaceEditorsModalComponent implements OnInit {
   @Input() editors: IUserResponse[];
-  invitedEditors: string[];
+  @Input() invitations: IInvitationResponse[];
+  @Input() workspaceId: number;
   form: FormGroup = new FormGroup({});
   me: IUserResponse | undefined;
 
   constructor(
     private dialogRef: NbDialogRef<ModifyWorkspaceEditorsModalComponent>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private sendInvitaitionService: SendInvitaitionService
   ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, emailValidator()])]
     });
-
-    this.getPendingInvitations();
   }
 
-  getPendingInvitations() {
-    this.invitedEditors = ['alma1234@alma.com', 'alma1234456@alma.com'];
-  }
-
-  inviteUser() {
+  async inviteUser() {
     const email = this.form.controls['email'].value;
+
+    const request: ISendInvitationRequestBody = {
+      email: email,
+      workspaceId: this.workspaceId
+    };
+
+    await this.sendInvitaitionService.sendInvitaitionApi(request);
 
     console.log(email);
 
-    this.invitedEditors.push(email);
+    /*     this.invitedEditors.push(email);
     this.form.controls['email'].reset();
-    console.log('invite user');
+    console.log('invite user'); */
   }
 
   undoUserInvite(email: string) {
-    this.invitedEditors = this.invitedEditors.filter(
+    /*     this.invitedEditors = this.invitedEditors.filter(
       (invitedEmail) => invitedEmail != email
-    );
+    ); */
     console.log('undoUserInvite');
   }
 

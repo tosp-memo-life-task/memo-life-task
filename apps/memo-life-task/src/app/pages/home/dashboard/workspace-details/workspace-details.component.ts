@@ -81,7 +81,9 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
         backdropClass: 'custom-modal-backdrop',
         dialogClass: 'custom-modal-dialog',
         context: {
-          editors: this.workspaceDetails.editors
+          editors: this.workspaceDetails.editors,
+          workspaceId: this.workspaceId,
+          invitations: this.workspaceDetails.invitations
         }
       });
     }
