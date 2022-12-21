@@ -49,6 +49,6 @@ export class UserEntity {
   @OneToMany(() => TaskEntity, (task) => task.assignee)
   tasks: Array<TaskEntity>;
 
-  @ManyToMany(() => WorkspaceEntity, (workspace) => workspace.users)
+  @ManyToMany(() => WorkspaceEntity, (workspace) => workspace.editors)
   workspaces: Array<WorkspaceEntity>;
 }

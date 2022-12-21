@@ -46,5 +46,5 @@ export class WorkspaceEntity {
 
   @ManyToMany(() => UserEntity, (user) => user.workspaces)
   @JoinTable({ name: 'workspace_users_table' })
-  users: Array<UserEntity>;
+  editors: Array<UserEntity>;
 }

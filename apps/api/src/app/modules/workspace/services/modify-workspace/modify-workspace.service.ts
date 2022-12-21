@@ -27,7 +27,7 @@ export class ModifyWorkspaceService {
   ): Promise<ModifyWorkspaceResponse> {
     let workspace = await this.workspaceRepository
       .findOneOrFail({
-        relations: { owner: true, tasks: { assignee: true }, users: true },
+        relations: { owner: true, tasks: { assignee: true }, editors: true },
         where: { id: params.id }
       })
       .catch(() => {
@@ -44,7 +44,7 @@ export class ModifyWorkspaceService {
       throw new CommonDatabaseErrorException(err);
     });
 
-    const editors = workspace.users.map((e) => {
+    const editors = workspace.editors.map((e) => {
       const editor = new UserResponse();
       editor.email = e.email;
       editor.id = e.id;
