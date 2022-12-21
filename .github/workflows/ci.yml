@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
       - run: npm ci
       - run: npx nx workspace-lint
@@ -21,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - run: npm ci
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1.3
@@ -37,6 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
       - run: npm ci
       - name: Install Railway
