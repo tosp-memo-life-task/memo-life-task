@@ -17,6 +17,7 @@ import {
 import { NbDialogService } from '@nebular/theme';
 import { AcceptInvitaitionService } from '../services/accept-invitation.service';
 import { DeclineInvitaitionService } from '../services/decline-invitation.service';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'tosp-memo-life-task-invitations-table',
@@ -25,6 +26,7 @@ import { DeclineInvitaitionService } from '../services/decline-invitation.servic
 })
 export class InvitationsTableComponent implements OnInit, OnChanges {
   @Input() invitationsResponse: IListInvitationsResponse;
+  @Output() invitationChanged: EventEmitter<any> = new EventEmitter();
 
   displayedColumns: string[] = ['name', 'user', 'action'];
   dataSource: MatTableDataSource<IInvitationResponse>;
@@ -48,12 +50,17 @@ export class InvitationsTableComponent implements OnInit, OnChanges {
     );
   }
 
+  emitEvent() {
+    this.invitationChanged.emit();
+  }
+
   async acceptInvitation(invitation: IInvitationResponse) {
     const request: IAcceptInvitationRequestParams = {
       id: invitation.id
     };
 
     await this.acceptInvitaitionService.acceptInvitaitionApi(request);
+    this.emitEvent();
   }
 
   async declineInvitation(invitation: IInvitationResponse) {
@@ -64,5 +71,6 @@ export class InvitationsTableComponent implements OnInit, OnChanges {
     console.log(request);
 
     await this.declineInvitaitionService.declineInvitaitionApi(request);
+    this.emitEvent();
   }
 }
