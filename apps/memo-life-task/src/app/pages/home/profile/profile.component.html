@@ -1,1 +1,48 @@
-<p>profile works!</p>
+<div class="d-flex flex-column align-items-start gap-3">
+  <h2 class="header-2 mb-0 mx-1">Profile</h2>
+  <h3 class="header-3 mb-0 mx-1">Modify details</h3>
+
+  <form
+    class="d-flex flex-column gap-3"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="d-flex flex-column align-items-start">
+      <div
+        class="profile-pic p-2 d-flex align-items-center justify-content-center"
+      >
+        <nb-icon icon="profile" pack="custom-icons"></nb-icon>
+        <div class="profile-pic-pen d-flex">
+          <nb-icon icon="edit" pack="custom-icons"></nb-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column">
+      <mat-label class="header-5">First Name</mat-label>
+      <mat-form-field appearance="standard" class="mb-2 color-black">
+        <input
+          formControlName="firstName"
+          matInput
+          placeholder="Type your first name"
+        />
+        <img matPrefix src="assets/person.icon.svg" class="input-prefix-icon" />
+      </mat-form-field>
+
+      <mat-label class="header-5">Last Name</mat-label>
+      <mat-form-field appearance="standard" class="mb-2">
+        <input
+          formControlName="lastName"
+          matInput
+          placeholder="Type your last name"
+        />
+        <img matPrefix src="assets/person.icon.svg" class="input-prefix-icon" />
+      </mat-form-field>
+    </div>
+  </form>
+
+  <button class="button-custom" mat-flat-button type="submit">
+    <!--image with the user picture-->
+    Save changes
+  </button>
+</div>
