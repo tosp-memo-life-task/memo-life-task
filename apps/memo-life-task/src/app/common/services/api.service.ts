@@ -17,6 +17,8 @@ import {
   IListWorkspacesResponse,
   IModifyWorkspaceRequestBody,
   IModifyWorkspaceRequestParams,
+  IRemoveEditorRequestBody,
+  IRemoveEditorRequestParams,
   IRevokeInvitationRequestBody,
   ISendInvitationRequestBody
 } from '@memo-life-task/interfaces';
@@ -176,6 +178,21 @@ export class ApiService {
         request.id +
         '/decline',
       {},
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async removeEditor(
+    requestParams: IRemoveEditorRequestParams,
+    requestBody: IRemoveEditorRequestBody
+  ) {
+    const response = await this.dataService.patch(
+      this.urlService.getBaseUrl() +
+        '/v1/workspace/' +
+        requestParams.id +
+        '/remove-editor',
+      requestBody,
       this.getHeadersWithToken()
     );
     return response;

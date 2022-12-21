@@ -61,6 +61,8 @@ export class InvitationsTableComponent implements OnInit, OnChanges {
       id: invitation.id
     };
 
+    console.log(request);
+
     await this.declineInvitaitionService.declineInvitaitionApi(request);
   }
 }

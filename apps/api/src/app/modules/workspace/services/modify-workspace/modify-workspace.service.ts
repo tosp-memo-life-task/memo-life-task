@@ -27,7 +27,11 @@ export class ModifyWorkspaceService {
   ): Promise<ModifyWorkspaceResponse> {
     let workspace = await this.workspaceRepository
       .findOneOrFail({
-        relations: { owner: true, tasks: { assignee: true }, editors: true },
+        relations: {
+          owner: true,
+          tasks: { assignee: true, workspace: true },
+          editors: true
+        },
         where: { id: params.id }
       })
       .catch(() => {

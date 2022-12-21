@@ -18,10 +18,17 @@ export class DeclineInvitationService {
     validatedUser: ValidatedUserModel
   ): Promise<void> {
     const invitation = await this.invitationRepository
-      .findOneOrFail({ where: { id: params.id } })
+      .findOneOrFail({
+        relations: {
+          receiver: true
+        },
+        where: { id: params.id }
+      })
       .catch(() => {
         throw new InvitationNotFoundException();
       });
+
+    console.log(invitation);
 
     if (invitation.receiver.id !== validatedUser.id)
       throw new InvitationUnauthorizedException();

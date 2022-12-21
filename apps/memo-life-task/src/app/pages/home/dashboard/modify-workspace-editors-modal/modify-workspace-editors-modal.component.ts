@@ -3,12 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   IInvitationResponse,
+  IRemoveEditorRequestBody,
+  IRemoveEditorRequestParams,
   IRevokeInvitationRequestBody,
   ISendInvitationRequestBody,
   IUserResponse
 } from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
 import { emailValidator } from '../../../../common/validators/email.validator';
+import { RemoveEditorService } from '../services/remove-editor.service';
 import { RevokeInvitaitionService } from '../services/revoke-invitation.service';
 import { SendInvitaitionService } from '../services/send-invitation.service';
 import { EditorModel } from '../workspace-details/models/workspace-details.model';
@@ -29,7 +32,8 @@ export class ModifyWorkspaceEditorsModalComponent implements OnInit {
     private dialogRef: NbDialogRef<ModifyWorkspaceEditorsModalComponent>,
     private formBuilder: FormBuilder,
     private sendInvitaitionService: SendInvitaitionService,
-    private revokeInvitaitionService: RevokeInvitaitionService
+    private revokeInvitaitionService: RevokeInvitaitionService,
+    private removeEditorService: RemoveEditorService
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +72,16 @@ export class ModifyWorkspaceEditorsModalComponent implements OnInit {
     console.log('revokeUserInvite');
   }
 
-  removeEditor(editor: IUserResponse) {
+  async removeEditor(editor: IUserResponse) {
+    const requestParams: IRemoveEditorRequestParams = {
+      id: this.workspaceId
+    };
+    const requestBody: IRemoveEditorRequestBody = {
+      id: editor.id
+    };
+
+    await this.removeEditorService.removeEditorApi(requestParams, requestBody);
+
     this.editors = this.editors.filter(
       (editorItem) => editorItem.id != editor.id
     );
