@@ -23,7 +23,7 @@ export class UrlService {
       case 'local':
         return 'http://localhost:3000/api';
       case 'prod':
-        return 'http://localhost:3000/api';
+        return 'httpS://memo-life-task-production.up.railway.app/api';
       default:
         return 'http://localhost:3000/api';
     }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { IGetProfileResponse } from '@memo-life-task/interfaces';
 import { NbMenuBag, NbMenuItem, NbMenuService } from '@nebular/theme';
+import { GetUserService } from './profile/services/get-user.service';
 
 @Component({
   selector: 'tosp-memo-life-task-home',
@@ -34,12 +36,32 @@ export class HomeComponent {
     }
   ];
 
-  constructor(private nbMenu: NbMenuService, private router: Router) {
+  user: IGetProfileResponse;
+  ready: boolean = false;
+
+  constructor(
+    private nbMenu: NbMenuService,
+    private router: Router,
+    private getUserService: GetUserService
+  ) {
     this.nbMenu.onItemClick().subscribe((value: NbMenuBag) => {
       if (value.item.data) {
         this.logout();
       }
     });
+
+    this.getUser();
+
+    setInterval(() => {
+      this.getUser();
+    }, 2000);
+  }
+
+  async getUser() {
+    const response = await this.getUserService.getUserApi();
+    this.user = response;
+
+    this.ready = true;
   }
 
   logout() {

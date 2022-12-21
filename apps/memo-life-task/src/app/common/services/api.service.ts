@@ -12,6 +12,7 @@ import {
   ICreateTaskRequestBody,
   IDeclineInvitationRequestParams,
   IDeleteWorkspaceRequestParams,
+  IGetProfileResponse,
   IGetWorkspaceResponse,
   IListInvitationsResponse,
   IListWorkspacesResponse,
@@ -217,6 +218,14 @@ export class ApiService {
     const response = await this.dataService.patch(
       this.urlService.getBaseUrl() + '/v1/user',
       request,
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async getUser(): Promise<IGetProfileResponse> {
+    const response = await this.dataService.get<IGetProfileResponse>(
+      this.urlService.getBaseUrl() + '/v1/user',
       this.getHeadersWithToken()
     );
     return response;

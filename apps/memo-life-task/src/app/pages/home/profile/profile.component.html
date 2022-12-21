@@ -1,4 +1,4 @@
-<div class="d-flex flex-column align-items-start gap-3">
+<div class="d-flex flex-column align-items-start gap-3" *ngIf="ready">
   <h2 class="header-2 mb-0 mx-1">Profile</h2>
   <h3 class="header-3 mb-0 mx-1">Modify details</h3>
 
@@ -8,11 +8,7 @@
     (ngSubmit)="onSubmit()"
   >
     <div class="d-flex flex-column align-items-start">
-      <div
-        class="profile-pic p-2 d-flex align-items-center justify-content-center"
-      >
-        <nb-icon icon="profile" pack="custom-icons"></nb-icon>
-      </div>
+      <img [src]="user.pfp" alt="profile pic" class="profile-pic-image" />
     </div>
 
     <div class="d-flex flex-column">
