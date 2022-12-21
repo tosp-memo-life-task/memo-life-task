@@ -37,14 +37,14 @@ export class AcceptInvitationService {
 
     const workspace = await this.workspaceRepository
       .findOneOrFail({
-        relations: { users: true },
+        relations: { editors: true },
         where: { id: invitation.workspace.id }
       })
       .catch(() => {
         throw new WorkspaceNotFoundException();
       });
 
-    workspace.users.push(invitation.receiver);
+    workspace.editors.push(invitation.receiver);
 
     await this.workspaceRepository.save(workspace).catch((err) => {
       throw new CommonDatabaseErrorException(err);

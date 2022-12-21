@@ -48,7 +48,7 @@ export class SendInvitationService {
 
     const workspace = await this.workspaceRepository
       .findOneOrFail({
-        relations: { owner: true, users: true },
+        relations: { owner: true, editors: true },
         where: { id: body.workspaceId }
       })
       .catch(() => {
@@ -66,7 +66,7 @@ export class SendInvitationService {
         throw new UserNotFoundException();
       });
 
-    if (workspace.users.findIndex((u) => u.id === receiver.id) !== -1)
+    if (workspace.editors.findIndex((u) => u.id === receiver.id) !== -1)
       throw new InvitationForbiddenException();
 
     const invitation = new InvitationEntity();

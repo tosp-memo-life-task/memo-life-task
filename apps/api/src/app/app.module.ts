@@ -5,6 +5,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthenticationModule } from './modules/authentication/authentication.module';
+import { InvitationModule } from './modules/invitation/invitation.module';
+import { TaskModule } from './modules/task/task.module';
 import { UserModule } from './modules/user/user.module';
 import { WorkspaceModule } from './modules/workspace/workspace.module';
 
@@ -16,7 +18,6 @@ import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
 import { BadRequestExceptionFilter } from './common/filters/bad-request-exception.filter';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { UnauthorizedExceptionFilter } from './common/filters/unauthorized-exception.filter';
-import { InvitationModule } from './modules/invitation/invitation.module';
 
 @Module({
   controllers: [],
@@ -26,6 +27,7 @@ import { InvitationModule } from './modules/invitation/invitation.module';
       cache: true,
       isGlobal: true
     }),
+    InvitationModule,
     JwtModule.registerAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
@@ -35,6 +37,7 @@ import { InvitationModule } from './modules/invitation/invitation.module';
         }
       })
     }),
+    TaskModule,
     TypeOrmModule.forRootAsync({
       useFactory: async () => {
         return {
@@ -45,8 +48,7 @@ import { InvitationModule } from './modules/invitation/invitation.module';
       }
     }),
     UserModule,
-    WorkspaceModule,
-    InvitationModule
+    WorkspaceModule
   ],
   providers: [
     {

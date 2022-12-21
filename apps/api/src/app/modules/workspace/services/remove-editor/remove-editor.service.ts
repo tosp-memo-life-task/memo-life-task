@@ -26,7 +26,7 @@ export class RemoveEditorService {
   ): Promise<void> {
     const workspace = await this.workspaceRepository
       .findOneOrFail({
-        relations: { owner: true, users: true },
+        relations: { owner: true, editors: true },
         where: { id: params.id }
       })
       .catch(() => {
@@ -38,11 +38,11 @@ export class RemoveEditorService {
 
     if (body.id === validatedUser.id) throw new WorkspaceForbiddenException();
 
-    const id = workspace.users.findIndex((e) => e.id === body.id);
+    const id = workspace.editors.findIndex((e) => e.id === body.id);
 
     if (id === -1) throw new UserNotFoundException();
 
-    workspace.users.splice(id, 1);
+    workspace.editors.splice(id, 1);
 
     await this.workspaceRepository.save(workspace).catch((err) => {
       throw new CommonDatabaseErrorException(err);
