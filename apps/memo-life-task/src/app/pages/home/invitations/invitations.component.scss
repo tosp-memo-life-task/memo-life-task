@@ -1,6 +1,10 @@
 @import '../../../common/styles/variables';
 
 ::ng-deep {
+  .todo-table-container {
+    margin: 0px -16px;
+  }
+
   .current-editor-container {
     background-color: $beige;
     border-radius: 8px;

@@ -8,9 +8,12 @@ import {
   SignUpResponse
 } from '@memo-life-task/dtos';
 import {
+  IAcceptInvitationRequestParams,
   ICreateTaskRequestBody,
+  IDeclineInvitationRequestParams,
   IDeleteWorkspaceRequestParams,
   IGetWorkspaceResponse,
+  IListInvitationsResponse,
   IListWorkspacesResponse,
   IModifyWorkspaceRequestBody,
   IModifyWorkspaceRequestParams,
@@ -144,6 +147,35 @@ export class ApiService {
     const response = await this.dataService.post(
       this.urlService.getBaseUrl() + '/v1/task',
       request,
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async getInvitations(): Promise<IListInvitationsResponse> {
+    const response = await this.dataService.get<IListInvitationsResponse>(
+      this.urlService.getBaseUrl() + '/v1/invitation/list',
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async acceptInvitation(request: IAcceptInvitationRequestParams) {
+    const response = await this.dataService.post(
+      this.urlService.getBaseUrl() + '/v1/invitation/' + request.id + '/accept',
+      {},
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async declineInvitation(request: IDeclineInvitationRequestParams) {
+    const response = await this.dataService.delete(
+      this.urlService.getBaseUrl() +
+        '/v1/invitation/' +
+        request.id +
+        '/decline',
+      {},
       this.getHeadersWithToken()
     );
     return response;

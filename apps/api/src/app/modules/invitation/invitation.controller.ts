@@ -13,6 +13,7 @@ import { ValidatedUserModel } from '../../common/models/validated-user.model';
 import {
   AcceptInvitationRequestParams,
   DeclineInvitationRequestParams,
+  ListInvitationsResponse,
   RevokeInvitationRequestBody,
   SendInvitationRequestBody
 } from '@memo-life-task/dtos';
@@ -38,7 +39,7 @@ export class InvitationController {
   @Get('list')
   async listInvitations(
     @User() validatedUser: ValidatedUserModel
-  ): Promise<any> {
+  ): Promise<ListInvitationsResponse> {
     return await this.listInvitationsService.listInvitations(validatedUser);
   }
 

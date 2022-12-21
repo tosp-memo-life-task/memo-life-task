@@ -1,13 +1,8 @@
 <div class="d-flex flex-column align-items-start gap-3">
   <h3 class="header-3">Invitations</h3>
-  <div class="d-flex titles flex-row align-items-center gap-3">
-    <h4 class="header-4 titles-title mr-70">Workspace name</h4>
-    <h5 class="header-5">User</h5>
-  </div>
-  <div class="todo-table-container">
-    <workspace-todo-table
-      [tasks]="workspaceDetails.tasks"
-      [editors]="workspaceDetails.editors"
-    ></workspace-todo-table>
+
+  <div class="todo-table-container w-100" *ngIf="invitations">
+    <tosp-memo-life-task-invitations-table [invitationsResponse]="invitations">
+    </tosp-memo-life-task-invitations-table>
   </div>
 </div>
