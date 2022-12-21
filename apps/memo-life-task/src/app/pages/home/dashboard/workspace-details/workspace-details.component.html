@@ -1,4 +1,4 @@
-<div class="workspace-container">
+<div class="workspace-container" *ngIf="workspaceDetails">
   <div class="workspace-container-header d-flex gap-3 flex-column">
     <div class="d-flex gap-2 flex-column">
       <div
@@ -7,22 +7,23 @@
         <h2 class="text-h2">Workspaces - {{ workspaceDetails.title }}</h2>
         <div
           class="d-flex gap-2 flex-column flex-sm-row justify-content-md-between align-items-start"
+          *ngIf="workspaceDetails.isOwned"
         >
-          <button nbButton status="primary">
+          <button nbButton status="info" (click)="deleteWorkspace()">
             <nb-icon
-              icon="share"
+              icon="delete"
               pack="custom-icons"
               class="workspace-container-header-icon"
-            ></nb-icon
-            >Share
+            ></nb-icon>
+            Delete
           </button>
           <button nbButton status="primary" (click)="modifyWorkspace()">
             <nb-icon
               icon="edit"
               pack="custom-icons"
               class="workspace-container-header-icon"
-            ></nb-icon
-            >Edit details
+            ></nb-icon>
+            Edit details
           </button>
         </div>
       </div>
@@ -33,14 +34,15 @@
           class="workspace-last-modified-icon"
         ></nb-icon>
         <h4 class="header-4 workspace-last-modified-content">
-          Last modified: {{ workspaceDetails.modifiedAt }}
+          Last modified: {{ workspaceDetails.updatedAt.toLocaleDateString() }}
+          {{ workspaceDetails.updatedAt.toLocaleTimeString() }}
         </h4>
       </div>
     </div>
 
     <div class="d-flex flex-column gap-3">
       <h4 class="header-4 mb-0">
-        {{ workspaceDetails.descp }}
+        {{ workspaceDetails.description }}
       </h4>
 
       <div class="workspace-editors d-flex flex-row gap-3 align-items-center">
@@ -53,7 +55,9 @@
             <nb-icon
               icon="profile"
               pack="custom-icons"
-              [matTooltip]="editor.isMe ? 'Me' : editor.name"
+              [matTooltip]="
+                editor.isUser ? 'Me' : editor.firstName + editor.lastName
+              "
             ></nb-icon>
           </div>
         </div>
@@ -62,13 +66,14 @@
           status="primary"
           class="editors-modify-button"
           (click)="modifyWorkspaceEditors()"
+          *ngIf="workspaceDetails.isOwned"
         >
           <nb-icon
             icon="edit"
             pack="custom-icons"
             class="workspace-container-header-icon"
-          ></nb-icon
-          >Modify
+          ></nb-icon>
+          Modify
         </button>
       </div>
     </div>
@@ -85,8 +90,10 @@
   class="todo-table-container"
   *ngIf="workspaceDetails && workspaceDetails.tasks"
 >
+  <!-- todo -->
   <tosp-memo-life-task-workspace-todo-table
     [tasks]="workspaceDetails.tasks"
     [editors]="workspaceDetails.editors"
+    (taskChanged)="getWorkSpaceDetails()"
   ></tosp-memo-life-task-workspace-todo-table>
 </div>

@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IGetWorkspaceResponse } from '@memo-life-task/interfaces';
 import { NbDialogService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
 import { CreateWorkspaceTaskComponent } from '../create-workspace-task/create-workspace-task.component';
+import { DeleteWorkspaceModalComponent } from '../delete-workspace-modal/delete-workspace-modal.component';
 import { ModifyWorkspaceEditorsModalComponent } from '../modify-workspace-editors-modal/modify-workspace-editors-modal.component';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
+import { GetWorkspaceService } from '../services/get-workspace.service';
 import {
   EditorModel,
   PriorityEnum,
@@ -19,12 +22,14 @@ import {
 })
 export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   workspaceId: number;
-  workspaceDetails: WorkspaceDetailsModel;
+  workspaceDetails: IGetWorkspaceResponse;
   private routeSubscriber: Subscription;
 
   constructor(
     private route: ActivatedRoute,
-    private dialogService: NbDialogService
+    private dialogService: NbDialogService,
+    private getWorkspaceService: GetWorkspaceService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -37,71 +42,88 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  getWorkSpaceDetails() {
-    this.workspaceDetails = new WorkspaceDetailsModel(
-      '1',
-      'Gyümölcs szedés',
-      'Alamdagsdh adv aedhs vsd aedhsadv aedhs vsdfhsadv aedhs Alamdagsdh dafheadfb',
-      '2020.10.21.',
-      [
-        new EditorModel('1', 'The King', true),
-        new EditorModel('2', 'Puzsér', false)
-      ],
-      [
-        new TaskModel(
-          '1',
-          'Alma szedés',
-          'Almát kell szedni, mit nem értesz?',
-          new EditorModel('2', 'Puzsér', false),
-          PriorityEnum.LOW,
-          '2020.10.21.'
-        ),
-        new TaskModel(
-          '2',
-          'Körte szedés',
-          'Körtét kell szedni, már megint mit nem értesz?',
-          new EditorModel('1', 'The King', true),
-          PriorityEnum.HIGH,
-          '2020.10.12.'
-        )
-      ]
+  async getWorkSpaceDetails() {
+    console.log('getWorkspaceDetails');
+
+    const response = await this.getWorkspaceService.getWorkspaceApi(
+      this.workspaceId
     );
+
+    console.log(response);
+
+    console.log('workspace get');
+
+    this.workspaceDetails = response;
   }
 
   modifyWorkspace() {
     if (this.workspaceDetails) {
-      this.dialogService.open(ModifyWorkspaceModalComponent, {
-        backdropClass: 'custom-modal-backdrop',
-        dialogClass: 'custom-modal-dialog',
-        context: {
-          title: this.workspaceDetails.title,
-          despc: this.workspaceDetails.descp
-        }
-      });
+      this.dialogService
+        .open(ModifyWorkspaceModalComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            workspaceId: this.workspaceId,
+            title: this.workspaceDetails.title,
+            despc: this.workspaceDetails.description
+          }
+        })
+        .onClose.subscribe(() => {
+          this.getWorkSpaceDetails();
+        });
+    }
+  }
+
+  deleteWorkspace() {
+    if (this.workspaceDetails) {
+      this.dialogService
+        .open(DeleteWorkspaceModalComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            workspaceId: this.workspaceId
+          }
+        })
+        .onClose.subscribe((value) => {
+          if (value) {
+            this.router.navigate(['home']);
+          }
+        });
     }
   }
 
   createTask() {
     if (this.workspaceDetails) {
-      this.dialogService.open(CreateWorkspaceTaskComponent, {
-        backdropClass: 'custom-modal-backdrop',
-        dialogClass: 'custom-modal-dialog',
-        context: {
-          editors: this.workspaceDetails.editors
-        }
-      });
+      this.dialogService
+        .open(CreateWorkspaceTaskComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            workspaceId: this.workspaceId,
+            editors: this.workspaceDetails.editors
+          }
+        })
+        .onClose.subscribe(() => {
+          this.getWorkSpaceDetails();
+        });
     }
   }
 
   modifyWorkspaceEditors() {
     if (this.workspaceDetails) {
-      this.dialogService.open(ModifyWorkspaceEditorsModalComponent, {
-        backdropClass: 'custom-modal-backdrop',
-        dialogClass: 'custom-modal-dialog',
-        context: {
-          editors: this.workspaceDetails.editors
-        }
-      });
+      this.dialogService
+        .open(ModifyWorkspaceEditorsModalComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            editors: this.workspaceDetails.editors,
+            workspaceId: this.workspaceId,
+            invitations: this.workspaceDetails.invitations
+          }
+        })
+        .onClose.subscribe(() => {
+          this.getWorkSpaceDetails();
+        });
     }
   }
 

@@ -1,7 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+  IModifyWorkspaceRequestBody,
+  IModifyWorkspaceRequestParams
+} from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
+import { ModifyWorkspaceService } from '../services/modify-workspaces.service';
 
 @Component({
   selector: 'tosp-memo-life-task-modify-workspace-modal',
@@ -9,6 +14,7 @@ import { NbDialogRef } from '@nebular/theme';
   styleUrls: ['./modify-workspace-modal.component.scss']
 })
 export class ModifyWorkspaceModalComponent implements OnInit {
+  @Input() workspaceId: number;
   @Input() title: string;
   @Input() despc: string;
 
@@ -17,7 +23,8 @@ export class ModifyWorkspaceModalComponent implements OnInit {
   constructor(
     private dialogRef: NbDialogRef<ModifyWorkspaceModalComponent>,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private modifyWorkspaceService: ModifyWorkspaceService
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +38,24 @@ export class ModifyWorkspaceModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  modifyWorkspace() {
+  async modifyWorkspace() {
+    const title = this.form.controls['name'].value;
+    const description = this.form.controls['description'].value;
+
+    const requestParams: IModifyWorkspaceRequestParams = {
+      id: +this.workspaceId
+    };
+
+    const requestBody: IModifyWorkspaceRequestBody = {
+      title: title,
+      description: description
+    };
+
+    await this.modifyWorkspaceService.modifyWorkspaceApi(
+      requestParams,
+      requestBody
+    );
+
     this.dialogRef.close();
     console.log('modify');
   }

@@ -54,19 +54,19 @@ export class WorkspaceController {
     );
   }
 
+  @Get('list')
+  async listWorkspaces(
+    @User() validatedUser: ValidatedUserModel
+  ): Promise<GetWorkspaceResponse> {
+    return await this.listWorkspacesService.listWorkspaces(validatedUser);
+  }
+
   @Get(':id')
   async getWorkspace(
     @Param() params: GetWorkspaceRequestParams,
     @User() validatedUser: ValidatedUserModel
   ): Promise<GetWorkspaceResponse> {
     return await this.getWorkspaceService.getWorkspace(params, validatedUser);
-  }
-
-  @Get('list')
-  async listWorkspaces(
-    @User() validatedUser: ValidatedUserModel
-  ): Promise<GetWorkspaceResponse> {
-    return await this.listWorkspacesService.listWorkspaces(validatedUser);
   }
 
   @Patch(':id')

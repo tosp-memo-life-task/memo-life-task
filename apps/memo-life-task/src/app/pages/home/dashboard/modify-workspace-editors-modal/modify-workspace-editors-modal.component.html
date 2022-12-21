@@ -9,7 +9,8 @@
         *ngFor="let editor of editors"
       >
         <h6 class="text-h6 mb-0">
-          {{ editor.name }} {{ editor?.isMe ? '(Me)' : '' }}
+          {{ editor.firstName }} {{ editor.lastName }}
+          {{ editor?.isUser ? '(Me)' : '' }}
         </h6>
 
         <div
@@ -19,7 +20,7 @@
             nbButton
             status="primary"
             (click)="removeEditor(editor)"
-            *ngIf="!editor.isMe"
+            *ngIf="!editor.isUser"
             class="current-editor-action"
             matTooltip="remove"
           >
@@ -35,7 +36,7 @@
     <div class="d-flex flex-column gap-2">
       <div
         class="current-editor-container d-flex flex-row gap-2 align-items-center px-2 py-2 justify-content-between"
-        *ngFor="let editorEmail of invitedEditors"
+        *ngFor="let editorEmail of invitations"
       >
         <h6 class="text-h6 mb-0">
           {{ editorEmail }}
@@ -47,7 +48,7 @@
           <button
             nbButton
             status="primary"
-            (click)="undoUserInvite(editorEmail)"
+            (click)="revokeUserInvite(editorEmail)"
             class="current-editor-action"
             matTooltip="remove"
           >
@@ -75,8 +76,9 @@
         [fullWidth]="true"
         size="large"
         [disabled]="form.invalid"
+        type="button"
       >
-        Invite asfd asfbadb asdsgs
+        Invite
       </button>
     </form>
 

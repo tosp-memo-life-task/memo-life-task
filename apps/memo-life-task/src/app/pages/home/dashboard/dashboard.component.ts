@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WorkspaceResponse } from '@memo-life-task/dtos';
+import { IWorkspaceResponse } from '@memo-life-task/interfaces';
 import { NbDialogService } from '@nebular/theme';
 import { SharedWorkspaceModel } from '../models/shared-workspace.model';
 import { WorkspaceModel } from '../models/workspace.model';
@@ -14,8 +15,8 @@ import { GetWorkspacesService } from './services/get-workspaces.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  ownedWorkspaces: WorkspaceResponse[];
-  sharedWithMe: WorkspaceResponse[];
+  ownedWorkspaces: IWorkspaceResponse[];
+  sharedWithMe: IWorkspaceResponse[];
   dummyData: WorkspaceModel[] = [
     new WorkspaceModel(
       '1',

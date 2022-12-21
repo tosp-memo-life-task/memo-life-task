@@ -55,7 +55,7 @@ export class DataService {
     return postResult;
   }
 
-  async delete<T>(url: string, headers: any, body?: any): Promise<T> {
+  async delete<T>(url: string, body: any, headers: any): Promise<T> {
     this.overlayService.setDisplayProgressSpinner(true);
 
     const deleteResult = await lastValueFrom<T>(

@@ -1,8 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TaskStatusEnum } from '@memo-life-task/enums';
+import {
+  IModifyTaskRequestBody,
+  IModifyTaskRequestParams,
+  ITaskResponse,
+  IUserResponse
+} from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
+import { ModifyTaskService } from '../services/modify-task.service';
 import {
   EditorModel,
   PriorityEnum,
@@ -15,30 +23,36 @@ import {
   styleUrls: ['./modify-workspace-task.component.scss']
 })
 export class ModifyWorkspaceTaskComponent implements OnInit {
-  @Input() task: TaskModel;
-  @Input() editors: EditorModel[];
+  @Input() workspaceId: number;
+  @Input() editors: IUserResponse[];
+  @Input() task: ITaskResponse;
   form: FormGroup = new FormGroup({});
-  me: EditorModel | undefined;
+  me: IUserResponse | undefined;
 
   constructor(
     private dialogRef: NbDialogRef<ModifyWorkspaceTaskComponent>,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private modifyTaskService: ModifyTaskService
   ) {}
 
   ngOnInit(): void {
-    this.me = this.editors.find((editor) => editor.isMe);
+    this.me = this.editors.find((editor) => editor.isUser);
 
     console.log(this.task);
 
     this.form = this.formBuilder.group({
       name: [this.task.name, Validators.compose([Validators.required])],
-      details: [this.task.details, Validators.compose([Validators.required])],
-      assignee: [
+      description: [
+        this.task.description,
+        Validators.compose([Validators.required])
+      ],
+      editor: [
         this.editors.find((editor) => editor.id == this.task.assignee.id),
         Validators.compose([Validators.required])
       ],
-      priority: [this.task.priority, Validators.compose([Validators.required])]
+      priority: [this.task.priority, Validators.compose([Validators.required])],
+      status: [this.task.status, Validators.compose([Validators.required])]
     });
   }
 
@@ -46,9 +60,22 @@ export class ModifyWorkspaceTaskComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  createTask() {
+  async modifyTask(task: ITaskResponse) {
+    const requestParams: IModifyTaskRequestParams = {
+      id: task.id
+    };
+    const requestBody: IModifyTaskRequestBody = {
+      name: this.form.controls['name'].value,
+      description: this.form.controls['description'].value,
+      editorId: this.form.controls['editor'].value.id,
+      priority: this.form.controls['priority'].value,
+      status: this.form.controls['status'].value
+    };
+
+    await this.modifyTaskService.modifyTaskApi(requestParams, requestBody);
+
     this.dialogRef.close();
-    console.log('create task');
+    console.log('modify task');
   }
 
   getErrorMessage(field: string) {

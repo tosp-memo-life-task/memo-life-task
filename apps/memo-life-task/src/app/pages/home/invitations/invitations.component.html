@@ -1,1 +1,11 @@
-<p>invitations works!</p>
+<div class="d-flex flex-column align-items-start gap-3">
+  <h3 class="header-3">Invitations</h3>
+
+  <div class="todo-table-container w-100" *ngIf="invitations">
+    <tosp-memo-life-task-invitations-table
+      [invitationsResponse]="invitations"
+      (invitationChanged)="getInvitations()"
+    >
+    </tosp-memo-life-task-invitations-table>
+  </div>
+</div>
