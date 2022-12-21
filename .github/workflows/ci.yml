@@ -6,20 +6,46 @@ on:
   pull_request:
 
 jobs:
-  main:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
       - run: npm ci
       - run: npx nx workspace-lint
       - run: npx nx format:check
       - run: npx nx affected --target=lint --parallel=3
       - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
-      - run: npx nx build memo-life-task --prod
-
+  migration:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DB_HOST: ${{ secrets.DB_HOST }}
+          envkey_DB_PORT: ${{ secrets.DB_PORT }}
+          envkey_DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          envkey_DB_NAME: ${{ secrets.DB_NAME }}
+          envkey_DB_SYNCHRONIZE: ${{ secrets.DB_SYNCHRONIZE }}
+      - run: npx nx run api:typeorm migration:run -d ./src/app/data-source.ts
+  deploy:
+    needs: migration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: nrwl/nx-set-shas@v3
+      - run: npm ci
+      - name: Install Railway
+        run: npm i -g @railway/cli
+      - name: Deploy
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - run: npx nx run memo-life-task:build:production
       - name: Deploy frontend
         uses: peaceiris/actions-gh-pages@v3
         with:
