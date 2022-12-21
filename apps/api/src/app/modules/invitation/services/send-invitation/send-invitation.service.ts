@@ -10,11 +10,11 @@ import { ValidatedUserModel } from '../../../../common/models/validated-user.mod
 
 import { SendInvitationRequestBody } from '@memo-life-task/dtos';
 
-import { CommonDatabaseErrorException } from 'apps/api/src/app/common/exceptions/common-database-error.exception';
-import { UserNotFoundException } from 'apps/api/src/app/common/exceptions/user-not-found.exception';
-import { WorkspaceNotFoundException } from 'apps/api/src/app/common/exceptions/workspace-not-found.exception';
-import { WorkspaceUnauthroziedException } from 'apps/api/src/app/common/exceptions/workspace-unauthorized.exception';
 import { InvitationForbiddenException } from '../../../../common/exceptions/invitation-forbidden.exception';
+import { UserNotFoundException } from '../../../../common/exceptions/user-not-found.exception';
+import { WorkspaceNotFoundException } from '../../../../common/exceptions/workspace-not-found.exception';
+import { WorkspaceUnauthroziedException } from '../../../../common/exceptions/workspace-unauthorized.exception';
+import { CommonDatabaseErrorException } from '../../../../common/exceptions/common-database-error.exception';
 
 @Injectable()
 export class SendInvitationService {

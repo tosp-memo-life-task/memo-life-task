@@ -32,7 +32,7 @@ export class UpdateUserService {
 
     user.nameFirst = body.firstName;
     user.nameLast = body.lastName;
-    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff?name=${body.firstName}+${body.lastName}`;
+    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff&name=${body.firstName}+${body.lastName}`;
 
     user = await this.userRepository.save(user).catch((err) => {
       throw new CommonDatabaseErrorException(err);

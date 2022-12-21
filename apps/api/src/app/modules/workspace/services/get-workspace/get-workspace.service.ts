@@ -7,7 +7,6 @@ import { ValidatedUserModel } from '../../../../common/models/validated-user.mod
 import {
   GetWorkspaceRequestParams,
   GetWorkspaceResponse,
-  InvitationResponse,
   TaskResponse,
   UserResponse
 } from '@memo-life-task/dtos';

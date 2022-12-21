@@ -36,7 +36,7 @@ export class SignUpService {
     user.nameFirst = body.firstName;
     user.nameLast = body.lastName;
     user.password = password;
-    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff?name=${body.firstName}+${body.lastName}`;
+    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff&name=${body.firstName}+${body.lastName}`;
     user.salt = salt;
 
     user = await this.userRepository.save(user);
