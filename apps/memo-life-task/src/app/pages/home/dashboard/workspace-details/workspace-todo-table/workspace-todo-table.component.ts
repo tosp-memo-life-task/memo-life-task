@@ -26,6 +26,7 @@ export class WorkspaceTodoTableComponent implements OnInit, OnChanges {
     'name',
     'assignee',
     'priority',
+    'status',
     'lastModified',
     'action'
   ];

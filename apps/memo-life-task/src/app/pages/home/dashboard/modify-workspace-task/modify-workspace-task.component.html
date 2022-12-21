@@ -40,10 +40,21 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-radio-group formControlName="priority" class="d-flex flex-row gap-3">
+    <mat-radio-group
+      formControlName="priority"
+      class="d-flex flex-row gap-3 mb-3"
+    >
       <mat-radio-button [value]="'LOW'">Low</mat-radio-button>
       <mat-radio-button [value]="'MEDIUM'">Medium</mat-radio-button>
       <mat-radio-button [value]="'HIGH'">High</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-radio-group formControlName="status" class="d-flex flex-row gap-3">
+      <mat-radio-button [value]="'READY_TO_START'"
+        >Ready to start</mat-radio-button
+      >
+      <mat-radio-button [value]="'IN_PROGRESS'">In progress</mat-radio-button>
+      <mat-radio-button [value]="'READY'">Ready</mat-radio-button>
     </mat-radio-group>
   </form>
 

@@ -51,7 +51,8 @@ export class ModifyWorkspaceTaskComponent implements OnInit {
         this.editors.find((editor) => editor.id == this.task.assignee.id),
         Validators.compose([Validators.required])
       ],
-      priority: [this.task.priority, Validators.compose([Validators.required])]
+      priority: [this.task.priority, Validators.compose([Validators.required])],
+      status: [this.task.status, Validators.compose([Validators.required])]
     });
   }
 
@@ -68,7 +69,7 @@ export class ModifyWorkspaceTaskComponent implements OnInit {
       description: this.form.controls['description'].value,
       editorId: this.form.controls['editor'].value.id,
       priority: this.form.controls['priority'].value,
-      status: TaskStatusEnum.READY_TO_START
+      status: this.form.controls['status'].value
     };
 
     await this.modifyTaskService.modifyTaskApi(requestParams, requestBody);
