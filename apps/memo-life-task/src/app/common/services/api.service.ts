@@ -22,7 +22,8 @@ import {
   IRemoveEditorRequestBody,
   IRemoveEditorRequestParams,
   IRevokeInvitationRequestBody,
-  ISendInvitationRequestBody
+  ISendInvitationRequestBody,
+  IUpdateUserRequestBody
 } from '@memo-life-task/interfaces';
 import { LocalStorageEnum } from '../enums/local-storage.enum';
 import { AppException } from '../exceptions/app-error.exception';
@@ -207,6 +208,15 @@ export class ApiService {
         requestParams.id +
         '/remove-editor',
       requestBody,
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async updateUser(request: IUpdateUserRequestBody) {
+    const response = await this.dataService.patch(
+      this.urlService.getBaseUrl() + '/v1/user',
+      request,
       this.getHeadersWithToken()
     );
     return response;

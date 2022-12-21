@@ -12,9 +12,6 @@
         class="profile-pic p-2 d-flex align-items-center justify-content-center"
       >
         <nb-icon icon="profile" pack="custom-icons"></nb-icon>
-        <div class="profile-pic-pen d-flex">
-          <nb-icon icon="edit" pack="custom-icons"></nb-icon>
-        </div>
       </div>
     </div>
 
@@ -41,8 +38,7 @@
     </div>
   </form>
 
-  <button class="button-custom" mat-flat-button type="submit">
-    <!--image with the user picture-->
+  <button nbButton status="primary" (click)="onSubmit()" class="text-h5">
     Save changes
   </button>
 </div>
