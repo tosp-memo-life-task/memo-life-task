@@ -41,6 +41,8 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   }
 
   async getWorkSpaceDetails() {
+    console.log('getWorkspaceDetails');
+
     const response = await this.getWorkspaceService.getWorkspaceApi(
       this.workspaceId
     );
@@ -52,40 +54,53 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
 
   modifyWorkspace() {
     if (this.workspaceDetails) {
-      this.dialogService.open(ModifyWorkspaceModalComponent, {
-        backdropClass: 'custom-modal-backdrop',
-        dialogClass: 'custom-modal-dialog',
-        context: {
-          title: this.workspaceDetails.title,
-          despc: this.workspaceDetails.description
-        }
-      });
+      this.dialogService
+        .open(ModifyWorkspaceModalComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            workspaceId: this.workspaceId,
+            title: this.workspaceDetails.title,
+            despc: this.workspaceDetails.description
+          }
+        })
+        .onClose.subscribe(() => {
+          this.getWorkSpaceDetails();
+        });
     }
   }
 
   createTask() {
     if (this.workspaceDetails) {
-      this.dialogService.open(CreateWorkspaceTaskComponent, {
-        backdropClass: 'custom-modal-backdrop',
-        dialogClass: 'custom-modal-dialog',
-        context: {
-          editors: this.workspaceDetails.editors
-        }
-      });
+      this.dialogService
+        .open(CreateWorkspaceTaskComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            editors: this.workspaceDetails.editors
+          }
+        })
+        .onClose.subscribe(() => {
+          this.getWorkSpaceDetails();
+        });
     }
   }
 
   modifyWorkspaceEditors() {
     if (this.workspaceDetails) {
-      this.dialogService.open(ModifyWorkspaceEditorsModalComponent, {
-        backdropClass: 'custom-modal-backdrop',
-        dialogClass: 'custom-modal-dialog',
-        context: {
-          editors: this.workspaceDetails.editors,
-          workspaceId: this.workspaceId,
-          invitations: this.workspaceDetails.invitations
-        }
-      });
+      this.dialogService
+        .open(ModifyWorkspaceEditorsModalComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            editors: this.workspaceDetails.editors,
+            workspaceId: this.workspaceId,
+            invitations: this.workspaceDetails.invitations
+          }
+        })
+        .onClose.subscribe(() => {
+          this.getWorkSpaceDetails();
+        });
     }
   }
 

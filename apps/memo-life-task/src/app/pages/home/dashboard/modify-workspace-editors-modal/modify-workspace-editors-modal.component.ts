@@ -50,6 +50,7 @@ export class ModifyWorkspaceEditorsModalComponent implements OnInit {
 
     this.invitations.push(email);
     this.form.controls['email'].reset();
+    this.form.markAsUntouched();
     console.log('invite user');
   }
 

@@ -10,6 +10,8 @@ import {
 import {
   IGetWorkspaceResponse,
   IListWorkspacesResponse,
+  IModifyWorkspaceRequestBody,
+  IModifyWorkspaceRequestParams,
   IRevokeInvitationRequestBody,
   ISendInvitationRequestBody
 } from '@memo-life-task/interfaces';
@@ -76,6 +78,18 @@ export class ApiService {
     const response = await this.dataService.post<CreateWorkspaceResponse>(
       this.urlService.getBaseUrl() + '/v1/workspace',
       request,
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async modifyWorkspace(
+    requestParams: IModifyWorkspaceRequestParams,
+    requestBody: IModifyWorkspaceRequestBody
+  ) {
+    const response = await this.dataService.patch(
+      this.urlService.getBaseUrl() + '/v1/workspace/' + requestParams.id,
+      requestBody,
       this.getHeadersWithToken()
     );
     return response;
