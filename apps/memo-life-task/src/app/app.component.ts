@@ -25,7 +25,9 @@ export class AppComponent {
       decline:
         '<svg width="20" height="21" viewBox="0 0 20 21" fill="#fff" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_274_170" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="21"><rect y="0.5" width="20" height="20"/></mask><g mask="url(#mask0_274_170)"><path d="M5.1875 16.1875L4.3125 15.3125L9.125 10.5L4.3125 5.6875L5.1875 4.8125L10 9.625L14.8125 4.8125L15.6875 5.6875L10.875 10.5L15.6875 15.3125L14.8125 16.1875L10 11.375L5.1875 16.1875Z"/></g></svg>',
       accept:
-        '<svg width="20" height="21" viewBox="0 0 20 21" fill="#fff" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_274_164" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="21"><rect y="0.5" width="20" height="20" /></mask><g mask="url(#mask0_274_164)"><path d="M7.87492 15.375L3.20825 10.7083L4.10409 9.8125L7.87492 13.5833L15.8749 5.58333L16.7708 6.47916L7.87492 15.375Z" /></g></svg>'
+        '<svg width="20" height="21" viewBox="0 0 20 21" fill="#fff" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_274_164" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="21"><rect y="0.5" width="20" height="20" /></mask><g mask="url(#mask0_274_164)"><path d="M7.87492 15.375L3.20825 10.7083L4.10409 9.8125L7.87492 13.5833L15.8749 5.58333L16.7708 6.47916L7.87492 15.375Z" /></g></svg>',
+      delete:
+        '<svg width="28" height="28" viewBox="0 0 28 28" fill="#fff" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_466_5" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="28"><rect width="28" height="28"/></mask><g mask="url(#mask0_466_5)"><path d="M8.16663 24.5C7.52496 24.5 6.97585 24.2717 6.51929 23.8152C6.06196 23.3578 5.83329 22.8083 5.83329 22.1667V7H4.66663V4.66667H10.5V3.5H17.5V4.66667H23.3333V7H22.1666V22.1667C22.1666 22.8083 21.9383 23.3578 21.4818 23.8152C21.0245 24.2717 20.475 24.5 19.8333 24.5H8.16663ZM19.8333 7H8.16663V22.1667H19.8333V7ZM10.5 19.8333H12.8333V9.33333H10.5V19.8333ZM15.1666 19.8333H17.5V9.33333H15.1666V19.8333Z" fill="white"/></g></svg>'
     });
   }
 

@@ -8,21 +8,21 @@
         <div
           class="d-flex gap-2 flex-column flex-sm-row justify-content-md-between align-items-start"
         >
-          <button nbButton status="primary">
+          <button nbButton status="info" (click)="deleteWorkspace()">
             <nb-icon
-              icon="share"
+              icon="delete"
               pack="custom-icons"
               class="workspace-container-header-icon"
-            ></nb-icon
-            >Share
+            ></nb-icon>
+            Delete
           </button>
           <button nbButton status="primary" (click)="modifyWorkspace()">
             <nb-icon
               icon="edit"
               pack="custom-icons"
               class="workspace-container-header-icon"
-            ></nb-icon
-            >Edit details
+            ></nb-icon>
+            Edit details
           </button>
         </div>
       </div>
@@ -70,8 +70,8 @@
             icon="edit"
             pack="custom-icons"
             class="workspace-container-header-icon"
-          ></nb-icon
-          >Modify
+          ></nb-icon>
+          Modify
         </button>
       </div>
     </div>

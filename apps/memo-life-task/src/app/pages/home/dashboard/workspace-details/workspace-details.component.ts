@@ -70,6 +70,18 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
+  deleteWorkspace() {
+    if (this.workspaceDetails) {
+      this.dialogService.open(ModifyWorkspaceModalComponent, {
+        backdropClass: 'custom-modal-backdrop',
+        dialogClass: 'custom-modal-dialog',
+        context: {
+          workspaceId: this.workspaceId
+        }
+      });
+    }
+  }
+
   createTask() {
     if (this.workspaceDetails) {
       this.dialogService

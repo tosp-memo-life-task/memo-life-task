@@ -1,0 +1,24 @@
+<div class="custom-modal-container">
+  <h4 class="text-h4 color-white">Delete workspace</h4>
+
+  <div class="custom-modal-action-container">
+    <button
+      nbButton
+      status="info"
+      (click)="closeModal()"
+      [fullWidth]="true"
+      size="large"
+    >
+      Cancel
+    </button>
+    <button
+      nbButton
+      status="success"
+      (click)="deleteWorkspace()"
+      [fullWidth]="true"
+      size="large"
+    >
+      Delete
+    </button>
+  </div>
+</div>

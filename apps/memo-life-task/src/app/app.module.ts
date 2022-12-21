@@ -37,6 +37,7 @@ import { ModifyWorkspaceModalComponent } from './pages/home/dashboard/modify-wor
 import { CreateWorkspaceTaskComponent } from './pages/home/dashboard/create-workspace-task/create-workspace-task.component';
 import { ModifyWorkspaceTaskComponent } from './pages/home/dashboard/modify-workspace-task/modify-workspace-task.component';
 import { ModifyWorkspaceEditorsModalComponent } from './pages/home/dashboard/modify-workspace-editors-modal/modify-workspace-editors-modal.component';
+import { DeleteWorkspaceModalComponent } from './pages/home/dashboard/delete-workspace-modal/delete-workspace-modal.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ModifyWorkspaceEditorsModalComponent } from './pages/home/dashboard/mod
     ModifyWorkspaceModalComponent,
     CreateWorkspaceTaskComponent,
     ModifyWorkspaceTaskComponent,
-    ModifyWorkspaceEditorsModalComponent
+    ModifyWorkspaceEditorsModalComponent,
+    DeleteWorkspaceModalComponent
   ],
   imports: [
     AppRoutingModule,
