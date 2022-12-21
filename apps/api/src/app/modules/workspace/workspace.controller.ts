@@ -62,7 +62,7 @@ export class WorkspaceController {
     return await this.getWorkspaceService.getWorkspace(params, validatedUser);
   }
 
-  @Get()
+  @Get('list')
   async listWorkspaces(
     @User() validatedUser: ValidatedUserModel
   ): Promise<GetWorkspaceResponse> {

@@ -26,10 +26,10 @@ export class GetWorkspaceService {
     const workspace = await this.workspaceRepository
       .findOneOrFail({
         relations: {
-          invitations: { receiver: true, sender: true },
+          invitations: { receiver: true },
           owner: true,
           tasks: { assignee: true },
-          users: true
+          editors: true
         },
         where: { id: params.id }
       })
@@ -37,10 +37,10 @@ export class GetWorkspaceService {
         throw new WorkspaceNotFoundException();
       });
 
-    if (workspace.users.findIndex((e) => e.id === validatedUser.id) === -1)
+    if (workspace.editors.findIndex((e) => e.id === validatedUser.id) === -1)
       throw new WorkspaceUnauthroziedException();
 
-    const editors = workspace.users.map((e) => {
+    const editors = workspace.editors.map((e) => {
       const editor = new UserResponse();
       editor.email = e.email;
       editor.id = e.id;
@@ -52,17 +52,7 @@ export class GetWorkspaceService {
     });
 
     const invitations = workspace.invitations.map((i) => {
-      const receiver = new UserResponse();
-      receiver.email = i.receiver.email;
-      receiver.firstName = i.receiver.nameFirst;
-      receiver.id = i.receiver.id;
-      receiver.lastName = i.receiver.nameLast;
-
-      const invitation = new InvitationResponse();
-      invitation.id = i.id;
-      invitation.receiver = receiver;
-
-      return invitation;
+      return i.receiver.email;
     });
 
     const tasks = workspace.tasks.map((t) => {

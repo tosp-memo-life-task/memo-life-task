@@ -16,7 +16,6 @@ import { IWorkspaceResponse } from '@memo-life-task/interfaces';
 
 import { TaskResponse } from '../task/task.response';
 import { UserResponse } from '../user/user.response';
-import { InvitationResponse } from '../invitation/invitation.response';
 
 export class WorkspaceResponse implements IWorkspaceResponse {
   @ApiProperty()
@@ -43,7 +42,7 @@ export class WorkspaceResponse implements IWorkspaceResponse {
   @ApiProperty()
   @IsArray()
   @ValidateNested({ each: true })
-  invitations: Array<InvitationResponse>;
+  invitations: Array<string>;
 
   @ApiProperty()
   @IsBoolean()

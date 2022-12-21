@@ -38,7 +38,7 @@ export class CreateWorkspaceService {
     workspace.description = body.description;
     workspace.owner = user;
     workspace.title = body.title;
-    workspace.users = new Array<UserEntity>(user);
+    workspace.editors = new Array<UserEntity>(user);
 
     workspace = await this.workspaceRepository.save(workspace).catch((err) => {
       throw new CommonDatabaseErrorException(err);

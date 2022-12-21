@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CancelInvitationService } from './cancel-invitation.service';
+import { DeclineInvitationService } from './decline-invitation.service';
 
 describe('CancelInvitationService', () => {
-  let service: CancelInvitationService;
+  let service: DeclineInvitationService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [CancelInvitationService]
+      providers: [DeclineInvitationService]
     }).compile();
 
-    service = module.get<CancelInvitationService>(CancelInvitationService);
+    service = module.get<DeclineInvitationService>(DeclineInvitationService);
   });
 
   it('should be defined', () => {
