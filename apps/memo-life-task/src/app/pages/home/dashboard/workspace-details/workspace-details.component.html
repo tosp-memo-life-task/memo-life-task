@@ -7,6 +7,7 @@
         <h2 class="text-h2">Workspaces - {{ workspaceDetails.title }}</h2>
         <div
           class="d-flex gap-2 flex-column flex-sm-row justify-content-md-between align-items-start"
+          *ngIf="workspaceDetails.isOwned"
         >
           <button nbButton status="info" (click)="deleteWorkspace()">
             <nb-icon
@@ -65,6 +66,7 @@
           status="primary"
           class="editors-modify-button"
           (click)="modifyWorkspaceEditors()"
+          *ngIf="workspaceDetails.isOwned"
         >
           <nb-icon
             icon="edit"
