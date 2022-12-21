@@ -1,5 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { ITaskResponse, IUserResponse } from '@memo-life-task/interfaces';
 import { NbDialogService } from '@nebular/theme';
 import { ModifyWorkspaceTaskComponent } from '../../modify-workspace-task/modify-workspace-task.component';
 import { EditorModel, TaskModel } from '../models/workspace-details.model';
@@ -9,9 +16,9 @@ import { EditorModel, TaskModel } from '../models/workspace-details.model';
   templateUrl: './workspace-todo-table.component.html',
   styleUrls: ['./workspace-todo-table.component.scss']
 })
-export class WorkspaceTodoTableComponent implements OnInit {
-  @Input() editors: EditorModel[];
-  @Input() tasks: TaskModel[];
+export class WorkspaceTodoTableComponent implements OnInit, OnChanges {
+  @Input() editors: IUserResponse[];
+  @Input() tasks: ITaskResponse[];
 
   displayedColumns: string[] = [
     'name',
@@ -20,14 +27,20 @@ export class WorkspaceTodoTableComponent implements OnInit {
     'lastModified',
     'action'
   ];
-  dataSource: MatTableDataSource<TaskModel>;
+  dataSource: MatTableDataSource<ITaskResponse>;
   constructor(private dialogService: NbDialogService) {}
 
   ngOnInit(): void {
+    console.log(this.tasks);
+
     this.dataSource = new MatTableDataSource(this.tasks);
   }
 
-  modifyTask(task: TaskModel) {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.dataSource = new MatTableDataSource(this.tasks);
+  }
+
+  modifyTask(task: ITaskResponse) {
     if (task) {
       this.dialogService.open(ModifyWorkspaceTaskComponent, {
         backdropClass: 'custom-modal-backdrop',

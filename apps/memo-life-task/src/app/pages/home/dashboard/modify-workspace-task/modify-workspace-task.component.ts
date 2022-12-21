@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ITaskResponse, IUserResponse } from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
 import {
@@ -15,10 +16,11 @@ import {
   styleUrls: ['./modify-workspace-task.component.scss']
 })
 export class ModifyWorkspaceTaskComponent implements OnInit {
-  @Input() task: TaskModel;
-  @Input() editors: EditorModel[];
+  @Input() workspaceId: number;
+  @Input() editors: IUserResponse[];
+  @Input() task: ITaskResponse;
   form: FormGroup = new FormGroup({});
-  me: EditorModel | undefined;
+  me: IUserResponse | undefined;
 
   constructor(
     private dialogRef: NbDialogRef<ModifyWorkspaceTaskComponent>,
@@ -27,14 +29,17 @@ export class ModifyWorkspaceTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.me = this.editors.find((editor) => editor.isMe);
+    this.me = this.editors.find((editor) => editor.isUser);
 
     console.log(this.task);
 
     this.form = this.formBuilder.group({
       name: [this.task.name, Validators.compose([Validators.required])],
-      details: [this.task.details, Validators.compose([Validators.required])],
-      assignee: [
+      description: [
+        this.task.description,
+        Validators.compose([Validators.required])
+      ],
+      editor: [
         this.editors.find((editor) => editor.id == this.task.assignee.id),
         Validators.compose([Validators.required])
       ],

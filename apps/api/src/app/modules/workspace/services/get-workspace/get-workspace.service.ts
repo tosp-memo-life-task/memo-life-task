@@ -28,7 +28,7 @@ export class GetWorkspaceService {
         relations: {
           invitations: { receiver: true },
           owner: true,
-          tasks: { assignee: true },
+          tasks: { assignee: true, workspace: true },
           editors: true
         },
         where: { id: params.id }

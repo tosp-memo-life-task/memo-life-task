@@ -16,6 +16,8 @@ export class GetWorkspacesService {
       return workspace;
     });
 
+    console.log(response);
+
     const responseModel = new GetWorkspacesResponseModel();
     responseModel.owned = response.workspaces.filter(
       (workspace) => workspace.isOwned

@@ -14,32 +14,36 @@
       }}</mat-error>
     </mat-form-field>
 
-    <mat-label class="header-5 color-white">Details</mat-label>
+    <mat-label class="header-5 color-white">Description</mat-label>
     <mat-form-field appearance="standard">
       <textarea
-        formControlName="details"
+        formControlName="description"
         matInput
-        placeholder="Add your workspace task details here (max 150 characters)"
+        placeholder="Add your workspace task description here (max 150 characters)"
         type="details"
         maxlength="150"
       ></textarea>
       <mat-error class="header-6 color-error" *ngIf="form.invalid">{{
-        getErrorMessage('details')
+        getErrorMessage('description')
       }}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="standard" class="mt-2">
-      <mat-select [placeholder]="task.assignee.name" formControlName="assignee">
+      <mat-select
+        [placeholder]="task.assignee.firstName + task.assignee.lastName"
+        formControlName="assignee"
+      >
         <mat-option *ngFor="let editor of editors" [value]="editor">
-          {{ editor.name }} {{ editor?.isMe ? '(Me)' : '' }}
+          {{ editor.firstName }} {{ editor.lastName }}
+          {{ editor?.isUser ? '(Me)' : '' }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-radio-group formControlName="priority" class="d-flex flex-row gap-3">
-      <mat-radio-button [value]="1">Low</mat-radio-button>
-      <mat-radio-button [value]="2">Medium</mat-radio-button>
-      <mat-radio-button [value]="3">High</mat-radio-button>
+      <mat-radio-button [value]="'LOW'">Low</mat-radio-button>
+      <mat-radio-button [value]="'MEDIUM'">Medium</mat-radio-button>
+      <mat-radio-button [value]="'HIGH'">High</mat-radio-button>
     </mat-radio-group>
   </form>
 

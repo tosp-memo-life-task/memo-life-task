@@ -8,6 +8,7 @@ import {
   SignUpResponse
 } from '@memo-life-task/dtos';
 import {
+  ICreateTaskRequestBody,
   IDeleteWorkspaceRequestParams,
   IGetWorkspaceResponse,
   IListWorkspacesResponse,
@@ -136,6 +137,15 @@ export class ApiService {
       this.getHeadersWithToken()
     );
 
+    return response;
+  }
+
+  async createTask(request: ICreateTaskRequestBody) {
+    const response = await this.dataService.post(
+      this.urlService.getBaseUrl() + '/v1/task',
+      request,
+      this.getHeadersWithToken()
+    );
     return response;
   }
 }

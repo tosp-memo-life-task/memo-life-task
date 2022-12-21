@@ -51,6 +51,8 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
 
     console.log(response);
 
+    console.log('workspace get');
+
     this.workspaceDetails = response;
   }
 
@@ -97,6 +99,7 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
           backdropClass: 'custom-modal-backdrop',
           dialogClass: 'custom-modal-dialog',
           context: {
+            workspaceId: this.workspaceId,
             editors: this.workspaceDetails.editors
           }
         })
