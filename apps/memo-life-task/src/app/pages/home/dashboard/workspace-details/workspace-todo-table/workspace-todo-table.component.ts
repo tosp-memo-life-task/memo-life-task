@@ -5,8 +5,10 @@ import {
   OnChanges,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
+  ViewChild
 } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ITaskResponse, IUserResponse } from '@memo-life-task/interfaces';
 import { NbDialogService } from '@nebular/theme';
@@ -18,6 +20,8 @@ import { ModifyWorkspaceTaskComponent } from '../../modify-workspace-task/modify
   styleUrls: ['./workspace-todo-table.component.scss']
 })
 export class WorkspaceTodoTableComponent implements OnInit, OnChanges {
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+
   @Input() editors: IUserResponse[];
   @Input() tasks: ITaskResponse[];
   @Output() taskChanged: EventEmitter<any> = new EventEmitter();
@@ -27,7 +31,7 @@ export class WorkspaceTodoTableComponent implements OnInit, OnChanges {
     'assignee',
     'priority',
     'status',
-    'lastModified',
+    'updatedAt',
     'action'
   ];
   dataSource: MatTableDataSource<ITaskResponse>;
@@ -37,11 +41,24 @@ export class WorkspaceTodoTableComponent implements OnInit, OnChanges {
     console.log(this.tasks);
 
     this.dataSource = new MatTableDataSource(this.tasks);
+    this.dataSource.sort = this.sort;
+    this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource(this.tasks);
+    this.dataSource.sort = this.sort;
+    this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
   }
+
+  sortingDataAccessor = (item: any, property: string) => {
+    switch (property) {
+      case 'assignee':
+        return item['assignee'].firstName + item['assignee'].lastName;
+      default:
+        return item[property];
+    }
+  };
 
   modifyTask(task: ITaskResponse) {
     if (task) {
