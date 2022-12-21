@@ -94,5 +94,6 @@
   <tosp-memo-life-task-workspace-todo-table
     [tasks]="workspaceDetails.tasks"
     [editors]="workspaceDetails.editors"
+    (taskChanged)="getWorkSpaceDetails()"
   ></tosp-memo-life-task-workspace-todo-table>
 </div>

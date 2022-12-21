@@ -1,9 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ITaskResponse, IUserResponse } from '@memo-life-task/interfaces';
+import { TaskStatusEnum } from '@memo-life-task/enums';
+import {
+  IModifyTaskRequestBody,
+  IModifyTaskRequestParams,
+  ITaskResponse,
+  IUserResponse
+} from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
+import { ModifyTaskService } from '../services/modify-task.service';
 import {
   EditorModel,
   PriorityEnum,
@@ -25,7 +32,8 @@ export class ModifyWorkspaceTaskComponent implements OnInit {
   constructor(
     private dialogRef: NbDialogRef<ModifyWorkspaceTaskComponent>,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private modifyTaskService: ModifyTaskService
   ) {}
 
   ngOnInit(): void {
@@ -51,9 +59,22 @@ export class ModifyWorkspaceTaskComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  createTask() {
+  async modifyTask(task: ITaskResponse) {
+    const requestParams: IModifyTaskRequestParams = {
+      id: task.id
+    };
+    const requestBody: IModifyTaskRequestBody = {
+      name: this.form.controls['name'].value,
+      description: this.form.controls['description'].value,
+      editorId: this.form.controls['editor'].value.id,
+      priority: this.form.controls['priority'].value,
+      status: TaskStatusEnum.READY_TO_START
+    };
+
+    await this.modifyTaskService.modifyTaskApi(requestParams, requestBody);
+
     this.dialogRef.close();
-    console.log('create task');
+    console.log('modify task');
   }
 
   getErrorMessage(field: string) {

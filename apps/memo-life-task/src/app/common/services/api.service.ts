@@ -15,6 +15,8 @@ import {
   IGetWorkspaceResponse,
   IListInvitationsResponse,
   IListWorkspacesResponse,
+  IModifyTaskRequestBody,
+  IModifyTaskRequestParams,
   IModifyWorkspaceRequestBody,
   IModifyWorkspaceRequestParams,
   IRemoveEditorRequestBody,
@@ -149,6 +151,18 @@ export class ApiService {
     const response = await this.dataService.post(
       this.urlService.getBaseUrl() + '/v1/task',
       request,
+      this.getHeadersWithToken()
+    );
+    return response;
+  }
+
+  async modifyTask(
+    requestParams: IModifyTaskRequestParams,
+    requestBody: IModifyTaskRequestBody
+  ) {
+    const response = await this.dataService.patch(
+      this.urlService.getBaseUrl() + '/v1/task/' + requestParams.id,
+      requestBody,
       this.getHeadersWithToken()
     );
     return response;

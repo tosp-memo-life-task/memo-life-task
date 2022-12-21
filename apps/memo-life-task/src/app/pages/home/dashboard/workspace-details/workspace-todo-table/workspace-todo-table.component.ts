@@ -1,15 +1,16 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ITaskResponse, IUserResponse } from '@memo-life-task/interfaces';
 import { NbDialogService } from '@nebular/theme';
 import { ModifyWorkspaceTaskComponent } from '../../modify-workspace-task/modify-workspace-task.component';
-import { EditorModel, TaskModel } from '../models/workspace-details.model';
 
 @Component({
   selector: 'tosp-memo-life-task-workspace-todo-table',
@@ -19,6 +20,7 @@ import { EditorModel, TaskModel } from '../models/workspace-details.model';
 export class WorkspaceTodoTableComponent implements OnInit, OnChanges {
   @Input() editors: IUserResponse[];
   @Input() tasks: ITaskResponse[];
+  @Output() taskChanged: EventEmitter<any> = new EventEmitter();
 
   displayedColumns: string[] = [
     'name',
@@ -42,14 +44,18 @@ export class WorkspaceTodoTableComponent implements OnInit, OnChanges {
 
   modifyTask(task: ITaskResponse) {
     if (task) {
-      this.dialogService.open(ModifyWorkspaceTaskComponent, {
-        backdropClass: 'custom-modal-backdrop',
-        dialogClass: 'custom-modal-dialog',
-        context: {
-          editors: this.editors,
-          task: task
-        }
-      });
+      this.dialogService
+        .open(ModifyWorkspaceTaskComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            editors: this.editors,
+            task: task
+          }
+        })
+        .onClose.subscribe(() => {
+          this.taskChanged.emit();
+        });
     }
   }
 }
