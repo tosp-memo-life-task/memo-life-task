@@ -26,7 +26,7 @@ export class GetWorkspaceService {
     const workspace = await this.workspaceRepository
       .findOneOrFail({
         relations: {
-          invitations: { receiver: true, sender: true },
+          invitations: { receiver: true },
           owner: true,
           tasks: { assignee: true },
           users: true
@@ -52,17 +52,7 @@ export class GetWorkspaceService {
     });
 
     const invitations = workspace.invitations.map((i) => {
-      const receiver = new UserResponse();
-      receiver.email = i.receiver.email;
-      receiver.firstName = i.receiver.nameFirst;
-      receiver.id = i.receiver.id;
-      receiver.lastName = i.receiver.nameLast;
-
-      const invitation = new InvitationResponse();
-      invitation.id = i.id;
-      invitation.receiver = receiver;
-
-      return invitation;
+      return i.receiver.email;
     });
 
     const tasks = workspace.tasks.map((t) => {

@@ -89,8 +89,10 @@ export class ApiService {
   }
 
   async sendInvite(request: ISendInvitationRequestBody) {
+    console.log(request);
+
     const response = await this.dataService.post(
-      this.urlService.getBaseUrl() + '/v1/invitaition',
+      this.urlService.getBaseUrl() + '/v1/invitation',
       request,
       this.getHeadersWithToken()
     );

@@ -18,7 +18,7 @@ import { EditorModel } from '../workspace-details/models/workspace-details.model
 })
 export class ModifyWorkspaceEditorsModalComponent implements OnInit {
   @Input() editors: IUserResponse[];
-  @Input() invitations: IInvitationResponse[];
+  @Input() invitations: string[];
   @Input() workspaceId: number;
   form: FormGroup = new FormGroup({});
   me: IUserResponse | undefined;
@@ -40,16 +40,16 @@ export class ModifyWorkspaceEditorsModalComponent implements OnInit {
 
     const request: ISendInvitationRequestBody = {
       email: email,
-      workspaceId: this.workspaceId
+      workspaceId: +this.workspaceId
     };
 
     await this.sendInvitaitionService.sendInvitaitionApi(request);
 
     console.log(email);
 
-    /*     this.invitedEditors.push(email);
+    this.invitations.push(email);
     this.form.controls['email'].reset();
-    console.log('invite user'); */
+    console.log('invite user');
   }
 
   undoUserInvite(email: string) {
