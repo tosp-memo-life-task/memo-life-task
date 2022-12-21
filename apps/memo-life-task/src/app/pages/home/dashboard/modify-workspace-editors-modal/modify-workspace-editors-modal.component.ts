@@ -3,11 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   IInvitationResponse,
+  IRevokeInvitationRequestBody,
   ISendInvitationRequestBody,
   IUserResponse
 } from '@memo-life-task/interfaces';
 import { NbDialogRef } from '@nebular/theme';
 import { emailValidator } from '../../../../common/validators/email.validator';
+import { RevokeInvitaitionService } from '../services/revoke-invitation.service';
 import { SendInvitaitionService } from '../services/send-invitation.service';
 import { EditorModel } from '../workspace-details/models/workspace-details.model';
 
@@ -26,7 +28,8 @@ export class ModifyWorkspaceEditorsModalComponent implements OnInit {
   constructor(
     private dialogRef: NbDialogRef<ModifyWorkspaceEditorsModalComponent>,
     private formBuilder: FormBuilder,
-    private sendInvitaitionService: SendInvitaitionService
+    private sendInvitaitionService: SendInvitaitionService,
+    private revokeInvitaitionService: RevokeInvitaitionService
   ) {}
 
   ngOnInit(): void {
@@ -45,18 +48,23 @@ export class ModifyWorkspaceEditorsModalComponent implements OnInit {
 
     await this.sendInvitaitionService.sendInvitaitionApi(request);
 
-    console.log(email);
-
     this.invitations.push(email);
     this.form.controls['email'].reset();
     console.log('invite user');
   }
 
-  undoUserInvite(email: string) {
-    /*     this.invitedEditors = this.invitedEditors.filter(
+  async revokeUserInvite(email: string) {
+    const request: IRevokeInvitationRequestBody = {
+      email: email,
+      workspaceId: +this.workspaceId
+    };
+
+    await this.revokeInvitaitionService.revokeInvitaitionApi(request);
+
+    this.invitations = this.invitations.filter(
       (invitedEmail) => invitedEmail != email
-    ); */
-    console.log('undoUserInvite');
+    );
+    console.log('revokeUserInvite');
   }
 
   removeEditor(editor: IUserResponse) {

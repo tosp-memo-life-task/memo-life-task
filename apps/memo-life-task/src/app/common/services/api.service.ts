@@ -10,6 +10,7 @@ import {
 import {
   IGetWorkspaceResponse,
   IListWorkspacesResponse,
+  IRevokeInvitationRequestBody,
   ISendInvitationRequestBody
 } from '@memo-life-task/interfaces';
 import { LocalStorageEnum } from '../enums/local-storage.enum';
@@ -96,6 +97,18 @@ export class ApiService {
       request,
       this.getHeadersWithToken()
     );
+    return response;
+  }
+
+  async revokeInvite(request: IRevokeInvitationRequestBody) {
+    console.log(request);
+
+    const response = await this.dataService.delete(
+      this.urlService.getBaseUrl() + '/v1/invitation/revoke',
+      request,
+      this.getHeadersWithToken()
+    );
+
     return response;
   }
 }
