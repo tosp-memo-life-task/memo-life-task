@@ -31,6 +31,7 @@ jobs:
           envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           envkey_DB_NAME: ${{ secrets.DB_NAME }}
           envkey_DB_SYNCHRONIZE: ${{ secrets.DB_SYNCHRONIZE }}
+          fail_on_empty: true
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
