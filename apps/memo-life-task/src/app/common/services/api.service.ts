@@ -8,6 +8,7 @@ import {
   SignUpResponse
 } from '@memo-life-task/dtos';
 import {
+  IDeleteWorkspaceRequestParams,
   IGetWorkspaceResponse,
   IListWorkspacesResponse,
   IModifyWorkspaceRequestBody,
@@ -66,7 +67,7 @@ export class ApiService {
 
   async getWorkspaces(): Promise<IListWorkspacesResponse> {
     const response = await this.dataService.get<IListWorkspacesResponse>(
-      this.urlService.getBaseUrl() + '/v1/workspace',
+      this.urlService.getBaseUrl() + '/v1/workspace/list',
       this.getHeadersWithToken()
     );
     return response;
@@ -92,6 +93,18 @@ export class ApiService {
       requestBody,
       this.getHeadersWithToken()
     );
+    return response;
+  }
+
+  async deleteWorkspace(request: IDeleteWorkspaceRequestParams) {
+    console.log(request);
+
+    const response = await this.dataService.delete(
+      this.urlService.getBaseUrl() + '/v1/workspace/' + request.id,
+      {},
+      this.getHeadersWithToken()
+    );
+
     return response;
   }
 

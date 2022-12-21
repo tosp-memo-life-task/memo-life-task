@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IGetWorkspaceResponse } from '@memo-life-task/interfaces';
 import { NbDialogService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
 import { CreateWorkspaceTaskComponent } from '../create-workspace-task/create-workspace-task.component';
+import { DeleteWorkspaceModalComponent } from '../delete-workspace-modal/delete-workspace-modal.component';
 import { ModifyWorkspaceEditorsModalComponent } from '../modify-workspace-editors-modal/modify-workspace-editors-modal.component';
 import { ModifyWorkspaceModalComponent } from '../modify-workspace-modal/modify-workspace-modal.component';
 import { GetWorkspaceService } from '../services/get-workspace.service';
@@ -27,7 +28,8 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private dialogService: NbDialogService,
-    private getWorkspaceService: GetWorkspaceService
+    private getWorkspaceService: GetWorkspaceService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -72,13 +74,19 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
 
   deleteWorkspace() {
     if (this.workspaceDetails) {
-      this.dialogService.open(ModifyWorkspaceModalComponent, {
-        backdropClass: 'custom-modal-backdrop',
-        dialogClass: 'custom-modal-dialog',
-        context: {
-          workspaceId: this.workspaceId
-        }
-      });
+      this.dialogService
+        .open(DeleteWorkspaceModalComponent, {
+          backdropClass: 'custom-modal-backdrop',
+          dialogClass: 'custom-modal-dialog',
+          context: {
+            workspaceId: this.workspaceId
+          }
+        })
+        .onClose.subscribe((value) => {
+          if (value) {
+            this.router.navigate(['home']);
+          }
+        });
     }
   }
 
