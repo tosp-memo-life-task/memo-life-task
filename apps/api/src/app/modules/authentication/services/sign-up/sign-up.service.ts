@@ -1,13 +1,15 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 import { PasswordService } from '../password/password.service';
 import { TokenService } from '../token/token.service';
 
 import { UserRepository } from '../../../../database/repositories/user.repository';
 
-import { User } from '../../../../database/entities/user.entity';
+import { UserEntity } from '../../../../database/entities/user.entity';
 
-import { SignUpRequest, SignUpResponse } from '@memo-life-task/dtos';
+import { SignUpRequestBody, SignUpResponse } from '@memo-life-task/dtos';
+
+import { UserAlreadySignedUpException } from '../../../../common/exceptions/user-already-signed-up.exception';
 
 @Injectable()
 export class SignUpService {
@@ -17,21 +19,24 @@ export class SignUpService {
     private readonly userRepository: UserRepository
   ) {}
 
-  async signUp(req: SignUpRequest): Promise<SignUpResponse> {
+  async signUp(body: SignUpRequestBody): Promise<SignUpResponse> {
     const profileWithEmail = await this.userRepository.findOne({
-      where: { email: req.email }
+      where: { email: body.email }
     });
 
-    if (profileWithEmail) throw new ConflictException();
+    if (profileWithEmail) throw new UserAlreadySignedUpException();
 
     const salt = await this.passwordService.genSalt();
-    const password = await this.passwordService.genPass(req.password, salt);
+    const password = await this.passwordService.genPass(body.password, salt);
 
-    let user = new User();
-    user.email = req.email;
-    user.nameFirst = req.firstName;
-    user.nameLast = req.lastName;
+    const bgColor = Math.floor(Math.random() * 16777215).toString(16);
+
+    let user = new UserEntity();
+    user.email = body.email;
+    user.nameFirst = body.firstName;
+    user.nameLast = body.lastName;
     user.password = password;
+    user.pfp = `https://ui-avatars.com/api/?background=${bgColor}&color=fff&name=${body.firstName}+${body.lastName}`;
     user.salt = salt;
 
     user = await this.userRepository.save(user);
@@ -44,7 +49,7 @@ export class SignUpService {
     res.firstName = user.nameFirst;
     res.id = user.id;
     res.lastName = user.nameLast;
-    res.pfp = 'https://jollycontrarian.com/images/6/6c/Rickroll.jpg';
+    res.pfp = user.pfp;
 
     return res;
   }

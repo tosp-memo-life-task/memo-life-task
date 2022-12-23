@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CreateWorkspaceResponse } from '@memo-life-task/dtos';
 import { NbDialogRef } from '@nebular/theme';
+import { CreateWorkspaceService } from '../services/create-workspaces.service';
 
 @Component({
   selector: 'tosp-memo-life-task-create-workspace-modal',
@@ -12,7 +15,9 @@ export class CreateWorkspaceModalComponent {
 
   constructor(
     private dialogRef: NbDialogRef<CreateWorkspaceModalComponent>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private createWorkspaceService: CreateWorkspaceService
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
@@ -24,7 +29,16 @@ export class CreateWorkspaceModalComponent {
     this.dialogRef.close();
   }
 
-  createWorkspace() {
+  async createWorkspace() {
+    const request: any = new Object();
+    request.title = this.form.controls['name'].value;
+    request.description = this.form.controls['description'].value;
+
+    const response: CreateWorkspaceResponse =
+      await this.createWorkspaceService.createWorkspaceApi(request);
+
+    this.router.navigate(['home/workspace', response.id]);
+    this.dialogRef.close();
     console.log('create');
   }
 

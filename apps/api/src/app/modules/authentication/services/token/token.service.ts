@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 
-import { User } from '../../../../database/entities/user.entity';
+import { UserEntity } from '../../../../database/entities/user.entity';
 
 import { IAccessToken } from './interfaces/access-token.interface';
 
@@ -13,7 +13,7 @@ export class TokenService {
     private readonly jwtService: JwtService
   ) {}
 
-  generateNewAccessToken(user: User) {
+  generateNewAccessToken(user: UserEntity) {
     const payload: IAccessToken = {
       email: user.email,
       id: user.id

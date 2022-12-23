@@ -8,12 +8,13 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
+import { InvitationEntity } from './invitation.entity';
 
-import { Task } from './task.entity';
-import { Workspace } from './workspace.entity';
+import { TaskEntity } from './task.entity';
+import { WorkspaceEntity } from './workspace.entity';
 
-@Entity()
-export class User {
+@Entity('user')
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -33,15 +34,21 @@ export class User {
   @Column({ name: 'name_last', nullable: false })
   nameLast: string;
 
+  @Column({ name: 'pfp', nullable: false })
+  pfp: string;
+
   @CreateDateColumn({ name: 'registered_at' })
   registeredAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @OneToMany(() => Task, (task) => task.assignee)
-  tasks: Task[];
+  @OneToMany(() => InvitationEntity, (invitation) => invitation.receiver)
+  invitations: Array<InvitationEntity>;
 
-  @ManyToMany(() => Workspace, (workspace) => workspace.users)
-  workspaces: Workspace[];
+  @OneToMany(() => TaskEntity, (task) => task.assignee)
+  tasks: Array<TaskEntity>;
+
+  @ManyToMany(() => WorkspaceEntity, (workspace) => workspace.editors)
+  workspaces: Array<WorkspaceEntity>;
 }

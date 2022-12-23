@@ -11,7 +11,7 @@ export class UrlService {
       'Access-Control-Allow-Headers': '*',
       'Access-Control-Allow-Methods': '*',
       'Access-Control-Allow-Origin': '*',
-      'Accept-Language': 'en',
+      'Accept-Language': 'hu-HU',
       Accept: 'application/json'
     };
 
@@ -21,11 +21,11 @@ export class UrlService {
   getBaseUrl(): string {
     switch (environment.env) {
       case 'local':
-        return 'http://localhost:3000';
+        return 'http://localhost:3000/api';
       case 'prod':
-        return 'http://localhost:3000';
+        return 'httpS://memo-life-task-production.up.railway.app/api';
       default:
-        return 'http://localhost:3000';
+        return 'http://localhost:3000/api';
     }
   }
 }

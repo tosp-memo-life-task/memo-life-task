@@ -1,27 +1,30 @@
 import {
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn
 } from 'typeorm';
 
-import { User } from './user.entity';
-import { Workspace } from './workspace.entity';
+import { UserEntity } from './user.entity';
+import { WorkspaceEntity } from './workspace.entity';
 
-@Entity()
-export class Invitation {
+@Entity('invitation')
+export class InvitationEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @ManyToOne(() => User)
-  receiver: User;
+  @ManyToOne(() => UserEntity, { nullable: false })
+  receiver: UserEntity;
 
-  @ManyToOne(() => User)
-  sender: User;
+  @ManyToOne(() => UserEntity, { nullable: false })
+  @JoinColumn({ name: 'sender_id' })
+  sender: UserEntity;
 
-  @ManyToOne(() => Workspace)
-  workspace: Workspace;
+  @ManyToOne(() => WorkspaceEntity, { nullable: false })
+  @JoinColumn({ name: 'workspace_id' })
+  workspace: WorkspaceEntity;
 }

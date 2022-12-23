@@ -1,15 +1,23 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthenticationModule } from './modules/authentication/authentication.module';
+import { InvitationModule } from './modules/invitation/invitation.module';
+import { TaskModule } from './modules/task/task.module';
+import { UserModule } from './modules/user/user.module';
+import { WorkspaceModule } from './modules/workspace/workspace.module';
 
 import entities from './database/context';
 import ormConfig from './ormconfig';
 
 import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
+
+import { BadRequestExceptionFilter } from './common/filters/bad-request-exception.filter';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { UnauthorizedExceptionFilter } from './common/filters/unauthorized-exception.filter';
 
 @Module({
   controllers: [],
@@ -19,6 +27,7 @@ import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
       cache: true,
       isGlobal: true
     }),
+    InvitationModule,
     JwtModule.registerAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
@@ -28,6 +37,7 @@ import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
         }
       })
     }),
+    TaskModule,
     TypeOrmModule.forRootAsync({
       useFactory: async () => {
         return {
@@ -36,13 +46,18 @@ import { JwtAuthGuard } from './modules/authentication/guards/jwt.guard';
           entities
         };
       }
-    })
+    }),
+    UserModule,
+    WorkspaceModule
   ],
   providers: [
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard
-    }
+    },
+    { provide: APP_FILTER, useClass: HttpExceptionFilter },
+    { provide: APP_FILTER, useClass: BadRequestExceptionFilter },
+    { provide: APP_FILTER, useClass: UnauthorizedExceptionFilter }
   ]
 })
 export class AppModule {}

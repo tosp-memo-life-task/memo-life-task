@@ -28,9 +28,17 @@ import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { NebularModule } from './nebular/nebular.module';
 import { HomeComponent } from './pages/home/home.component';
 import { NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
-import { InvitationsComponent } from './pages/home/invitations/invitations.component';
 import { ProfileComponent } from './pages/home/profile/profile.component';
 import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-workspace-modal/create-workspace-modal.component';
+import { WorkspaceDetailsComponent } from './pages/home/dashboard/workspace-details/workspace-details.component';
+import { WorkspaceTodoTableComponent } from './pages/home/dashboard/workspace-details/workspace-todo-table/workspace-todo-table.component';
+import { ModifyWorkspaceModalComponent } from './pages/home/dashboard/modify-workspace-modal/modify-workspace-modal.component';
+import { CreateWorkspaceTaskComponent } from './pages/home/dashboard/create-workspace-task/create-workspace-task.component';
+import { ModifyWorkspaceTaskComponent } from './pages/home/dashboard/modify-workspace-task/modify-workspace-task.component';
+import { ModifyWorkspaceEditorsModalComponent } from './pages/home/dashboard/modify-workspace-editors-modal/modify-workspace-editors-modal.component';
+import { DeleteWorkspaceModalComponent } from './pages/home/dashboard/delete-workspace-modal/delete-workspace-modal.component';
+import { InvitationsComponent } from './pages/home/invitations/invitations.component';
+import { InvitationsTableComponent } from './pages/home/invitations/invitations-table/invitations-table.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +54,15 @@ import { CreateWorkspaceModalComponent } from './pages/home/dashboard/create-wor
     ProfileComponent,
     CreateWorkspaceModalComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    WorkspaceDetailsComponent,
+    WorkspaceTodoTableComponent,
+    ModifyWorkspaceModalComponent,
+    CreateWorkspaceTaskComponent,
+    ModifyWorkspaceTaskComponent,
+    ModifyWorkspaceEditorsModalComponent,
+    DeleteWorkspaceModalComponent,
+    InvitationsTableComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,0 +1,68 @@
+@import '../../../../common/styles/variables';
+
+::ng-deep {
+  .workspace-container {
+    padding: 8px;
+    .workspace-container-header {
+      .workspace-container-header-icon {
+        scale: 0.85;
+      }
+    }
+    .workspace-last-modified-container {
+      .workspace-last-modified-icon {
+        color: $secondary_text !important;
+        scale: 0.7;
+        svg {
+          fill: $secondary_text !important;
+        }
+      }
+      .workspace-last-modified-content {
+        color: $secondary_text !important;
+      }
+    }
+
+    .workspace-editors {
+      .profile-picture {
+        background-color: $black;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        padding: 2px;
+
+        nb-icon {
+          height: 100%;
+          width: 100%;
+
+          svg {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+
+      .editors-modify-button {
+        padding: 6px 8px !important;
+      }
+    }
+  }
+
+  .todo-table-container {
+    margin: 0px -16px;
+  }
+}
+
+::ng-deep {
+  button {
+    nb-icon {
+      width: fit-content;
+      height: fit-content;
+    }
+  }
+  .workspace-footer {
+    nb-icon {
+      height: 22px;
+      width: 22px;
+      margin-right: 4px;
+    }
+  }
+}

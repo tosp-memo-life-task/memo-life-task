@@ -9,12 +9,13 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
+import { InvitationEntity } from './invitation.entity';
 
-import { Task } from './task.entity';
-import { User } from './user.entity';
+import { TaskEntity } from './task.entity';
+import { UserEntity } from './user.entity';
 
-@Entity()
-export class Workspace {
+@Entity('workspace')
+export class WorkspaceEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -25,18 +26,25 @@ export class Workspace {
   description: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createddAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @ManyToOne(() => User)
-  owner: User;
+  @ManyToOne(() => UserEntity)
+  owner: UserEntity;
 
-  @OneToMany(() => Task, (task) => task.workspace)
-  tasks: Task[];
+  @OneToMany(() => InvitationEntity, (invitation) => invitation.workspace, {
+    cascade: ['remove']
+  })
+  invitations: Array<InvitationEntity>;
 
-  @ManyToMany(() => User, (user) => user.workspaces)
+  @OneToMany(() => TaskEntity, (task) => task.workspace, {
+    cascade: ['remove']
+  })
+  tasks: Array<TaskEntity>;
+
+  @ManyToMany(() => UserEntity, (user) => user.workspaces)
   @JoinTable({ name: 'workspace_users_table' })
-  users: User[];
+  editors: Array<UserEntity>;
 }
