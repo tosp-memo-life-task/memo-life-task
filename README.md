@@ -17,7 +17,7 @@ A basic task manager with features like:
 
 2. Create a `.env` file based on the `.env.example` file.
 
-3. Setup your database based on the `.env` file you just filled out. Run the initial migration with `npx nx run api:migration-run`. (Optionally run `npm run seed` to add mock data to the database.)
+3. Setup your database based on the `.env` file you just filled out. Run the initial migration with `npx nx run api:migration-run`.
 
 4. Run `npx nx run-many --target=serve` to serve every app needed to run the **Memo Life Task** project.
 
@@ -84,6 +84,10 @@ If it's your first time running Cypress run `npx cypress verify` beforehand.
 Run `npx nx run-many --target=build` to build every app of the project.
 
 Run `npx nx build <app name>` to build a specific app. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## CI/CD
+
+We are using GitHub Actions for CI, which triggers a CD build on [Railway](https://railway.app/) if every test and the migration ran without errors.
 
 ## Documentation
 
